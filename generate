@@ -1,0 +1,1 @@
+openapi-python-client generate --config openapi-python-client.yaml --url https://api.railz.ai/swagger/v2 --overwrite

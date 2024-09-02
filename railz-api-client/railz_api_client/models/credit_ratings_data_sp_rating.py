@@ -1,0 +1,26 @@
+from typing import Literal
+
+CreditRatingsDataSpRating = Literal[
+    "A",
+    "A+",
+    "A-",
+    "AA",
+    "AA+",
+    "AA-",
+    "AAA",
+    "B",
+    "B+",
+    "B-",
+    "BB",
+    "BB+",
+    "BB-",
+    "BBB",
+    "BBB+",
+    "BBB-",
+    "C",
+    "CC",
+    "CCC",
+    "CCC+",
+    "CCC-",
+    "D",
+]

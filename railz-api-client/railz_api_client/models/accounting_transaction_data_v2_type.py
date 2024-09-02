@@ -1,0 +1,26 @@
+from typing import Literal
+
+AccountingTransactionDataV2Type = Literal[
+    "bankTransaction",
+    "bill",
+    "billPayment",
+    "creditNote",
+    "deposit",
+    "estimate",
+    "expense",
+    "inventoryAdjustment",
+    "invoice",
+    "journalEntry",
+    "other",
+    "payment",
+    "payroll",
+    "purchaseOrder",
+    "refund",
+    "taxAdjustment",
+    "taxPayment",
+    "taxRefund",
+    "taxReversal",
+    "transfer",
+    "unknown",
+    "vendorCreditNote",
+]
