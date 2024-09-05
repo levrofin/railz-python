@@ -7,6 +7,7 @@ from dateutil.parser import isoparse
 
 from ..models.get_bank_transactions_accounting_data_transaction_type import (
     GetBankTransactionsAccountingDataTransactionType,
+    check_get_bank_transactions_accounting_data_transaction_type,
 )
 from ..types import UNSET, Unset
 
@@ -56,7 +57,7 @@ class GetBankTransactionsAccountingData:
 
         posted_date = self.posted_date.isoformat()
 
-        transaction_type = self.transaction_type
+        transaction_type: str = self.transaction_type
 
         total_amount = self.total_amount
 
@@ -124,7 +125,7 @@ class GetBankTransactionsAccountingData:
 
         posted_date = isoparse(d.pop("postedDate"))
 
-        transaction_type = d.pop("transactionType")
+        transaction_type = check_get_bank_transactions_accounting_data_transaction_type(d.pop("transactionType"))
 
         total_amount = d.pop("totalAmount")
 

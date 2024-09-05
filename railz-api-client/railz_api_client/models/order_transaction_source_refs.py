@@ -3,7 +3,10 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.order_transaction_source_refs_type import OrderTransactionSourceRefsType
+from ..models.order_transaction_source_refs_type import (
+    OrderTransactionSourceRefsType,
+    check_order_transaction_source_refs_type,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="OrderTransactionSourceRefs")
@@ -57,7 +60,7 @@ class OrderTransactionSourceRefs:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_order_transaction_source_refs_type(_type)
 
         order_transaction_source_refs = cls(
             id=id,

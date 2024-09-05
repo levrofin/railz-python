@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.data_sync_meta_service_name import DataSyncMetaServiceName
+from ..models.data_sync_meta_service_name import DataSyncMetaServiceName, check_data_sync_meta_service_name
 
 T = TypeVar("T", bound="DataSyncMeta")
 
@@ -21,7 +21,7 @@ class DataSyncMeta:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         business_name = self.business_name
 
@@ -39,7 +39,7 @@ class DataSyncMeta:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        service_name = d.pop("serviceName")
+        service_name = check_data_sync_meta_service_name(d.pop("serviceName"))
 
         business_name = d.pop("businessName")
 

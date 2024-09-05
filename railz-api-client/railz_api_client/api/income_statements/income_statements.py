@@ -9,8 +9,12 @@ from ...models.error_400_response_dto_v2 import Error400ResponseDtoV2
 from ...models.error_401_response_dto import Error401ResponseDto
 from ...models.error_403_response_dto import Error403ResponseDto
 from ...models.error_500_response_dto import Error500ResponseDto
-from ...models.income_statements_accounting_method import IncomeStatementsAccountingMethod
-from ...models.income_statements_report_frequency import IncomeStatementsReportFrequency
+from ...models.income_statements_accounting_method import (
+    IncomeStatementsAccountingMethod,
+)
+from ...models.income_statements_report_frequency import (
+    IncomeStatementsReportFrequency,
+)
 from ...models.income_statements_response_v2_dto import IncomeStatementsResponseV2Dto
 from ...models.income_statements_section import IncomeStatementsSection
 from ...models.income_statements_sub_section import IncomeStatementsSubSection
@@ -46,7 +50,7 @@ def _get_kwargs(
 
     params["accountingMethod"] = json_accounting_method
 
-    json_report_frequency = report_frequency
+    json_report_frequency: str = report_frequency
     params["reportFrequency"] = json_report_frequency
 
     params["startDate"] = start_date

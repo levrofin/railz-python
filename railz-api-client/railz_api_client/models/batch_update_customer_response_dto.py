@@ -3,7 +3,10 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.batch_update_customer_response_dto_service_name import BatchUpdateCustomerResponseDtoServiceName
+from ..models.batch_update_customer_response_dto_service_name import (
+    BatchUpdateCustomerResponseDtoServiceName,
+    check_batch_update_customer_response_dto_service_name,
+)
 
 if TYPE_CHECKING:
     from ..models.update_customer_individual_response_dto import UpdateCustomerIndividualResponseDto
@@ -35,7 +38,7 @@ class BatchUpdateCustomerResponseDto:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         batch_id = self.batch_id
 
@@ -67,7 +70,7 @@ class BatchUpdateCustomerResponseDto:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_batch_update_customer_response_dto_service_name(d.pop("serviceName"))
 
         batch_id = d.pop("batchId")
 

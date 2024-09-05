@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_bill_data_status import GetBillDataStatus
+from ..models.get_bill_data_status import GetBillDataStatus, check_get_bill_data_status
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -74,7 +74,7 @@ class GetBillData:
 
         posted_date = self.posted_date.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         total_amount = self.total_amount
 
@@ -202,7 +202,7 @@ class GetBillData:
 
         posted_date = isoparse(d.pop("postedDate"))
 
-        status = d.pop("status")
+        status = check_get_bill_data_status(d.pop("status"))
 
         total_amount = d.pop("totalAmount")
 

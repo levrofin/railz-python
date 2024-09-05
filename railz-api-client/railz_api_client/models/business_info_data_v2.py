@@ -3,7 +3,10 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.business_info_data_v2_business_type import BusinessInfoDataV2BusinessType
+from ..models.business_info_data_v2_business_type import (
+    BusinessInfoDataV2BusinessType,
+    check_business_info_data_v2_business_type,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -64,7 +67,7 @@ class BusinessInfoDataV2:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        business_type = self.business_type
+        business_type: str = self.business_type
 
         accounting_method = self.accounting_method
 
@@ -171,7 +174,7 @@ class BusinessInfoDataV2:
         from ..models.business_info_subsidiary_ref import BusinessInfoSubsidiaryRef
 
         d = src_dict.copy()
-        business_type = d.pop("businessType")
+        business_type = check_business_info_data_v2_business_type(d.pop("businessType"))
 
         accounting_method = d.pop("accountingMethod")
 

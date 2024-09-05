@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.push_bank_transaction_v2_transaction_type import PushBankTransactionV2TransactionType
+from ..models.push_bank_transaction_v2_transaction_type import (
+    PushBankTransactionV2TransactionType,
+    check_push_bank_transaction_v2_transaction_type,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -128,7 +131,7 @@ class PushBankTransactionV2:
         if isinstance(_transaction_type, Unset):
             transaction_type = UNSET
         else:
-            transaction_type = _transaction_type
+            transaction_type = check_push_bank_transaction_v2_transaction_type(_transaction_type)
 
         _entity_ref = d.pop("entityRef", UNSET)
         entity_ref: Union[Unset, EntityRefDto]

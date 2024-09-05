@@ -3,7 +3,10 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.bill_credit_note_line_item_billable_status import BillCreditNoteLineItemBillableStatus
+from ..models.bill_credit_note_line_item_billable_status import (
+    BillCreditNoteLineItemBillableStatus,
+    check_bill_credit_note_line_item_billable_status,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -109,7 +112,7 @@ class BillCreditNoteLineItem:
         if isinstance(_billable_status, Unset):
             billable_status = UNSET
         else:
-            billable_status = _billable_status
+            billable_status = check_bill_credit_note_line_item_billable_status(_billable_status)
 
         tax_amount = d.pop("taxAmount", UNSET)
 

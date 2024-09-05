@@ -3,7 +3,10 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.update_bill_line_item_v1_billable_status import UpdateBillLineItemV1BillableStatus
+from ..models.update_bill_line_item_v1_billable_status import (
+    UpdateBillLineItemV1BillableStatus,
+    check_update_bill_line_item_v1_billable_status,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -121,7 +124,7 @@ class UpdateBillLineItemV1:
         if isinstance(_billable_status, Unset):
             billable_status = UNSET
         else:
-            billable_status = _billable_status
+            billable_status = check_update_bill_line_item_v1_billable_status(_billable_status)
 
         _customer_ref = d.pop("customerRef", UNSET)
         customer_ref: Union[Unset, CustomerObjectRefDto]

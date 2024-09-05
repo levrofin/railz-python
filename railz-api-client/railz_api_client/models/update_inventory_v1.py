@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.update_inventory_v1_type import UpdateInventoryV1Type
+from ..models.update_inventory_v1_type import UpdateInventoryV1Type, check_update_inventory_v1_type
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -96,7 +96,7 @@ class UpdateInventoryV1:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_update_inventory_v1_type(_type)
 
         subsidiary_refs = cast(List[str], d.pop("subsidiaryRefs", UNSET))
 

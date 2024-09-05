@@ -5,8 +5,14 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.save_delete_communication_response_v2_service_name import SaveDeleteCommunicationResponseV2ServiceName
-from ..models.save_delete_communication_response_v2_status import SaveDeleteCommunicationResponseV2Status
+from ..models.save_delete_communication_response_v2_service_name import (
+    SaveDeleteCommunicationResponseV2ServiceName,
+    check_save_delete_communication_response_v2_service_name,
+)
+from ..models.save_delete_communication_response_v2_status import (
+    SaveDeleteCommunicationResponseV2Status,
+    check_save_delete_communication_response_v2_status,
+)
 
 T = TypeVar("T", bound="SaveDeleteCommunicationResponseV2")
 
@@ -36,13 +42,13 @@ class SaveDeleteCommunicationResponseV2:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         delete_communication_id = self.delete_communication_id
 
         requested_on = self.requested_on.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -66,13 +72,13 @@ class SaveDeleteCommunicationResponseV2:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_save_delete_communication_response_v2_service_name(d.pop("serviceName"))
 
         delete_communication_id = d.pop("deleteCommunicationId")
 
         requested_on = isoparse(d.pop("requestedOn"))
 
-        status = d.pop("status")
+        status = check_save_delete_communication_response_v2_status(d.pop("status"))
 
         save_delete_communication_response_v2 = cls(
             connection_uuid=connection_uuid,

@@ -7,6 +7,7 @@ from dateutil.parser import isoparse
 
 from ..models.bank_transactions_accounting_report_meta_data_service_name import (
     BankTransactionsAccountingReportMetaDataServiceName,
+    check_bank_transactions_accounting_report_meta_data_service_name,
 )
 
 T = TypeVar("T", bound="BankTransactionsAccountingReportMetaData")
@@ -41,7 +42,7 @@ class BankTransactionsAccountingReportMetaData:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         report_id = self.report_id
 
@@ -77,7 +78,7 @@ class BankTransactionsAccountingReportMetaData:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_bank_transactions_accounting_report_meta_data_service_name(d.pop("serviceName"))
 
         report_id = cast(List[str], d.pop("reportId"))
 

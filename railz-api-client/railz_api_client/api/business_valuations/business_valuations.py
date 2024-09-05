@@ -6,7 +6,9 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.business_valuation_response_v2_dto import BusinessValuationResponseV2Dto
-from ...models.business_valuations_reconstruct import BusinessValuationsReconstruct
+from ...models.business_valuations_reconstruct import (
+    BusinessValuationsReconstruct,
+)
 from ...models.error_400_response_dto_v2 import Error400ResponseDtoV2
 from ...models.error_401_response_dto import Error401ResponseDto
 from ...models.error_403_response_dto import Error403ResponseDto

@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.entity_ref_v2_type import EntityRefV2Type
+from ..models.entity_ref_v2_type import EntityRefV2Type, check_entity_ref_v2_type
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="EntityRefV2")
@@ -56,7 +56,7 @@ class EntityRefV2:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_entity_ref_v2_type(_type)
 
         name = d.pop("name", UNSET)
 

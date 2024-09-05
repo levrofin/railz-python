@@ -7,8 +7,12 @@ from dateutil.parser import isoparse
 
 from ..models.push_update_journal_entries_v2_response_dto_service_name import (
     PushUpdateJournalEntriesV2ResponseDtoServiceName,
+    check_push_update_journal_entries_v2_response_dto_service_name,
 )
-from ..models.push_update_journal_entries_v2_response_dto_status import PushUpdateJournalEntriesV2ResponseDtoStatus
+from ..models.push_update_journal_entries_v2_response_dto_status import (
+    PushUpdateJournalEntriesV2ResponseDtoStatus,
+    check_push_update_journal_entries_v2_response_dto_status,
+)
 
 if TYPE_CHECKING:
     from ..models.push_update_journal_entries_v2 import PushUpdateJournalEntriesV2
@@ -44,13 +48,13 @@ class PushUpdateJournalEntriesV2ResponseDto:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         push_communication_id = self.push_communication_id
 
         requested_on = self.requested_on.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         data = self.data.to_dict()
 
@@ -79,13 +83,13 @@ class PushUpdateJournalEntriesV2ResponseDto:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_push_update_journal_entries_v2_response_dto_service_name(d.pop("serviceName"))
 
         push_communication_id = d.pop("pushCommunicationId")
 
         requested_on = isoparse(d.pop("requestedOn"))
 
-        status = d.pop("status")
+        status = check_push_update_journal_entries_v2_response_dto_status(d.pop("status"))
 
         data = PushUpdateJournalEntriesV2.from_dict(d.pop("data"))
 

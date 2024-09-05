@@ -3,7 +3,10 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.credit_note_tracking_category_ref_dto_type import CreditNoteTrackingCategoryRefDtoType
+from ..models.credit_note_tracking_category_ref_dto_type import (
+    CreditNoteTrackingCategoryRefDtoType,
+    check_credit_note_tracking_category_ref_dto_type,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="CreditNoteTrackingCategoryRefDto")
@@ -50,7 +53,7 @@ class CreditNoteTrackingCategoryRefDto:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_credit_note_tracking_category_ref_dto_type(_type)
 
         credit_note_tracking_category_ref_dto = cls(
             id=id,

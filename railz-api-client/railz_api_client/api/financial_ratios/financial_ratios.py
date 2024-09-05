@@ -12,7 +12,9 @@ from ...models.error_500_response_dto import Error500ResponseDto
 from ...models.financial_ratios_ratio import FinancialRatiosRatio
 from ...models.financial_ratios_ratio_type import FinancialRatiosRatioType
 from ...models.financial_ratios_reconstruct import FinancialRatiosReconstruct
-from ...models.financial_ratios_report_frequency import FinancialRatiosReportFrequency
+from ...models.financial_ratios_report_frequency import (
+    FinancialRatiosReportFrequency,
+)
 from ...models.financial_ratios_response_v2_dto import FinancialRatiosResponseV2Dto
 from ...types import UNSET, Response, Unset
 
@@ -34,7 +36,7 @@ def _get_kwargs(
 
     params["connectionUuid"] = connection_uuid
 
-    json_report_frequency = report_frequency
+    json_report_frequency: str = report_frequency
     params["reportFrequency"] = json_report_frequency
 
     params["startDate"] = start_date

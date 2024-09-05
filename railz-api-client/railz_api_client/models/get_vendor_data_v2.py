@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.get_vendor_data_v2_status import GetVendorDataV2Status
+from ..models.get_vendor_data_v2_status import GetVendorDataV2Status, check_get_vendor_data_v2_status
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -69,7 +69,7 @@ class GetVendorDataV2:
     def to_dict(self) -> Dict[str, Any]:
         id = self.id
 
-        status = self.status
+        status: str = self.status
 
         vendor_name = self.vendor_name
 
@@ -184,7 +184,7 @@ class GetVendorDataV2:
         d = src_dict.copy()
         id = d.pop("id")
 
-        status = d.pop("status")
+        status = check_get_vendor_data_v2_status(d.pop("status"))
 
         vendor_name = d.pop("vendorName", UNSET)
 

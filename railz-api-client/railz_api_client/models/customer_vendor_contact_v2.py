@@ -3,7 +3,10 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.customer_vendor_contact_v2_status import CustomerVendorContactV2Status
+from ..models.customer_vendor_contact_v2_status import (
+    CustomerVendorContactV2Status,
+    check_customer_vendor_contact_v2_status,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -85,7 +88,7 @@ class CustomerVendorContactV2:
         if isinstance(_status, Unset):
             status = UNSET
         else:
-            status = _status
+            status = check_customer_vendor_contact_v2_status(_status)
 
         customer_vendor_contact_v2 = cls(
             name=name,

@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.data_sync_response_dto_service_name import DataSyncResponseDtoServiceName
+from ..models.data_sync_response_dto_service_name import (
+    DataSyncResponseDtoServiceName,
+    check_data_sync_response_dto_service_name,
+)
 
 T = TypeVar("T", bound="DataSyncResponseDto")
 
@@ -33,7 +36,7 @@ class DataSyncResponseDto:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         data_type = self.data_type
 
@@ -60,7 +63,7 @@ class DataSyncResponseDto:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_data_sync_response_dto_service_name(d.pop("serviceName"))
 
         data_type = d.pop("dataType")
 

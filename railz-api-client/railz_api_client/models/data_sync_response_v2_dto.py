@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.data_sync_response_v2_dto_service_name import DataSyncResponseV2DtoServiceName
+from ..models.data_sync_response_v2_dto_service_name import (
+    DataSyncResponseV2DtoServiceName,
+    check_data_sync_response_v2_dto_service_name,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="DataSyncResponseV2Dto")
@@ -38,7 +41,7 @@ class DataSyncResponseV2Dto:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         requested_on = self.requested_on.isoformat()
 
@@ -75,7 +78,7 @@ class DataSyncResponseV2Dto:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_data_sync_response_v2_dto_service_name(d.pop("serviceName"))
 
         requested_on = isoparse(d.pop("requestedOn"))
 

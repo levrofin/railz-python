@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.journal_entry_line_items_type import JournalEntryLineItemsType
+from ..models.journal_entry_line_items_type import JournalEntryLineItemsType, check_journal_entry_line_items_type
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="JournalEntryLineItems")
@@ -34,7 +34,7 @@ class JournalEntryLineItems:
     def to_dict(self) -> Dict[str, Any]:
         account_ref = self.account_ref
 
-        type = self.type
+        type: str = self.type
 
         amount = self.amount
 
@@ -71,7 +71,7 @@ class JournalEntryLineItems:
         d = src_dict.copy()
         account_ref = d.pop("accountRef")
 
-        type = d.pop("type")
+        type = check_journal_entry_line_items_type(d.pop("type"))
 
         amount = d.pop("amount")
 

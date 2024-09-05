@@ -5,8 +5,14 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.put_vendor_v1_response_dto_service_name import PutVendorV1ResponseDtoServiceName
-from ..models.put_vendor_v1_response_dto_status import PutVendorV1ResponseDtoStatus
+from ..models.put_vendor_v1_response_dto_service_name import (
+    PutVendorV1ResponseDtoServiceName,
+    check_put_vendor_v1_response_dto_service_name,
+)
+from ..models.put_vendor_v1_response_dto_status import (
+    PutVendorV1ResponseDtoStatus,
+    check_put_vendor_v1_response_dto_status,
+)
 
 if TYPE_CHECKING:
     from ..models.put_vendor_v1 import PutVendorV1
@@ -40,11 +46,11 @@ class PutVendorV1ResponseDto:
 
         requested_on = self.requested_on.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         data = self.data.to_dict()
 
@@ -72,11 +78,11 @@ class PutVendorV1ResponseDto:
 
         requested_on = isoparse(d.pop("requestedOn"))
 
-        status = d.pop("status")
+        status = check_put_vendor_v1_response_dto_status(d.pop("status"))
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_put_vendor_v1_response_dto_service_name(d.pop("serviceName"))
 
         data = PutVendorV1.from_dict(d.pop("data"))
 

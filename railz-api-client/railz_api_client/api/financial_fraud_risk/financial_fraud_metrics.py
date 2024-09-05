@@ -9,8 +9,12 @@ from ...models.error_400_response_dto_v2 import Error400ResponseDtoV2
 from ...models.error_401_response_dto import Error401ResponseDto
 from ...models.error_403_response_dto import Error403ResponseDto
 from ...models.error_500_response_dto import Error500ResponseDto
-from ...models.financial_fraud_metrics_reconstruct import FinancialFraudMetricsReconstruct
-from ...models.financial_fraud_metrics_report_frequency import FinancialFraudMetricsReportFrequency
+from ...models.financial_fraud_metrics_reconstruct import (
+    FinancialFraudMetricsReconstruct,
+)
+from ...models.financial_fraud_metrics_report_frequency import (
+    FinancialFraudMetricsReportFrequency,
+)
 from ...models.financial_fraud_risk_response_v2_dto import FinancialFraudRiskResponseV2Dto
 from ...types import UNSET, Response, Unset
 
@@ -40,7 +44,7 @@ def _get_kwargs(
 
     params["orderBy"] = order_by
 
-    json_report_frequency = report_frequency
+    json_report_frequency: str = report_frequency
     params["reportFrequency"] = json_report_frequency
 
     json_reconstruct: Union[Unset, str] = UNSET

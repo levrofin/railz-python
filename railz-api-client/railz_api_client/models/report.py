@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.report_current_status import ReportCurrentStatus
+from ..models.report_current_status import ReportCurrentStatus, check_report_current_status
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="Report")
@@ -96,7 +96,7 @@ class Report:
         if isinstance(_current_status, Unset):
             current_status = UNSET
         else:
-            current_status = _current_status
+            current_status = check_report_current_status(_current_status)
 
         latest_report_id = d.pop("latestReportId", UNSET)
 

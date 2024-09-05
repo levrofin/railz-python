@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.business_info_meta_data_service_name import BusinessInfoMetaDataServiceName
+from ..models.business_info_meta_data_service_name import (
+    BusinessInfoMetaDataServiceName,
+    check_business_info_meta_data_service_name,
+)
 
 T = TypeVar("T", bound="BusinessInfoMetaData")
 
@@ -31,7 +34,7 @@ class BusinessInfoMetaData:
     def to_dict(self) -> Dict[str, Any]:
         report_id = self.report_id
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         business_name = self.business_name
 
@@ -58,7 +61,7 @@ class BusinessInfoMetaData:
         d = src_dict.copy()
         report_id = d.pop("reportId")
 
-        service_name = d.pop("serviceName")
+        service_name = check_business_info_meta_data_service_name(d.pop("serviceName"))
 
         business_name = d.pop("businessName")
 

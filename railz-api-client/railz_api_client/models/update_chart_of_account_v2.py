@@ -3,8 +3,11 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.update_chart_of_account_v2_classification import UpdateChartOfAccountV2Classification
-from ..models.update_chart_of_account_v2_type import UpdateChartOfAccountV2Type
+from ..models.update_chart_of_account_v2_classification import (
+    UpdateChartOfAccountV2Classification,
+    check_update_chart_of_account_v2_classification,
+)
+from ..models.update_chart_of_account_v2_type import UpdateChartOfAccountV2Type, check_update_chart_of_account_v2_type
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -133,7 +136,7 @@ class UpdateChartOfAccountV2:
         if isinstance(_classification, Unset):
             classification = UNSET
         else:
-            classification = _classification
+            classification = check_update_chart_of_account_v2_classification(_classification)
 
         currency = d.pop("currency", UNSET)
 
@@ -142,7 +145,7 @@ class UpdateChartOfAccountV2:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_update_chart_of_account_v2_type(_type)
 
         bank_account_number = d.pop("bankAccountNumber", UNSET)
 

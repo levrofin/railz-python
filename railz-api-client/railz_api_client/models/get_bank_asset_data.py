@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_bank_asset_data_account_type import GetBankAssetDataAccountType
+from ..models.get_bank_asset_data_account_type import (
+    GetBankAssetDataAccountType,
+    check_get_bank_asset_data_account_type,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -153,7 +156,7 @@ class GetBankAssetData:
         if isinstance(_account_type, Unset):
             account_type = UNSET
         else:
-            account_type = _account_type
+            account_type = check_get_bank_asset_data_account_type(_account_type)
 
         account_sub_type = d.pop("accountSubType", UNSET)
 

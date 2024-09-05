@@ -5,8 +5,14 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.put_vendor_bank_account_response_dto_service_name import PutVendorBankAccountResponseDtoServiceName
-from ..models.put_vendor_bank_account_response_dto_status import PutVendorBankAccountResponseDtoStatus
+from ..models.put_vendor_bank_account_response_dto_service_name import (
+    PutVendorBankAccountResponseDtoServiceName,
+    check_put_vendor_bank_account_response_dto_service_name,
+)
+from ..models.put_vendor_bank_account_response_dto_status import (
+    PutVendorBankAccountResponseDtoStatus,
+    check_put_vendor_bank_account_response_dto_status,
+)
 
 if TYPE_CHECKING:
     from ..models.put_vendor_bank_account import PutVendorBankAccount
@@ -42,13 +48,13 @@ class PutVendorBankAccountResponseDto:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         push_communication_id = self.push_communication_id
 
         requested_on = self.requested_on.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         data = self.data.to_dict()
 
@@ -77,13 +83,13 @@ class PutVendorBankAccountResponseDto:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_put_vendor_bank_account_response_dto_service_name(d.pop("serviceName"))
 
         push_communication_id = d.pop("pushCommunicationId")
 
         requested_on = isoparse(d.pop("requestedOn"))
 
-        status = d.pop("status")
+        status = check_put_vendor_bank_account_response_dto_status(d.pop("status"))
 
         data = PutVendorBankAccount.from_dict(d.pop("data"))
 

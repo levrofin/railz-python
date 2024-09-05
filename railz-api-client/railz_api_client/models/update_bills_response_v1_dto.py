@@ -5,8 +5,14 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.update_bills_response_v1_dto_service_name import UpdateBillsResponseV1DtoServiceName
-from ..models.update_bills_response_v1_dto_status import UpdateBillsResponseV1DtoStatus
+from ..models.update_bills_response_v1_dto_service_name import (
+    UpdateBillsResponseV1DtoServiceName,
+    check_update_bills_response_v1_dto_service_name,
+)
+from ..models.update_bills_response_v1_dto_status import (
+    UpdateBillsResponseV1DtoStatus,
+    check_update_bills_response_v1_dto_status,
+)
 
 if TYPE_CHECKING:
     from ..models.update_bills_v1 import UpdateBillsV1
@@ -40,11 +46,11 @@ class UpdateBillsResponseV1Dto:
 
         requested_on = self.requested_on.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         data = self.data.to_dict()
 
@@ -72,11 +78,11 @@ class UpdateBillsResponseV1Dto:
 
         requested_on = isoparse(d.pop("requestedOn"))
 
-        status = d.pop("status")
+        status = check_update_bills_response_v1_dto_status(d.pop("status"))
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_update_bills_response_v1_dto_service_name(d.pop("serviceName"))
 
         data = UpdateBillsV1.from_dict(d.pop("data"))
 

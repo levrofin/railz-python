@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_purchase_order_data_v1_status import GetPurchaseOrderDataV1Status
+from ..models.get_purchase_order_data_v1_status import (
+    GetPurchaseOrderDataV1Status,
+    check_get_purchase_order_data_v1_status,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -72,7 +75,7 @@ class GetPurchaseOrderDataV1:
 
         total_amount = self.total_amount
 
-        status = self.status
+        status: str = self.status
 
         delivery_date: Union[Unset, str] = UNSET
         if not isinstance(self.delivery_date, Unset):
@@ -183,7 +186,7 @@ class GetPurchaseOrderDataV1:
 
         total_amount = d.pop("totalAmount")
 
-        status = d.pop("status")
+        status = check_get_purchase_order_data_v1_status(d.pop("status"))
 
         _delivery_date = d.pop("deliveryDate", UNSET)
         delivery_date: Union[Unset, datetime.datetime]

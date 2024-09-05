@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.update_customer_individual_response_dto_status import UpdateCustomerIndividualResponseDtoStatus
+from ..models.update_customer_individual_response_dto_status import (
+    UpdateCustomerIndividualResponseDtoStatus,
+    check_update_customer_individual_response_dto_status,
+)
 
 if TYPE_CHECKING:
     from ..models.batch_put_customer import BatchPutCustomer
@@ -35,7 +38,7 @@ class UpdateCustomerIndividualResponseDto:
 
         requested_on = self.requested_on.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         data = self.data.to_dict()
 
@@ -61,7 +64,7 @@ class UpdateCustomerIndividualResponseDto:
 
         requested_on = isoparse(d.pop("requestedOn"))
 
-        status = d.pop("status")
+        status = check_update_customer_individual_response_dto_status(d.pop("status"))
 
         data = BatchPutCustomer.from_dict(d.pop("data"))
 

@@ -3,10 +3,13 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.data_types_data_v2_accounting_method import DataTypesDataV2AccountingMethod
-from ..models.data_types_data_v2_action_item import DataTypesDataV2ActionItem
-from ..models.data_types_data_v2_name import DataTypesDataV2Name
-from ..models.data_types_data_v2_report_type import DataTypesDataV2ReportType
+from ..models.data_types_data_v2_accounting_method import (
+    DataTypesDataV2AccountingMethod,
+    check_data_types_data_v2_accounting_method,
+)
+from ..models.data_types_data_v2_action_item import DataTypesDataV2ActionItem, check_data_types_data_v2_action_item
+from ..models.data_types_data_v2_name import DataTypesDataV2Name, check_data_types_data_v2_name
+from ..models.data_types_data_v2_report_type import DataTypesDataV2ReportType, check_data_types_data_v2_report_type
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="DataTypesDataV2")
@@ -31,14 +34,14 @@ class DataTypesDataV2:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        name = self.name
+        name: str = self.name
 
         action = []
         for action_item_data in self.action:
-            action_item = action_item_data
+            action_item: str = action_item_data
             action.append(action_item)
 
-        report_type = self.report_type
+        report_type: str = self.report_type
 
         description = self.description
 
@@ -65,16 +68,16 @@ class DataTypesDataV2:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        name = d.pop("name")
+        name = check_data_types_data_v2_name(d.pop("name"))
 
         action = []
         _action = d.pop("action")
         for action_item_data in _action:
-            action_item = action_item_data
+            action_item = check_data_types_data_v2_action_item(action_item_data)
 
             action.append(action_item)
 
-        report_type = d.pop("reportType")
+        report_type = check_data_types_data_v2_report_type(d.pop("reportType"))
 
         description = d.pop("description", UNSET)
 
@@ -83,7 +86,7 @@ class DataTypesDataV2:
         if isinstance(_accounting_method, Unset):
             accounting_method = UNSET
         else:
-            accounting_method = _accounting_method
+            accounting_method = check_data_types_data_v2_accounting_method(_accounting_method)
 
         data_types_data_v2 = cls(
             name=name,

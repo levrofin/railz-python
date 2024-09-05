@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Set, cast
 
 FinancialRatiosRatio = Literal[
     "absoluteLiquidity",
@@ -53,3 +53,63 @@ FinancialRatiosRatio = Literal[
     "totalAccrualsTotalAssets",
     "workingCapital",
 ]
+
+FINANCIAL_RATIOS_RATIO_VALUES: Set[FinancialRatiosRatio] = {
+    "absoluteLiquidity",
+    "accountsPayableTurnoverRatio",
+    "accountsReceivableTurnoverRatio",
+    "annualRecurringRevenue",
+    "annualRecurringRevenueRate",
+    "assetQualityIndex",
+    "assetTurnoverRatio",
+    "averageCollectionPeriod",
+    "averageOutstandingPayablesBalance",
+    "averageOutstandingReceivablesBalance",
+    "cashFlowCoverageRatio",
+    "cashRatio",
+    "churnRate",
+    "currentRatio",
+    "daysPayableOutstanding",
+    "daysSalesOutstanding",
+    "daysSalesReceivablesIndex",
+    "debtServiceCoverageRatio",
+    "debtToAssetsRatio",
+    "debtToEnterpriseValue",
+    "debtToEquityRatio",
+    "depreciationIndex",
+    "ebitda",
+    "ebitdaMargin",
+    "equityToLTAssets",
+    "freeCashFlow",
+    "freeCashflowRatio",
+    "grossBurn",
+    "grossBurnRate",
+    "grossMargin",
+    "grossMarginIndex",
+    "interestBankLoan",
+    "interestCoverageRatio",
+    "inventoryTurnoverRatio",
+    "leverageIndex",
+    "leverageRatio",
+    "monthlyRecurringRevenue",
+    "monthlyRecurringRevenueRate",
+    "netProfitMargin",
+    "operatingMargin",
+    "payablesConversionPeriod",
+    "quickRatio",
+    "returnOnAssets",
+    "returnOnEquity",
+    "revenueConcentrationIndex",
+    "runway",
+    "salesGrowthIndex",
+    "sgaExpensesIndex",
+    "shortDebtToEquityRatio",
+    "totalAccrualsTotalAssets",
+    "workingCapital",
+}
+
+
+def check_financial_ratios_ratio(value: str) -> FinancialRatiosRatio:
+    if value in FINANCIAL_RATIOS_RATIO_VALUES:
+        return cast(FinancialRatiosRatio, value)
+    raise TypeError(f"Unexpected value {value!r}. Expected one of {FINANCIAL_RATIOS_RATIO_VALUES!r}")

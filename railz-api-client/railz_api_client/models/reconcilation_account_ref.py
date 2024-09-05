@@ -3,8 +3,14 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.reconcilation_account_ref_section import ReconcilationAccountRefSection
-from ..models.reconcilation_account_ref_sub_section import ReconcilationAccountRefSubSection
+from ..models.reconcilation_account_ref_section import (
+    ReconcilationAccountRefSection,
+    check_reconcilation_account_ref_section,
+)
+from ..models.reconcilation_account_ref_sub_section import (
+    ReconcilationAccountRefSubSection,
+    check_reconcilation_account_ref_sub_section,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="ReconcilationAccountRef")
@@ -78,14 +84,14 @@ class ReconcilationAccountRef:
         if isinstance(_section, Unset):
             section = UNSET
         else:
-            section = _section
+            section = check_reconcilation_account_ref_section(_section)
 
         _sub_section = d.pop("subSection", UNSET)
         sub_section: Union[Unset, ReconcilationAccountRefSubSection]
         if isinstance(_sub_section, Unset):
             sub_section = UNSET
         else:
-            sub_section = _sub_section
+            sub_section = check_reconcilation_account_ref_sub_section(_sub_section)
 
         group = d.pop("group", UNSET)
 

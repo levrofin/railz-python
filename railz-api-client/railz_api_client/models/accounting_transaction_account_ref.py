@@ -3,8 +3,14 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.accounting_transaction_account_ref_section import AccountingTransactionAccountRefSection
-from ..models.accounting_transaction_account_ref_sub_section import AccountingTransactionAccountRefSubSection
+from ..models.accounting_transaction_account_ref_section import (
+    AccountingTransactionAccountRefSection,
+    check_accounting_transaction_account_ref_section,
+)
+from ..models.accounting_transaction_account_ref_sub_section import (
+    AccountingTransactionAccountRefSubSection,
+    check_accounting_transaction_account_ref_sub_section,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="AccountingTransactionAccountRef")
@@ -79,14 +85,14 @@ class AccountingTransactionAccountRef:
         if isinstance(_section, Unset):
             section = UNSET
         else:
-            section = _section
+            section = check_accounting_transaction_account_ref_section(_section)
 
         _sub_section = d.pop("subSection", UNSET)
         sub_section: Union[Unset, AccountingTransactionAccountRefSubSection]
         if isinstance(_sub_section, Unset):
             sub_section = UNSET
         else:
-            sub_section = _sub_section
+            sub_section = check_accounting_transaction_account_ref_sub_section(_sub_section)
 
         group = d.pop("group", UNSET)
 

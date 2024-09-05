@@ -5,6 +5,7 @@ from attrs import field as _attrs_field
 
 from ..models.batch_push_bank_transaction_response_v2_dto_service_name import (
     BatchPushBankTransactionResponseV2DtoServiceName,
+    check_batch_push_bank_transaction_response_v2_dto_service_name,
 )
 
 if TYPE_CHECKING:
@@ -37,7 +38,7 @@ class BatchPushBankTransactionResponseV2Dto:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         batch_id = self.batch_id
 
@@ -69,7 +70,7 @@ class BatchPushBankTransactionResponseV2Dto:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_batch_push_bank_transaction_response_v2_dto_service_name(d.pop("serviceName"))
 
         batch_id = d.pop("batchId")
 

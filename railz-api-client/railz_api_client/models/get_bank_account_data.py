@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_bank_account_data_account_type import GetBankAccountDataAccountType
+from ..models.get_bank_account_data_account_type import (
+    GetBankAccountDataAccountType,
+    check_get_bank_account_data_account_type,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="GetBankAccountData")
@@ -52,7 +55,7 @@ class GetBankAccountData:
 
         account_name = self.account_name
 
-        account_type = self.account_type
+        account_type: str = self.account_type
 
         current_balance = self.current_balance
 
@@ -109,7 +112,7 @@ class GetBankAccountData:
 
         account_name = d.pop("accountName")
 
-        account_type = d.pop("accountType")
+        account_type = check_get_bank_account_data_account_type(d.pop("accountType"))
 
         current_balance = d.pop("currentBalance", UNSET)
 

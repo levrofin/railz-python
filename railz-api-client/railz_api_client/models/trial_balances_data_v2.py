@@ -3,8 +3,11 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.trial_balances_data_v2_section import TrialBalancesDataV2Section
-from ..models.trial_balances_data_v2_sub_section import TrialBalancesDataV2SubSection
+from ..models.trial_balances_data_v2_section import TrialBalancesDataV2Section, check_trial_balances_data_v2_section
+from ..models.trial_balances_data_v2_sub_section import (
+    TrialBalancesDataV2SubSection,
+    check_trial_balances_data_v2_sub_section,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -62,9 +65,9 @@ class TrialBalancesDataV2:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        section = self.section
+        section: str = self.section
 
-        sub_section = self.sub_section
+        sub_section: str = self.sub_section
 
         group = self.group
 
@@ -150,9 +153,9 @@ class TrialBalancesDataV2:
         from ..models.subsidiary_ref import SubsidiaryRef
 
         d = src_dict.copy()
-        section = d.pop("section")
+        section = check_trial_balances_data_v2_section(d.pop("section"))
 
-        sub_section = d.pop("subSection")
+        sub_section = check_trial_balances_data_v2_sub_section(d.pop("subSection"))
 
         group = d.pop("group")
 

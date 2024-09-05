@@ -3,7 +3,10 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.push_update_journal_entry_line_items_type import PushUpdateJournalEntryLineItemsType
+from ..models.push_update_journal_entry_line_items_type import (
+    PushUpdateJournalEntryLineItemsType,
+    check_push_update_journal_entry_line_items_type,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="PushUpdateJournalEntryLineItems")
@@ -36,7 +39,7 @@ class PushUpdateJournalEntryLineItems:
     def to_dict(self) -> Dict[str, Any]:
         account_ref = self.account_ref
 
-        type = self.type
+        type: str = self.type
 
         description = self.description
 
@@ -78,7 +81,7 @@ class PushUpdateJournalEntryLineItems:
         d = src_dict.copy()
         account_ref = d.pop("accountRef")
 
-        type = d.pop("type")
+        type = check_push_update_journal_entry_line_items_type(d.pop("type"))
 
         description = d.pop("description", UNSET)
 

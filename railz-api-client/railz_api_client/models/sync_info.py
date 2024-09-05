@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.sync_info_status import SyncInfoStatus
+from ..models.sync_info_status import SyncInfoStatus, check_sync_info_status
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="SyncInfo")
@@ -34,7 +34,7 @@ class SyncInfo:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        status = self.status
+        status: str = self.status
 
         created_at = self.created_at.isoformat()
 
@@ -71,7 +71,7 @@ class SyncInfo:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        status = d.pop("status")
+        status = check_sync_info_status(d.pop("status"))
 
         created_at = isoparse(d.pop("createdAt"))
 

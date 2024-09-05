@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_deposit_v2_data_status import GetDepositV2DataStatus
+from ..models.get_deposit_v2_data_status import GetDepositV2DataStatus, check_get_deposit_v2_data_status
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -60,7 +60,7 @@ class GetDepositV2Data:
 
         total_amount = self.total_amount
 
-        status = self.status
+        status: str = self.status
 
         currency = self.currency
 
@@ -127,7 +127,7 @@ class GetDepositV2Data:
 
         total_amount = d.pop("totalAmount")
 
-        status = d.pop("status")
+        status = check_get_deposit_v2_data_status(d.pop("status"))
 
         currency = d.pop("currency", UNSET)
 

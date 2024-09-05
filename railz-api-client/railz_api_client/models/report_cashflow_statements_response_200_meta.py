@@ -5,9 +5,11 @@ from attrs import field as _attrs_field
 
 from ..models.report_cashflow_statements_response_200_meta_report_frequency import (
     ReportCashflowStatementsResponse200MetaReportFrequency,
+    check_report_cashflow_statements_response_200_meta_report_frequency,
 )
 from ..models.report_cashflow_statements_response_200_meta_service_name import (
     ReportCashflowStatementsResponse200MetaServiceName,
+    check_report_cashflow_statements_response_200_meta_service_name,
 )
 
 T = TypeVar("T", bound="ReportCashflowStatementsResponse200Meta")
@@ -40,7 +42,7 @@ class ReportCashflowStatementsResponse200Meta:
     def to_dict(self) -> Dict[str, Any]:
         report_id = self.report_id
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         business_name = self.business_name
 
@@ -48,7 +50,7 @@ class ReportCashflowStatementsResponse200Meta:
 
         start_date = self.start_date
 
-        report_frequency = self.report_frequency
+        report_frequency: str = self.report_frequency
 
         currency = self.currency
 
@@ -73,7 +75,7 @@ class ReportCashflowStatementsResponse200Meta:
         d = src_dict.copy()
         report_id = cast(List[str], d.pop("reportId"))
 
-        service_name = d.pop("serviceName")
+        service_name = check_report_cashflow_statements_response_200_meta_service_name(d.pop("serviceName"))
 
         business_name = d.pop("businessName")
 
@@ -81,7 +83,7 @@ class ReportCashflowStatementsResponse200Meta:
 
         start_date = d.pop("startDate")
 
-        report_frequency = d.pop("reportFrequency")
+        report_frequency = check_report_cashflow_statements_response_200_meta_report_frequency(d.pop("reportFrequency"))
 
         currency = cast(List[str], d.pop("currency"))
 

@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.push_journals_data_status import PushJournalsDataStatus
+from ..models.push_journals_data_status import PushJournalsDataStatus, check_push_journals_data_status
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -35,7 +35,7 @@ class PushJournalsData:
 
         name = self.name
 
-        status = self.status
+        status: str = self.status
 
         pass_through: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.pass_through, Unset):
@@ -64,7 +64,7 @@ class PushJournalsData:
 
         name = d.pop("name")
 
-        status = d.pop("status")
+        status = check_push_journals_data_status(d.pop("status"))
 
         _pass_through = d.pop("passThrough", UNSET)
         pass_through: Union[Unset, PushJournalsDataPassThrough]

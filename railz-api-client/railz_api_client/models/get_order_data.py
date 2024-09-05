@@ -5,9 +5,12 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_order_data_fulfillment_status import GetOrderDataFulfillmentStatus
-from ..models.get_order_data_payment_status import GetOrderDataPaymentStatus
-from ..models.get_order_data_status import GetOrderDataStatus
+from ..models.get_order_data_fulfillment_status import (
+    GetOrderDataFulfillmentStatus,
+    check_get_order_data_fulfillment_status,
+)
+from ..models.get_order_data_payment_status import GetOrderDataPaymentStatus, check_get_order_data_payment_status
+from ..models.get_order_data_status import GetOrderDataStatus, check_get_order_data_status
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -83,11 +86,11 @@ class GetOrderData:
 
         source_modified_date = self.source_modified_date.isoformat()
 
-        status = self.status
+        status: str = self.status
 
-        payment_status = self.payment_status
+        payment_status: str = self.payment_status
 
-        fulfillment_status = self.fulfillment_status
+        fulfillment_status: str = self.fulfillment_status
 
         order_number = self.order_number
 
@@ -204,11 +207,11 @@ class GetOrderData:
 
         source_modified_date = isoparse(d.pop("sourceModifiedDate"))
 
-        status = d.pop("status")
+        status = check_get_order_data_status(d.pop("status"))
 
-        payment_status = d.pop("paymentStatus")
+        payment_status = check_get_order_data_payment_status(d.pop("paymentStatus"))
 
-        fulfillment_status = d.pop("fulfillmentStatus")
+        fulfillment_status = check_get_order_data_fulfillment_status(d.pop("fulfillmentStatus"))
 
         order_number = d.pop("orderNumber", UNSET)
 

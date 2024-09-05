@@ -3,8 +3,8 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.push_options_data_request_type import PushOptionsDataRequestType
-from ..models.push_options_data_service_name import PushOptionsDataServiceName
+from ..models.push_options_data_request_type import PushOptionsDataRequestType, check_push_options_data_request_type
+from ..models.push_options_data_service_name import PushOptionsDataServiceName, check_push_options_data_service_name
 
 if TYPE_CHECKING:
     from ..models.property_ import Property
@@ -34,9 +34,9 @@ class PushOptionsData:
     def to_dict(self) -> Dict[str, Any]:
         title = self.title
 
-        request_type = self.request_type
+        request_type: str = self.request_type
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         method = self.method
 
@@ -63,9 +63,9 @@ class PushOptionsData:
         d = src_dict.copy()
         title = d.pop("title")
 
-        request_type = d.pop("requestType")
+        request_type = check_push_options_data_request_type(d.pop("requestType"))
 
-        service_name = d.pop("serviceName")
+        service_name = check_push_options_data_service_name(d.pop("serviceName"))
 
         method = d.pop("method")
 

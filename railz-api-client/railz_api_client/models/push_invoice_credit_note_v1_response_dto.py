@@ -5,8 +5,14 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.push_invoice_credit_note_v1_response_dto_service_name import PushInvoiceCreditNoteV1ResponseDtoServiceName
-from ..models.push_invoice_credit_note_v1_response_dto_status import PushInvoiceCreditNoteV1ResponseDtoStatus
+from ..models.push_invoice_credit_note_v1_response_dto_service_name import (
+    PushInvoiceCreditNoteV1ResponseDtoServiceName,
+    check_push_invoice_credit_note_v1_response_dto_service_name,
+)
+from ..models.push_invoice_credit_note_v1_response_dto_status import (
+    PushInvoiceCreditNoteV1ResponseDtoStatus,
+    check_push_invoice_credit_note_v1_response_dto_status,
+)
 
 if TYPE_CHECKING:
     from ..models.push_invoice_credit_note_v1 import PushInvoiceCreditNoteV1
@@ -40,11 +46,11 @@ class PushInvoiceCreditNoteV1ResponseDto:
 
         requested_on = self.requested_on.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         data = self.data.to_dict()
 
@@ -72,11 +78,11 @@ class PushInvoiceCreditNoteV1ResponseDto:
 
         requested_on = isoparse(d.pop("requestedOn"))
 
-        status = d.pop("status")
+        status = check_push_invoice_credit_note_v1_response_dto_status(d.pop("status"))
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_push_invoice_credit_note_v1_response_dto_service_name(d.pop("serviceName"))
 
         data = PushInvoiceCreditNoteV1.from_dict(d.pop("data"))
 

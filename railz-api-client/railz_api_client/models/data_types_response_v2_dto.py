@@ -3,8 +3,14 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.data_types_response_v2_dto_service_name import DataTypesResponseV2DtoServiceName
-from ..models.data_types_response_v2_dto_service_type import DataTypesResponseV2DtoServiceType
+from ..models.data_types_response_v2_dto_service_name import (
+    DataTypesResponseV2DtoServiceName,
+    check_data_types_response_v2_dto_service_name,
+)
+from ..models.data_types_response_v2_dto_service_type import (
+    DataTypesResponseV2DtoServiceType,
+    check_data_types_response_v2_dto_service_type,
+)
 
 if TYPE_CHECKING:
     from ..models.data_types_data_v2 import DataTypesDataV2
@@ -32,11 +38,11 @@ class DataTypesResponseV2Dto:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         service_name_description = self.service_name_description
 
-        service_type = self.service_type
+        service_type: str = self.service_type
 
         is_beta = self.is_beta
 
@@ -64,11 +70,11 @@ class DataTypesResponseV2Dto:
         from ..models.data_types_data_v2 import DataTypesDataV2
 
         d = src_dict.copy()
-        service_name = d.pop("serviceName")
+        service_name = check_data_types_response_v2_dto_service_name(d.pop("serviceName"))
 
         service_name_description = d.pop("serviceNameDescription")
 
-        service_type = d.pop("serviceType")
+        service_type = check_data_types_response_v2_dto_service_type(d.pop("serviceType"))
 
         is_beta = d.pop("isBeta")
 

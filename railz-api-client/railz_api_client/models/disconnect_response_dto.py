@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.disconnect_response_dto_service_name import DisconnectResponseDtoServiceName
+from ..models.disconnect_response_dto_service_name import (
+    DisconnectResponseDtoServiceName,
+    check_disconnect_response_dto_service_name,
+)
 
 T = TypeVar("T", bound="DisconnectResponseDto")
 
@@ -35,7 +38,7 @@ class DisconnectResponseDto:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         status = self.status
 
@@ -65,7 +68,7 @@ class DisconnectResponseDto:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_disconnect_response_dto_service_name(d.pop("serviceName"))
 
         status = d.pop("status")
 

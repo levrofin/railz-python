@@ -3,8 +3,14 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.connection_migration_dto_location import ConnectionMigrationDtoLocation
-from ..models.connection_migration_dto_service_name import ConnectionMigrationDtoServiceName
+from ..models.connection_migration_dto_location import (
+    ConnectionMigrationDtoLocation,
+    check_connection_migration_dto_location,
+)
+from ..models.connection_migration_dto_service_name import (
+    ConnectionMigrationDtoServiceName,
+    check_connection_migration_dto_service_name,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="ConnectionMigrationDto")
@@ -29,7 +35,7 @@ class ConnectionMigrationDto:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         access_token = self.access_token
 
@@ -62,7 +68,7 @@ class ConnectionMigrationDto:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        service_name = d.pop("serviceName")
+        service_name = check_connection_migration_dto_service_name(d.pop("serviceName"))
 
         access_token = d.pop("accessToken", UNSET)
 
@@ -75,7 +81,7 @@ class ConnectionMigrationDto:
         if isinstance(_location, Unset):
             location = UNSET
         else:
-            location = _location
+            location = check_connection_migration_dto_location(_location)
 
         connection_migration_dto = cls(
             service_name=service_name,

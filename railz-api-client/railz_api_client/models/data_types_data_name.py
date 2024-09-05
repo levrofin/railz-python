@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Set, cast
 
 DataTypesDataName = Literal[
     "accountingTransactions",
@@ -9,9 +9,9 @@ DataTypesDataName = Literal[
     "balanceSheets",
     "bankAccounts",
     "bankAssets",
+    "bankingReconciliation",
     "bankTransactions",
     "bankTransfers",
-    "bankingReconciliation",
     "billCreditNotes",
     "billPaymentRequests",
     "billPayments",
@@ -53,3 +53,63 @@ DataTypesDataName = Literal[
     "vendorBankAccounts",
     "vendors",
 ]
+
+DATA_TYPES_DATA_NAME_VALUES: Set[DataTypesDataName] = {
+    "accountingTransactions",
+    "accounts",
+    "agedPayable",
+    "agedReceivable",
+    "attachments",
+    "balanceSheets",
+    "bankAccounts",
+    "bankAssets",
+    "bankingReconciliation",
+    "bankTransactions",
+    "bankTransfers",
+    "billCreditNotes",
+    "billPaymentRequests",
+    "billPayments",
+    "bills",
+    "businessInfo",
+    "businessValuations",
+    "cashflowStatements",
+    "contacts",
+    "creditScore",
+    "customerBankAccounts",
+    "customers",
+    "deposits",
+    "disputes",
+    "estimates",
+    "expenses",
+    "financialBenchmarking",
+    "financialForecasts",
+    "financialRatios",
+    "fraudRiskMetrics",
+    "incomeStatements",
+    "inventory",
+    "invoiceCreditNotes",
+    "invoicePayments",
+    "invoices",
+    "journalEntries",
+    "journals",
+    "orders",
+    "paymentMethods",
+    "portfolioMetrics",
+    "probabilityOfDefault",
+    "products",
+    "purchaseOrders",
+    "refunds",
+    "taxBenchmarking",
+    "taxRates",
+    "trackingCategories",
+    "transactions",
+    "trialBalances",
+    "vendorBankAccounts",
+    "vendors",
+}
+
+
+def check_data_types_data_name(value: str) -> DataTypesDataName:
+    if value in DATA_TYPES_DATA_NAME_VALUES:
+        return cast(DataTypesDataName, value)
+    raise TypeError(f"Unexpected value {value!r}. Expected one of {DATA_TYPES_DATA_NAME_VALUES!r}")

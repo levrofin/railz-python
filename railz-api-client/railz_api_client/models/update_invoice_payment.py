@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.update_invoice_payment_payment_method import UpdateInvoicePaymentPaymentMethod
+from ..models.update_invoice_payment_payment_method import (
+    UpdateInvoicePaymentPaymentMethod,
+    check_update_invoice_payment_payment_method,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -169,7 +172,7 @@ class UpdateInvoicePayment:
         if isinstance(_payment_method, Unset):
             payment_method = UNSET
         else:
-            payment_method = _payment_method
+            payment_method = check_update_invoice_payment_payment_method(_payment_method)
 
         memo = d.pop("memo", UNSET)
 

@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Set, cast
 
 DataSyncV2DtoDataTypesItem = Literal[
     "accountingTransactions",
@@ -9,9 +9,9 @@ DataSyncV2DtoDataTypesItem = Literal[
     "balanceSheets",
     "bankAccounts",
     "bankAssets",
+    "bankingReconciliation",
     "bankTransactions",
     "bankTransfers",
-    "bankingReconciliation",
     "billCreditNotes",
     "billPaymentRequests",
     "billPayments",
@@ -53,3 +53,63 @@ DataSyncV2DtoDataTypesItem = Literal[
     "vendorBankAccounts",
     "vendors",
 ]
+
+DATA_SYNC_V2_DTO_DATA_TYPES_ITEM_VALUES: Set[DataSyncV2DtoDataTypesItem] = {
+    "accountingTransactions",
+    "accounts",
+    "agedPayable",
+    "agedReceivable",
+    "attachments",
+    "balanceSheets",
+    "bankAccounts",
+    "bankAssets",
+    "bankingReconciliation",
+    "bankTransactions",
+    "bankTransfers",
+    "billCreditNotes",
+    "billPaymentRequests",
+    "billPayments",
+    "bills",
+    "businessInfo",
+    "businessValuations",
+    "cashflowStatements",
+    "contacts",
+    "creditScore",
+    "customerBankAccounts",
+    "customers",
+    "deposits",
+    "disputes",
+    "estimates",
+    "expenses",
+    "financialBenchmarking",
+    "financialForecasts",
+    "financialRatios",
+    "fraudRiskMetrics",
+    "incomeStatements",
+    "inventory",
+    "invoiceCreditNotes",
+    "invoicePayments",
+    "invoices",
+    "journalEntries",
+    "journals",
+    "orders",
+    "paymentMethods",
+    "portfolioMetrics",
+    "probabilityOfDefault",
+    "products",
+    "purchaseOrders",
+    "refunds",
+    "taxBenchmarking",
+    "taxRates",
+    "trackingCategories",
+    "transactions",
+    "trialBalances",
+    "vendorBankAccounts",
+    "vendors",
+}
+
+
+def check_data_sync_v2_dto_data_types_item(value: str) -> DataSyncV2DtoDataTypesItem:
+    if value in DATA_SYNC_V2_DTO_DATA_TYPES_ITEM_VALUES:
+        return cast(DataSyncV2DtoDataTypesItem, value)
+    raise TypeError(f"Unexpected value {value!r}. Expected one of {DATA_SYNC_V2_DTO_DATA_TYPES_ITEM_VALUES!r}")

@@ -3,8 +3,11 @@ from typing import Any, Dict, List, Type, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.push_chart_of_account_v1_classification import PushChartOfAccountV1Classification
-from ..models.push_chart_of_account_v1_type import PushChartOfAccountV1Type
+from ..models.push_chart_of_account_v1_classification import (
+    PushChartOfAccountV1Classification,
+    check_push_chart_of_account_v1_classification,
+)
+from ..models.push_chart_of_account_v1_type import PushChartOfAccountV1Type, check_push_chart_of_account_v1_type
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="PushChartOfAccountV1")
@@ -37,7 +40,7 @@ class PushChartOfAccountV1:
     def to_dict(self) -> Dict[str, Any]:
         name = self.name
 
-        type = self.type
+        type: str = self.type
 
         nominal_code = self.nominal_code
 
@@ -83,7 +86,7 @@ class PushChartOfAccountV1:
         d = src_dict.copy()
         name = d.pop("name")
 
-        type = d.pop("type")
+        type = check_push_chart_of_account_v1_type(d.pop("type"))
 
         nominal_code = d.pop("nominalCode", UNSET)
 
@@ -98,7 +101,7 @@ class PushChartOfAccountV1:
         if isinstance(_classification, Unset):
             classification = UNSET
         else:
-            classification = _classification
+            classification = check_push_chart_of_account_v1_classification(_classification)
 
         subsidiary_refs = cast(List[str], d.pop("subsidiaryRefs", UNSET))
 

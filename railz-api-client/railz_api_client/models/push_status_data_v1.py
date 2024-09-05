@@ -5,8 +5,11 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.push_status_data_v1_service_name import PushStatusDataV1ServiceName
-from ..models.push_status_data_v1_status import PushStatusDataV1Status
+from ..models.push_status_data_v1_service_name import (
+    PushStatusDataV1ServiceName,
+    check_push_status_data_v1_service_name,
+)
+from ..models.push_status_data_v1_status import PushStatusDataV1Status, check_push_status_data_v1_status
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -48,7 +51,7 @@ class PushStatusDataV1:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         data_type = self.data_type
 
@@ -56,7 +59,7 @@ class PushStatusDataV1:
 
         completed_on = self.completed_on.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         response_code = self.response_code
 
@@ -106,7 +109,7 @@ class PushStatusDataV1:
         from ..models.validation import Validation
 
         d = src_dict.copy()
-        service_name = d.pop("serviceName")
+        service_name = check_push_status_data_v1_service_name(d.pop("serviceName"))
 
         data_type = d.pop("dataType")
 
@@ -114,7 +117,7 @@ class PushStatusDataV1:
 
         completed_on = isoparse(d.pop("completedOn"))
 
-        status = d.pop("status")
+        status = check_push_status_data_v1_status(d.pop("status"))
 
         response_code = d.pop("responseCode")
 

@@ -10,7 +10,9 @@ from ...models.error_401_response_dto import Error401ResponseDto
 from ...models.error_403_response_dto import Error403ResponseDto
 from ...models.error_500_response_dto import Error500ResponseDto
 from ...models.probability_of_default_response_v2_dto import ProbabilityOfDefaultResponseV2Dto
-from ...models.probability_of_defaults_reconstruct import ProbabilityOfDefaultsReconstruct
+from ...models.probability_of_defaults_reconstruct import (
+    ProbabilityOfDefaultsReconstruct,
+)
 from ...types import UNSET, Response, Unset
 
 

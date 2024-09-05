@@ -9,7 +9,9 @@ from ...models.error_400_response_dto_v2 import Error400ResponseDtoV2
 from ...models.error_401_response_dto import Error401ResponseDto
 from ...models.error_403_response_dto import Error403ResponseDto
 from ...models.error_500_response_dto import Error500ResponseDto
-from ...models.get_portfolio_metrics_report_frequency import GetPortfolioMetricsReportFrequency
+from ...models.get_portfolio_metrics_report_frequency import (
+    GetPortfolioMetricsReportFrequency,
+)
 from ...models.portfolio_metrics_response_dto import PortfolioMetricsResponseDto
 from ...types import UNSET, Response, Unset
 
@@ -22,7 +24,7 @@ def _get_kwargs(
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
-    json_report_frequency = report_frequency
+    json_report_frequency: str = report_frequency
     params["reportFrequency"] = json_report_frequency
 
     params["startDate"] = start_date

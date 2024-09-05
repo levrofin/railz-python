@@ -5,8 +5,8 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_dispute_data_reason import GetDisputeDataReason
-from ..models.get_dispute_data_status import GetDisputeDataStatus
+from ..models.get_dispute_data_reason import GetDisputeDataReason, check_get_dispute_data_reason
+from ..models.get_dispute_data_status import GetDisputeDataStatus, check_get_dispute_data_status
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -48,9 +48,9 @@ class GetDisputeData:
 
         total_amount = self.total_amount
 
-        status = self.status
+        status: str = self.status
 
-        reason = self.reason
+        reason: str = self.reason
 
         due_date = self.due_date.isoformat()
 
@@ -99,9 +99,9 @@ class GetDisputeData:
 
         total_amount = d.pop("totalAmount")
 
-        status = d.pop("status")
+        status = check_get_dispute_data_status(d.pop("status"))
 
-        reason = d.pop("reason")
+        reason = check_get_dispute_data_reason(d.pop("reason"))
 
         due_date = isoparse(d.pop("dueDate"))
 

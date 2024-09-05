@@ -3,8 +3,8 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.get_contact_data_contact_type import GetContactDataContactType
-from ..models.get_contact_data_status import GetContactDataStatus
+from ..models.get_contact_data_contact_type import GetContactDataContactType, check_get_contact_data_contact_type
+from ..models.get_contact_data_status import GetContactDataStatus, check_get_contact_data_status
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -210,7 +210,7 @@ class GetContactData:
         if isinstance(_status, Unset):
             status = UNSET
         else:
-            status = _status
+            status = check_get_contact_data_status(_status)
 
         balance = d.pop("balance", UNSET)
 
@@ -219,7 +219,7 @@ class GetContactData:
         if isinstance(_contact_type, Unset):
             contact_type = UNSET
         else:
-            contact_type = _contact_type
+            contact_type = check_get_contact_data_contact_type(_contact_type)
 
         source_modified_date = d.pop("sourceModifiedDate", UNSET)
 

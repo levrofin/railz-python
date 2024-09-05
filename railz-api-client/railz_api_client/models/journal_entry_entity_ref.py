@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.journal_entry_entity_ref_type import JournalEntryEntityRefType
+from ..models.journal_entry_entity_ref_type import JournalEntryEntityRefType, check_journal_entry_entity_ref_type
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="JournalEntryEntityRef")
@@ -58,7 +58,7 @@ class JournalEntryEntityRef:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_journal_entry_entity_ref_type(_type)
 
         journal_entry_entity_ref = cls(
             id=id,

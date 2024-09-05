@@ -3,7 +3,10 @@ from typing import Any, Dict, List, Type, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.report_bills_response_200_meta_service_name import ReportBillsResponse200MetaServiceName
+from ..models.report_bills_response_200_meta_service_name import (
+    ReportBillsResponse200MetaServiceName,
+    check_report_bills_response_200_meta_service_name,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="ReportBillsResponse200Meta")
@@ -36,7 +39,7 @@ class ReportBillsResponse200Meta:
     def to_dict(self) -> Dict[str, Any]:
         report_id = self.report_id
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         business_name = self.business_name
 
@@ -71,7 +74,7 @@ class ReportBillsResponse200Meta:
         d = src_dict.copy()
         report_id = cast(List[str], d.pop("reportId"))
 
-        service_name = d.pop("serviceName")
+        service_name = check_report_bills_response_200_meta_service_name(d.pop("serviceName"))
 
         business_name = d.pop("businessName")
 

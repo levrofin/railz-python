@@ -5,8 +5,12 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.balance_sheets_accounting_method import BalanceSheetsAccountingMethod
-from ...models.balance_sheets_report_frequency import BalanceSheetsReportFrequency
+from ...models.balance_sheets_accounting_method import (
+    BalanceSheetsAccountingMethod,
+)
+from ...models.balance_sheets_report_frequency import (
+    BalanceSheetsReportFrequency,
+)
 from ...models.balance_sheets_response_v2_dto import BalanceSheetsResponseV2Dto
 from ...models.balance_sheets_section import BalanceSheetsSection
 from ...models.balance_sheets_sub_section import BalanceSheetsSubSection
@@ -46,7 +50,7 @@ def _get_kwargs(
 
     params["accountingMethod"] = json_accounting_method
 
-    json_report_frequency = report_frequency
+    json_report_frequency: str = report_frequency
     params["reportFrequency"] = json_report_frequency
 
     params["startDate"] = start_date

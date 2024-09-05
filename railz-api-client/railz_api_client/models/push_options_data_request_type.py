@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Set, cast
 
 PushOptionsDataRequestType = Literal[
     "accountingTransactions",
@@ -8,9 +8,9 @@ PushOptionsDataRequestType = Literal[
     "attachments",
     "balanceSheets",
     "bankAccounts",
+    "bankingReconciliation",
     "bankTransactions",
     "bankTransfers",
-    "bankingReconciliation",
     "billCreditNotes",
     "billPaymentRequests",
     "billPayments",
@@ -48,3 +48,58 @@ PushOptionsDataRequestType = Literal[
     "vendorBankAccounts",
     "vendors",
 ]
+
+PUSH_OPTIONS_DATA_REQUEST_TYPE_VALUES: Set[PushOptionsDataRequestType] = {
+    "accountingTransactions",
+    "accounts",
+    "agedPayable",
+    "agedReceivable",
+    "attachments",
+    "balanceSheets",
+    "bankAccounts",
+    "bankingReconciliation",
+    "bankTransactions",
+    "bankTransfers",
+    "billCreditNotes",
+    "billPaymentRequests",
+    "billPayments",
+    "bills",
+    "businessInfo",
+    "businessValuations",
+    "cashflowStatements",
+    "contacts",
+    "creditScore",
+    "customerBankAccounts",
+    "customers",
+    "deposits",
+    "estimates",
+    "expenses",
+    "financialBenchmarking",
+    "financialForecasts",
+    "financialRatios",
+    "fraudRiskMetrics",
+    "incomeStatements",
+    "inventory",
+    "invoiceCreditNotes",
+    "invoicePayments",
+    "invoices",
+    "journalEntries",
+    "journals",
+    "paymentMethods",
+    "portfolioMetrics",
+    "probabilityOfDefault",
+    "purchaseOrders",
+    "refunds",
+    "taxBenchmarking",
+    "taxRates",
+    "trackingCategories",
+    "trialBalances",
+    "vendorBankAccounts",
+    "vendors",
+}
+
+
+def check_push_options_data_request_type(value: str) -> PushOptionsDataRequestType:
+    if value in PUSH_OPTIONS_DATA_REQUEST_TYPE_VALUES:
+        return cast(PushOptionsDataRequestType, value)
+    raise TypeError(f"Unexpected value {value!r}. Expected one of {PUSH_OPTIONS_DATA_REQUEST_TYPE_VALUES!r}")

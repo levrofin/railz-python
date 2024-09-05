@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_invoice_credit_note_data_v2_status import GetInvoiceCreditNoteDataV2Status
+from ..models.get_invoice_credit_note_data_v2_status import (
+    GetInvoiceCreditNoteDataV2Status,
+    check_get_invoice_credit_note_data_v2_status,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -76,7 +79,7 @@ class GetInvoiceCreditNoteDataV2:
 
         total_amount = self.total_amount
 
-        status = self.status
+        status: str = self.status
 
         customer_ref = self.customer_ref.to_dict()
 
@@ -190,7 +193,7 @@ class GetInvoiceCreditNoteDataV2:
 
         total_amount = d.pop("totalAmount")
 
-        status = d.pop("status")
+        status = check_get_invoice_credit_note_data_v2_status(d.pop("status"))
 
         customer_ref = CustomerRef.from_dict(d.pop("customerRef"))
 

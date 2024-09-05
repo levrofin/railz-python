@@ -3,7 +3,10 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.push_bank_account_v2_account_type import PushBankAccountV2AccountType
+from ..models.push_bank_account_v2_account_type import (
+    PushBankAccountV2AccountType,
+    check_push_bank_account_v2_account_type,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="PushBankAccountV2")
@@ -124,7 +127,7 @@ class PushBankAccountV2:
         if isinstance(_account_type, Unset):
             account_type = UNSET
         else:
-            account_type = _account_type
+            account_type = check_push_bank_account_v2_account_type(_account_type)
 
         account_number = d.pop("accountNumber", UNSET)
 

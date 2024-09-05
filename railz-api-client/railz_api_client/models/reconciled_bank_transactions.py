@@ -7,6 +7,7 @@ from dateutil.parser import isoparse
 
 from ..models.reconciled_bank_transactions_accounting_transaction_type import (
     ReconciledBankTransactionsAccountingTransactionType,
+    check_reconciled_bank_transactions_accounting_transaction_type,
 )
 from ..types import UNSET, Unset
 
@@ -151,7 +152,9 @@ class ReconciledBankTransactions:
         if isinstance(_accounting_transaction_type, Unset):
             accounting_transaction_type = UNSET
         else:
-            accounting_transaction_type = _accounting_transaction_type
+            accounting_transaction_type = check_reconciled_bank_transactions_accounting_transaction_type(
+                _accounting_transaction_type
+            )
 
         is_posting = d.pop("isPosting", UNSET)
 

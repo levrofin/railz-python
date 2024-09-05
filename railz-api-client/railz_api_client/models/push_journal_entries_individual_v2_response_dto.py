@@ -7,6 +7,7 @@ from dateutil.parser import isoparse
 
 from ..models.push_journal_entries_individual_v2_response_dto_status import (
     PushJournalEntriesIndividualV2ResponseDtoStatus,
+    check_push_journal_entries_individual_v2_response_dto_status,
 )
 
 if TYPE_CHECKING:
@@ -37,7 +38,7 @@ class PushJournalEntriesIndividualV2ResponseDto:
 
         requested_on = self.requested_on.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         data = self.data.to_dict()
 
@@ -63,7 +64,7 @@ class PushJournalEntriesIndividualV2ResponseDto:
 
         requested_on = isoparse(d.pop("requestedOn"))
 
-        status = d.pop("status")
+        status = check_push_journal_entries_individual_v2_response_dto_status(d.pop("status"))
 
         data = PushJournalEntriesV2.from_dict(d.pop("data"))
 

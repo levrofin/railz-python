@@ -37,7 +37,7 @@ def _get_kwargs(
 
     params["orderBy"] = order_by
 
-    json_report_frequency = report_frequency
+    json_report_frequency: str = report_frequency
     params["reportFrequency"] = json_report_frequency
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}

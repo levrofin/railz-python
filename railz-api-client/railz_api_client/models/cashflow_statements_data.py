@@ -3,8 +3,14 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.cashflow_statements_data_section import CashflowStatementsDataSection
-from ..models.cashflow_statements_data_sub_section import CashflowStatementsDataSubSection
+from ..models.cashflow_statements_data_section import (
+    CashflowStatementsDataSection,
+    check_cashflow_statements_data_section,
+)
+from ..models.cashflow_statements_data_sub_section import (
+    CashflowStatementsDataSubSection,
+    check_cashflow_statements_data_sub_section,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="CashflowStatementsData")
@@ -43,9 +49,9 @@ class CashflowStatementsData:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        section = self.section
+        section: str = self.section
 
-        sub_section = self.sub_section
+        sub_section: str = self.sub_section
 
         account = self.account
 
@@ -93,9 +99,9 @@ class CashflowStatementsData:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        section = d.pop("section")
+        section = check_cashflow_statements_data_section(d.pop("section"))
 
-        sub_section = d.pop("subSection")
+        sub_section = check_cashflow_statements_data_sub_section(d.pop("subSection"))
 
         account = d.pop("account")
 

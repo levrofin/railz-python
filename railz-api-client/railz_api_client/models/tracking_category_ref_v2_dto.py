@@ -3,7 +3,10 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.tracking_category_ref_v2_dto_type import TrackingCategoryRefV2DtoType
+from ..models.tracking_category_ref_v2_dto_type import (
+    TrackingCategoryRefV2DtoType,
+    check_tracking_category_ref_v2_dto_type,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="TrackingCategoryRefV2Dto")
@@ -48,7 +51,7 @@ class TrackingCategoryRefV2Dto:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_tracking_category_ref_v2_dto_type(_type)
 
         tracking_category_ref_v2_dto = cls(
             id=id,

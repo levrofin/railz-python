@@ -3,9 +3,15 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.push_chart_of_account_v2_classification import PushChartOfAccountV2Classification
-from ..models.push_chart_of_account_v2_sub_type import PushChartOfAccountV2SubType
-from ..models.push_chart_of_account_v2_type import PushChartOfAccountV2Type
+from ..models.push_chart_of_account_v2_classification import (
+    PushChartOfAccountV2Classification,
+    check_push_chart_of_account_v2_classification,
+)
+from ..models.push_chart_of_account_v2_sub_type import (
+    PushChartOfAccountV2SubType,
+    check_push_chart_of_account_v2_sub_type,
+)
+from ..models.push_chart_of_account_v2_type import PushChartOfAccountV2Type, check_push_chart_of_account_v2_type
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -144,7 +150,7 @@ class PushChartOfAccountV2:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_push_chart_of_account_v2_type(_type)
 
         currency = d.pop("currency", UNSET)
 
@@ -162,14 +168,14 @@ class PushChartOfAccountV2:
         if isinstance(_sub_type, Unset):
             sub_type = UNSET
         else:
-            sub_type = _sub_type
+            sub_type = check_push_chart_of_account_v2_sub_type(_sub_type)
 
         _classification = d.pop("classification", UNSET)
         classification: Union[Unset, PushChartOfAccountV2Classification]
         if isinstance(_classification, Unset):
             classification = UNSET
         else:
-            classification = _classification
+            classification = check_push_chart_of_account_v2_classification(_classification)
 
         subsidiary_refs = []
         _subsidiary_refs = d.pop("subsidiaryRefs", UNSET)

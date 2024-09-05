@@ -5,8 +5,11 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_inventory_data_v1_item_status import GetInventoryDataV1ItemStatus
-from ..models.get_inventory_data_v1_type import GetInventoryDataV1Type
+from ..models.get_inventory_data_v1_item_status import (
+    GetInventoryDataV1ItemStatus,
+    check_get_inventory_data_v1_item_status,
+)
+from ..models.get_inventory_data_v1_type import GetInventoryDataV1Type, check_get_inventory_data_v1_type
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -55,7 +58,7 @@ class GetInventoryDataV1:
     def to_dict(self) -> Dict[str, Any]:
         id = self.id
 
-        item_status = self.item_status
+        item_status: str = self.item_status
 
         name = self.name
 
@@ -144,7 +147,7 @@ class GetInventoryDataV1:
         d = src_dict.copy()
         id = d.pop("id")
 
-        item_status = d.pop("itemStatus")
+        item_status = check_get_inventory_data_v1_item_status(d.pop("itemStatus"))
 
         name = d.pop("name", UNSET)
 
@@ -194,7 +197,7 @@ class GetInventoryDataV1:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_get_inventory_data_v1_type(_type)
 
         quantity_on_hand_per_location = []
         _quantity_on_hand_per_location = d.pop("quantityOnHandPerLocation", UNSET)

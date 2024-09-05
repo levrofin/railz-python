@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.data_sync_meta_v2_service_name import DataSyncMetaV2ServiceName
+from ..models.data_sync_meta_v2_service_name import DataSyncMetaV2ServiceName, check_data_sync_meta_v2_service_name
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="DataSyncMetaV2")
@@ -70,7 +70,7 @@ class DataSyncMetaV2:
         if isinstance(_service_name, Unset):
             service_name = UNSET
         else:
-            service_name = _service_name
+            service_name = check_data_sync_meta_v2_service_name(_service_name)
 
         sync_time = d.pop("syncTime", UNSET)
 

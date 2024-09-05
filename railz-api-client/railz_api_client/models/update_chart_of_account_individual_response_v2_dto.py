@@ -7,6 +7,7 @@ from dateutil.parser import isoparse
 
 from ..models.update_chart_of_account_individual_response_v2_dto_status import (
     UpdateChartOfAccountIndividualResponseV2DtoStatus,
+    check_update_chart_of_account_individual_response_v2_dto_status,
 )
 
 if TYPE_CHECKING:
@@ -37,7 +38,7 @@ class UpdateChartOfAccountIndividualResponseV2Dto:
 
         requested_on = self.requested_on.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         data = self.data.to_dict()
 
@@ -63,7 +64,7 @@ class UpdateChartOfAccountIndividualResponseV2Dto:
 
         requested_on = isoparse(d.pop("requestedOn"))
 
-        status = d.pop("status")
+        status = check_update_chart_of_account_individual_response_v2_dto_status(d.pop("status"))
 
         data = BatchUpdateChartOfAccount.from_dict(d.pop("data"))
 

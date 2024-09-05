@@ -7,9 +7,16 @@ from dateutil.parser import isoparse
 
 from ..models.financial_statement_report_meta_data_accounting_method import (
     FinancialStatementReportMetaDataAccountingMethod,
+    check_financial_statement_report_meta_data_accounting_method,
 )
-from ..models.financial_statement_report_meta_data_service_name import FinancialStatementReportMetaDataServiceName
-from ..models.financial_statement_report_meta_data_status import FinancialStatementReportMetaDataStatus
+from ..models.financial_statement_report_meta_data_service_name import (
+    FinancialStatementReportMetaDataServiceName,
+    check_financial_statement_report_meta_data_service_name,
+)
+from ..models.financial_statement_report_meta_data_status import (
+    FinancialStatementReportMetaDataStatus,
+    check_financial_statement_report_meta_data_status,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="FinancialStatementReportMetaData")
@@ -48,7 +55,7 @@ class FinancialStatementReportMetaData:
     def to_dict(self) -> Dict[str, Any]:
         report_id = self.report_id
 
-        status = self.status
+        status: str = self.status
 
         report_frequency = self.report_frequency
 
@@ -60,11 +67,11 @@ class FinancialStatementReportMetaData:
 
         end_date = self.end_date
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         business_name = self.business_name
 
-        accounting_method = self.accounting_method
+        accounting_method: str = self.accounting_method
 
         currency = self.currency
 
@@ -94,7 +101,7 @@ class FinancialStatementReportMetaData:
         d = src_dict.copy()
         report_id = d.pop("reportId")
 
-        status = d.pop("status")
+        status = check_financial_statement_report_meta_data_status(d.pop("status"))
 
         report_frequency = d.pop("reportFrequency")
 
@@ -106,11 +113,11 @@ class FinancialStatementReportMetaData:
 
         end_date = d.pop("endDate")
 
-        service_name = d.pop("serviceName")
+        service_name = check_financial_statement_report_meta_data_service_name(d.pop("serviceName"))
 
         business_name = d.pop("businessName")
 
-        accounting_method = d.pop("accountingMethod")
+        accounting_method = check_financial_statement_report_meta_data_accounting_method(d.pop("accountingMethod"))
 
         currency = d.pop("currency", UNSET)
 

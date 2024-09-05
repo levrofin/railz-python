@@ -7,9 +7,16 @@ from dateutil.parser import isoparse
 
 from ..models.financial_statement_report_meta_data_v2_accounting_method import (
     FinancialStatementReportMetaDataV2AccountingMethod,
+    check_financial_statement_report_meta_data_v2_accounting_method,
 )
-from ..models.financial_statement_report_meta_data_v2_service_name import FinancialStatementReportMetaDataV2ServiceName
-from ..models.financial_statement_report_meta_data_v2_status import FinancialStatementReportMetaDataV2Status
+from ..models.financial_statement_report_meta_data_v2_service_name import (
+    FinancialStatementReportMetaDataV2ServiceName,
+    check_financial_statement_report_meta_data_v2_service_name,
+)
+from ..models.financial_statement_report_meta_data_v2_status import (
+    FinancialStatementReportMetaDataV2Status,
+    check_financial_statement_report_meta_data_v2_status,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="FinancialStatementReportMetaDataV2")
@@ -52,11 +59,11 @@ class FinancialStatementReportMetaDataV2:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         report_id = self.report_id
 
-        status = self.status
+        status: str = self.status
 
         report_frequency = self.report_frequency
 
@@ -68,7 +75,7 @@ class FinancialStatementReportMetaDataV2:
 
         end_date = self.end_date
 
-        accounting_method = self.accounting_method
+        accounting_method: str = self.accounting_method
 
         currency = self.currency
 
@@ -101,11 +108,11 @@ class FinancialStatementReportMetaDataV2:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_financial_statement_report_meta_data_v2_service_name(d.pop("serviceName"))
 
         report_id = d.pop("reportId")
 
-        status = d.pop("status")
+        status = check_financial_statement_report_meta_data_v2_status(d.pop("status"))
 
         report_frequency = d.pop("reportFrequency")
 
@@ -117,7 +124,7 @@ class FinancialStatementReportMetaDataV2:
 
         end_date = d.pop("endDate")
 
-        accounting_method = d.pop("accountingMethod")
+        accounting_method = check_financial_statement_report_meta_data_v2_accounting_method(d.pop("accountingMethod"))
 
         currency = d.pop("currency", UNSET)
 

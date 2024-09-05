@@ -5,8 +5,14 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_tracking_category_data_v2_status import GetTrackingCategoryDataV2Status
-from ..models.get_tracking_category_data_v2_type import GetTrackingCategoryDataV2Type
+from ..models.get_tracking_category_data_v2_status import (
+    GetTrackingCategoryDataV2Status,
+    check_get_tracking_category_data_v2_status,
+)
+from ..models.get_tracking_category_data_v2_type import (
+    GetTrackingCategoryDataV2Type,
+    check_get_tracking_category_data_v2_type,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -48,9 +54,9 @@ class GetTrackingCategoryDataV2:
 
         name = self.name
 
-        status = self.status
+        status: str = self.status
 
-        type = self.type
+        type: str = self.type
 
         is_editable = self.is_editable
 
@@ -104,9 +110,9 @@ class GetTrackingCategoryDataV2:
 
         name = d.pop("name")
 
-        status = d.pop("status")
+        status = check_get_tracking_category_data_v2_status(d.pop("status"))
 
-        type = d.pop("type")
+        type = check_get_tracking_category_data_v2_type(d.pop("type"))
 
         is_editable = d.pop("isEditable", UNSET)
 

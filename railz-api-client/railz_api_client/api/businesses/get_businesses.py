@@ -39,7 +39,7 @@ def _get_kwargs(
     if not isinstance(status, Unset):
         json_status = []
         for status_item_data in status:
-            status_item = status_item_data
+            status_item: str = status_item_data
             json_status.append(status_item)
 
     params["status"] = json_status

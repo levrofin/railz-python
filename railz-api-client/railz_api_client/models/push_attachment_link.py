@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.push_attachment_link_type import PushAttachmentLinkType
+from ..models.push_attachment_link_type import PushAttachmentLinkType, check_push_attachment_link_type
 
 T = TypeVar("T", bound="PushAttachmentLink")
 
@@ -21,7 +21,7 @@ class PushAttachmentLink:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        type = self.type
+        type: str = self.type
 
         id = self.id
 
@@ -39,7 +39,7 @@ class PushAttachmentLink:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        type = d.pop("type")
+        type = check_push_attachment_link_type(d.pop("type"))
 
         id = d.pop("id")
 

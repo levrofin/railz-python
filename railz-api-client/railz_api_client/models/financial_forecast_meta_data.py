@@ -7,8 +7,12 @@ from dateutil.parser import isoparse
 
 from ..models.financial_forecast_meta_data_financial_statement_type import (
     FinancialForecastMetaDataFinancialStatementType,
+    check_financial_forecast_meta_data_financial_statement_type,
 )
-from ..models.financial_forecast_meta_data_service_name import FinancialForecastMetaDataServiceName
+from ..models.financial_forecast_meta_data_service_name import (
+    FinancialForecastMetaDataServiceName,
+    check_financial_forecast_meta_data_service_name,
+)
 
 T = TypeVar("T", bound="FinancialForecastMetaData")
 
@@ -42,11 +46,11 @@ class FinancialForecastMetaData:
     def to_dict(self) -> Dict[str, Any]:
         report_id = self.report_id
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         business_name = self.business_name
 
-        financial_statement_type = self.financial_statement_type
+        financial_statement_type: str = self.financial_statement_type
 
         report_frequency = self.report_frequency
 
@@ -81,11 +85,13 @@ class FinancialForecastMetaData:
         d = src_dict.copy()
         report_id = d.pop("reportId")
 
-        service_name = d.pop("serviceName")
+        service_name = check_financial_forecast_meta_data_service_name(d.pop("serviceName"))
 
         business_name = d.pop("businessName")
 
-        financial_statement_type = d.pop("financialStatementType")
+        financial_statement_type = check_financial_forecast_meta_data_financial_statement_type(
+            d.pop("financialStatementType")
+        )
 
         report_frequency = d.pop("reportFrequency")
 

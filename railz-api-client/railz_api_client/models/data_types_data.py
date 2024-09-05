@@ -3,10 +3,13 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.data_types_data_accounting_method import DataTypesDataAccountingMethod
-from ..models.data_types_data_action_item import DataTypesDataActionItem
-from ..models.data_types_data_name import DataTypesDataName
-from ..models.data_types_data_report_type import DataTypesDataReportType
+from ..models.data_types_data_accounting_method import (
+    DataTypesDataAccountingMethod,
+    check_data_types_data_accounting_method,
+)
+from ..models.data_types_data_action_item import DataTypesDataActionItem, check_data_types_data_action_item
+from ..models.data_types_data_name import DataTypesDataName, check_data_types_data_name
+from ..models.data_types_data_report_type import DataTypesDataReportType, check_data_types_data_report_type
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="DataTypesData")
@@ -31,16 +34,16 @@ class DataTypesData:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        name = self.name
+        name: str = self.name
 
         description = self.description
 
         action = []
         for action_item_data in self.action:
-            action_item = action_item_data
+            action_item: str = action_item_data
             action.append(action_item)
 
-        report_type = self.report_type
+        report_type: str = self.report_type
 
         accounting_method: Union[Unset, str] = UNSET
         if not isinstance(self.accounting_method, Unset):
@@ -64,25 +67,25 @@ class DataTypesData:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        name = d.pop("name")
+        name = check_data_types_data_name(d.pop("name"))
 
         description = d.pop("description")
 
         action = []
         _action = d.pop("action")
         for action_item_data in _action:
-            action_item = action_item_data
+            action_item = check_data_types_data_action_item(action_item_data)
 
             action.append(action_item)
 
-        report_type = d.pop("reportType")
+        report_type = check_data_types_data_report_type(d.pop("reportType"))
 
         _accounting_method = d.pop("accountingMethod", UNSET)
         accounting_method: Union[Unset, DataTypesDataAccountingMethod]
         if isinstance(_accounting_method, Unset):
             accounting_method = UNSET
         else:
-            accounting_method = _accounting_method
+            accounting_method = check_data_types_data_accounting_method(_accounting_method)
 
         data_types_data = cls(
             name=name,

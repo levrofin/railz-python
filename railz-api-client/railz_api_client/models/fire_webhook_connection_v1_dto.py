@@ -3,8 +3,14 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.fire_webhook_connection_v1_dto_event import FireWebhookConnectionV1DtoEvent
-from ..models.fire_webhook_connection_v1_dto_service_name import FireWebhookConnectionV1DtoServiceName
+from ..models.fire_webhook_connection_v1_dto_event import (
+    FireWebhookConnectionV1DtoEvent,
+    check_fire_webhook_connection_v1_dto_event,
+)
+from ..models.fire_webhook_connection_v1_dto_service_name import (
+    FireWebhookConnectionV1DtoServiceName,
+    check_fire_webhook_connection_v1_dto_service_name,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="FireWebhookConnectionV1Dto")
@@ -45,7 +51,7 @@ class FireWebhookConnectionV1Dto:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        event = self.event
+        event: str = self.event
 
         business_name = self.business_name
 
@@ -94,7 +100,7 @@ class FireWebhookConnectionV1Dto:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        event = d.pop("event")
+        event = check_fire_webhook_connection_v1_dto_event(d.pop("event"))
 
         business_name = d.pop("businessName", UNSET)
 
@@ -103,7 +109,7 @@ class FireWebhookConnectionV1Dto:
         if isinstance(_service_name, Unset):
             service_name = UNSET
         else:
-            service_name = _service_name
+            service_name = check_fire_webhook_connection_v1_dto_service_name(_service_name)
 
         connection_id = d.pop("connectionId", UNSET)
 

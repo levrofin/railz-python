@@ -7,8 +7,12 @@ from dateutil.parser import isoparse
 
 from ..models.push_tracking_categories_response_v1_dto_service_name import (
     PushTrackingCategoriesResponseV1DtoServiceName,
+    check_push_tracking_categories_response_v1_dto_service_name,
 )
-from ..models.push_tracking_categories_response_v1_dto_status import PushTrackingCategoriesResponseV1DtoStatus
+from ..models.push_tracking_categories_response_v1_dto_status import (
+    PushTrackingCategoriesResponseV1DtoStatus,
+    check_push_tracking_categories_response_v1_dto_status,
+)
 
 if TYPE_CHECKING:
     from ..models.push_tracking_categories_v1 import PushTrackingCategoriesV1
@@ -42,11 +46,11 @@ class PushTrackingCategoriesResponseV1Dto:
 
         requested_on = self.requested_on.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         data = self.data.to_dict()
 
@@ -74,11 +78,11 @@ class PushTrackingCategoriesResponseV1Dto:
 
         requested_on = isoparse(d.pop("requestedOn"))
 
-        status = d.pop("status")
+        status = check_push_tracking_categories_response_v1_dto_status(d.pop("status"))
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_push_tracking_categories_response_v1_dto_service_name(d.pop("serviceName"))
 
         data = PushTrackingCategoriesV1.from_dict(d.pop("data"))
 

@@ -3,7 +3,10 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.payment_request_payment_method_ref_dto_type import PaymentRequestPaymentMethodRefDtoType
+from ..models.payment_request_payment_method_ref_dto_type import (
+    PaymentRequestPaymentMethodRefDtoType,
+    check_payment_request_payment_method_ref_dto_type,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="PaymentRequestPaymentMethodRefDto")
@@ -56,7 +59,7 @@ class PaymentRequestPaymentMethodRefDto:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_payment_request_payment_method_ref_dto_type(_type)
 
         payment_request_payment_method_ref_dto = cls(
             id=id,

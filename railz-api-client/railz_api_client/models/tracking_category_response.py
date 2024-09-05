@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.tracking_category_response_type import TrackingCategoryResponseType
+from ..models.tracking_category_response_type import TrackingCategoryResponseType, check_tracking_category_response_type
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="TrackingCategoryResponse")
@@ -56,7 +56,7 @@ class TrackingCategoryResponse:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_tracking_category_response_type(_type)
 
         tracking_category_response = cls(
             id=id,

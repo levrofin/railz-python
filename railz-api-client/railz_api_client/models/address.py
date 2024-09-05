@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.address_type import AddressType
+from ..models.address_type import AddressType, check_address_type
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="Address")
@@ -32,7 +32,7 @@ class Address:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        type = self.type
+        type: str = self.type
 
         line1 = self.line1
 
@@ -71,7 +71,7 @@ class Address:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        type = d.pop("type")
+        type = check_address_type(d.pop("type"))
 
         line1 = d.pop("line1", UNSET)
 

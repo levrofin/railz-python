@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.contact_status import ContactStatus
+from ..models.contact_status import ContactStatus, check_contact_status
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -34,7 +34,7 @@ class Contact:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        status = self.status
+        status: str = self.status
 
         name = self.name
 
@@ -73,7 +73,7 @@ class Contact:
         from ..models.address import Address
 
         d = src_dict.copy()
-        status = d.pop("status")
+        status = check_contact_status(d.pop("status"))
 
         name = d.pop("name", UNSET)
 

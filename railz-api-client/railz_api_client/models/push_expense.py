@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.push_expense_payment_method import PushExpensePaymentMethod
+from ..models.push_expense_payment_method import PushExpensePaymentMethod, check_push_expense_payment_method
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -158,7 +158,7 @@ class PushExpense:
         if isinstance(_payment_method, Unset):
             payment_method = UNSET
         else:
-            payment_method = _payment_method
+            payment_method = check_push_expense_payment_method(_payment_method)
 
         _payment_method_ref = d.pop("paymentMethodRef", UNSET)
         payment_method_ref: Union[Unset, PaymentMethodRefDto]

@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.base_connections_response_data_v1_service_name import BaseConnectionsResponseDataV1ServiceName
+from ..models.base_connections_response_data_v1_service_name import (
+    BaseConnectionsResponseDataV1ServiceName,
+    check_base_connections_response_data_v1_service_name,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -53,7 +56,7 @@ class BaseConnectionsResponseDataV1:
     def to_dict(self) -> Dict[str, Any]:
         connection_uuid = self.connection_uuid
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         status = self.status
 
@@ -120,7 +123,7 @@ class BaseConnectionsResponseDataV1:
         d = src_dict.copy()
         connection_uuid = d.pop("connectionUuid")
 
-        service_name = d.pop("serviceName")
+        service_name = check_base_connections_response_data_v1_service_name(d.pop("serviceName"))
 
         status = d.pop("status")
 

@@ -7,6 +7,7 @@ from dateutil.parser import isoparse
 
 from ..models.probability_of_default_report_meta_data_v2_service_name import (
     ProbabilityOfDefaultReportMetaDataV2ServiceName,
+    check_probability_of_default_report_meta_data_v2_service_name,
 )
 
 T = TypeVar("T", bound="ProbabilityOfDefaultReportMetaDataV2")
@@ -41,7 +42,7 @@ class ProbabilityOfDefaultReportMetaDataV2:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         report_id = self.report_id
 
@@ -77,7 +78,7 @@ class ProbabilityOfDefaultReportMetaDataV2:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_probability_of_default_report_meta_data_v2_service_name(d.pop("serviceName"))
 
         report_id = d.pop("reportId")
 

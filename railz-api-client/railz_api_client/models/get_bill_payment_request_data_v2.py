@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_bill_payment_request_data_v2_state import GetBillPaymentRequestDataV2State
+from ..models.get_bill_payment_request_data_v2_state import (
+    GetBillPaymentRequestDataV2State,
+    check_get_bill_payment_request_data_v2_state,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -69,7 +72,7 @@ class GetBillPaymentRequestDataV2:
 
         payment_amount = self.payment_amount
 
-        state = self.state
+        state: str = self.state
 
         batch_id = self.batch_id
 
@@ -169,7 +172,7 @@ class GetBillPaymentRequestDataV2:
 
         payment_amount = d.pop("paymentAmount")
 
-        state = d.pop("state")
+        state = check_get_bill_payment_request_data_v2_state(d.pop("state"))
 
         batch_id = d.pop("batchId", UNSET)
 

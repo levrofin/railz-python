@@ -3,7 +3,10 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.push_bill_line_item_v1_billable_status import PushBillLineItemV1BillableStatus
+from ..models.push_bill_line_item_v1_billable_status import (
+    PushBillLineItemV1BillableStatus,
+    check_push_bill_line_item_v1_billable_status,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -124,7 +127,7 @@ class PushBillLineItemV1:
         if isinstance(_billable_status, Unset):
             billable_status = UNSET
         else:
-            billable_status = _billable_status
+            billable_status = check_push_bill_line_item_v1_billable_status(_billable_status)
 
         account_ref = d.pop("accountRef", UNSET)
 

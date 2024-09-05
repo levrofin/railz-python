@@ -9,7 +9,9 @@ from ...models.error_400_response_dto_v2 import Error400ResponseDtoV2
 from ...models.error_401_response_dto import Error401ResponseDto
 from ...models.error_403_response_dto import Error403ResponseDto
 from ...models.error_500_response_dto import Error500ResponseDto
-from ...models.financial_benchmarking_time_in_business import FinancialBenchmarkingTimeInBusiness
+from ...models.financial_benchmarking_time_in_business import (
+    FinancialBenchmarkingTimeInBusiness,
+)
 from ...models.financial_benchmarkings_response_dto import FinancialBenchmarkingsResponseDto
 from ...types import UNSET, Response, Unset
 

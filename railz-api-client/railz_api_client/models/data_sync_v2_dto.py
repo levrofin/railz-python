@@ -3,8 +3,8 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.data_sync_v2_dto_data_type import DataSyncV2DtoDataType
-from ..models.data_sync_v2_dto_data_types_item import DataSyncV2DtoDataTypesItem
+from ..models.data_sync_v2_dto_data_type import DataSyncV2DtoDataType, check_data_sync_v2_dto_data_type
+from ..models.data_sync_v2_dto_data_types_item import DataSyncV2DtoDataTypesItem, check_data_sync_v2_dto_data_types_item
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="DataSyncV2Dto")
@@ -37,7 +37,7 @@ class DataSyncV2Dto:
         if not isinstance(self.data_types, Unset):
             data_types = []
             for data_types_item_data in self.data_types:
-                data_types_item = data_types_item_data
+                data_types_item: str = data_types_item_data
                 data_types.append(data_types_item)
 
         full_sync = self.full_sync
@@ -68,12 +68,12 @@ class DataSyncV2Dto:
         if isinstance(_data_type, Unset):
             data_type = UNSET
         else:
-            data_type = _data_type
+            data_type = check_data_sync_v2_dto_data_type(_data_type)
 
         data_types = []
         _data_types = d.pop("dataTypes", UNSET)
         for data_types_item_data in _data_types or []:
-            data_types_item = data_types_item_data
+            data_types_item = check_data_sync_v2_dto_data_types_item(data_types_item_data)
 
             data_types.append(data_types_item)
 

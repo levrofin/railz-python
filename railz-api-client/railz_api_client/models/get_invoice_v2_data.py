@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_invoice_v2_data_status import GetInvoiceV2DataStatus
+from ..models.get_invoice_v2_data_status import GetInvoiceV2DataStatus, check_get_invoice_v2_data_status
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -71,7 +71,7 @@ class GetInvoiceV2Data:
     def to_dict(self) -> Dict[str, Any]:
         id = self.id
 
-        status = self.status
+        status: str = self.status
 
         invoice_number = self.invoice_number
 
@@ -192,7 +192,7 @@ class GetInvoiceV2Data:
         d = src_dict.copy()
         id = d.pop("id")
 
-        status = d.pop("status")
+        status = check_get_invoice_v2_data_status(d.pop("status"))
 
         invoice_number = d.pop("invoiceNumber", UNSET)
 

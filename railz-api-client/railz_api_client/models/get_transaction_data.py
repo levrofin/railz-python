@@ -5,9 +5,15 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_transaction_data_payment_method_type import GetTransactionDataPaymentMethodType
-from ..models.get_transaction_data_status import GetTransactionDataStatus
-from ..models.get_transaction_data_transaction_type import GetTransactionDataTransactionType
+from ..models.get_transaction_data_payment_method_type import (
+    GetTransactionDataPaymentMethodType,
+    check_get_transaction_data_payment_method_type,
+)
+from ..models.get_transaction_data_status import GetTransactionDataStatus, check_get_transaction_data_status
+from ..models.get_transaction_data_transaction_type import (
+    GetTransactionDataTransactionType,
+    check_get_transaction_data_transaction_type,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -51,11 +57,11 @@ class GetTransactionData:
 
         total_amount = self.total_amount
 
-        transaction_type = self.transaction_type
+        transaction_type: str = self.transaction_type
 
         created_date = self.created_date.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         order_id = self.order_id
 
@@ -112,11 +118,11 @@ class GetTransactionData:
 
         total_amount = d.pop("totalAmount")
 
-        transaction_type = d.pop("transactionType")
+        transaction_type = check_get_transaction_data_transaction_type(d.pop("transactionType"))
 
         created_date = isoparse(d.pop("createdDate"))
 
-        status = d.pop("status")
+        status = check_get_transaction_data_status(d.pop("status"))
 
         order_id = d.pop("orderId", UNSET)
 
@@ -125,7 +131,7 @@ class GetTransactionData:
         if isinstance(_payment_method_type, Unset):
             payment_method_type = UNSET
         else:
-            payment_method_type = _payment_method_type
+            payment_method_type = check_get_transaction_data_payment_method_type(_payment_method_type)
 
         _currency_ref = d.pop("currencyRef", UNSET)
         currency_ref: Union[Unset, CommerceCurrencyRef]

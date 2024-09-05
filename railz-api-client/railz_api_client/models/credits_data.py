@@ -3,12 +3,12 @@ from typing import Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.credits_data_dbrs_rating import CreditsDataDbrsRating
-from ..models.credits_data_fitch_rating import CreditsDataFitchRating
-from ..models.credits_data_moodys_rating import CreditsDataMoodysRating
-from ..models.credits_data_railz_grade import CreditsDataRailzGrade
-from ..models.credits_data_railz_rating import CreditsDataRailzRating
-from ..models.credits_data_sp_rating import CreditsDataSpRating
+from ..models.credits_data_dbrs_rating import CreditsDataDbrsRating, check_credits_data_dbrs_rating
+from ..models.credits_data_fitch_rating import CreditsDataFitchRating, check_credits_data_fitch_rating
+from ..models.credits_data_moodys_rating import CreditsDataMoodysRating, check_credits_data_moodys_rating
+from ..models.credits_data_railz_grade import CreditsDataRailzGrade, check_credits_data_railz_grade
+from ..models.credits_data_railz_rating import CreditsDataRailzRating, check_credits_data_railz_rating
+from ..models.credits_data_sp_rating import CreditsDataSpRating, check_credits_data_sp_rating
 
 T = TypeVar("T", bound="CreditsData")
 
@@ -52,17 +52,17 @@ class CreditsData:
 
         score36m = self.score36m
 
-        sp_rating = self.sp_rating
+        sp_rating: str = self.sp_rating
 
-        moodys_rating = self.moodys_rating
+        moodys_rating: str = self.moodys_rating
 
-        fitch_rating = self.fitch_rating
+        fitch_rating: str = self.fitch_rating
 
-        dbrs_rating = self.dbrs_rating
+        dbrs_rating: str = self.dbrs_rating
 
-        railz_rating = self.railz_rating
+        railz_rating: str = self.railz_rating
 
-        railz_grade = self.railz_grade
+        railz_grade: str = self.railz_grade
 
         description = self.description
 
@@ -97,17 +97,17 @@ class CreditsData:
 
         score36m = d.pop("score36m")
 
-        sp_rating = d.pop("spRating")
+        sp_rating = check_credits_data_sp_rating(d.pop("spRating"))
 
-        moodys_rating = d.pop("moodysRating")
+        moodys_rating = check_credits_data_moodys_rating(d.pop("moodysRating"))
 
-        fitch_rating = d.pop("fitchRating")
+        fitch_rating = check_credits_data_fitch_rating(d.pop("fitchRating"))
 
-        dbrs_rating = d.pop("dbrsRating")
+        dbrs_rating = check_credits_data_dbrs_rating(d.pop("dbrsRating"))
 
-        railz_rating = d.pop("railzRating")
+        railz_rating = check_credits_data_railz_rating(d.pop("railzRating"))
 
-        railz_grade = d.pop("railzGrade")
+        railz_grade = check_credits_data_railz_grade(d.pop("railzGrade"))
 
         description = d.pop("description")
 

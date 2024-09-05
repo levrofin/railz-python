@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_bank_account_accounting_data_v2_account_type import GetBankAccountAccountingDataV2AccountType
+from ..models.get_bank_account_accounting_data_v2_account_type import (
+    GetBankAccountAccountingDataV2AccountType,
+    check_get_bank_account_accounting_data_v2_account_type,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="GetBankAccountAccountingDataV2")
@@ -54,7 +57,7 @@ class GetBankAccountAccountingDataV2:
     def to_dict(self) -> Dict[str, Any]:
         id = self.id
 
-        account_type = self.account_type
+        account_type: str = self.account_type
 
         nominal_code = self.nominal_code
 
@@ -130,7 +133,7 @@ class GetBankAccountAccountingDataV2:
         d = src_dict.copy()
         id = d.pop("id")
 
-        account_type = d.pop("accountType")
+        account_type = check_get_bank_account_accounting_data_v2_account_type(d.pop("accountType"))
 
         nominal_code = d.pop("nominalCode", UNSET)
 

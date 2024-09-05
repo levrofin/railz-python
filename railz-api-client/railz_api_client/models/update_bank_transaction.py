@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.update_bank_transaction_transaction_type import UpdateBankTransactionTransactionType
+from ..models.update_bank_transaction_transaction_type import (
+    UpdateBankTransactionTransactionType,
+    check_update_bank_transaction_transaction_type,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -48,7 +51,7 @@ class UpdateBankTransaction:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        transaction_type = self.transaction_type
+        transaction_type: str = self.transaction_type
 
         pass_through: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.pass_through, Unset):
@@ -117,7 +120,7 @@ class UpdateBankTransaction:
         from ..models.update_bank_transaction_pass_through import UpdateBankTransactionPassThrough
 
         d = src_dict.copy()
-        transaction_type = d.pop("transactionType")
+        transaction_type = check_update_bank_transaction_transaction_type(d.pop("transactionType"))
 
         _pass_through = d.pop("passThrough", UNSET)
         pass_through: Union[Unset, UpdateBankTransactionPassThrough]

@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.tracking_category_ref_v2_type import TrackingCategoryRefV2Type
+from ..models.tracking_category_ref_v2_type import TrackingCategoryRefV2Type, check_tracking_category_ref_v2_type
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="TrackingCategoryRefV2")
@@ -26,7 +26,7 @@ class TrackingCategoryRefV2:
     def to_dict(self) -> Dict[str, Any]:
         id = self.id
 
-        type = self.type
+        type: str = self.type
 
         name = self.name
 
@@ -48,7 +48,7 @@ class TrackingCategoryRefV2:
         d = src_dict.copy()
         id = d.pop("id")
 
-        type = d.pop("type")
+        type = check_tracking_category_ref_v2_type(d.pop("type"))
 
         name = d.pop("name", UNSET)
 

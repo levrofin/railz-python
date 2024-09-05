@@ -3,7 +3,10 @@ from typing import Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.push_status_meta_data_v2_service_name import PushStatusMetaDataV2ServiceName
+from ..models.push_status_meta_data_v2_service_name import (
+    PushStatusMetaDataV2ServiceName,
+    check_push_status_meta_data_v2_service_name,
+)
 
 T = TypeVar("T", bound="PushStatusMetaDataV2")
 
@@ -29,7 +32,7 @@ class PushStatusMetaDataV2:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         count = self.count
 
@@ -53,7 +56,7 @@ class PushStatusMetaDataV2:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_push_status_meta_data_v2_service_name(d.pop("serviceName"))
 
         count = d.pop("count")
 

@@ -5,9 +5,18 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.accounting_transaction_data_v2_section import AccountingTransactionDataV2Section
-from ..models.accounting_transaction_data_v2_sub_section import AccountingTransactionDataV2SubSection
-from ..models.accounting_transaction_data_v2_type import AccountingTransactionDataV2Type
+from ..models.accounting_transaction_data_v2_section import (
+    AccountingTransactionDataV2Section,
+    check_accounting_transaction_data_v2_section,
+)
+from ..models.accounting_transaction_data_v2_sub_section import (
+    AccountingTransactionDataV2SubSection,
+    check_accounting_transaction_data_v2_sub_section,
+)
+from ..models.accounting_transaction_data_v2_type import (
+    AccountingTransactionDataV2Type,
+    check_accounting_transaction_data_v2_type,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -74,11 +83,11 @@ class AccountingTransactionDataV2:
     def to_dict(self) -> Dict[str, Any]:
         posted_date = self.posted_date.isoformat()
 
-        type = self.type
+        type: str = self.type
 
-        section = self.section
+        section: str = self.section
 
-        sub_section = self.sub_section
+        sub_section: str = self.sub_section
 
         is_reconciled = self.is_reconciled
 
@@ -185,11 +194,11 @@ class AccountingTransactionDataV2:
         d = src_dict.copy()
         posted_date = isoparse(d.pop("postedDate")).date()
 
-        type = d.pop("type")
+        type = check_accounting_transaction_data_v2_type(d.pop("type"))
 
-        section = d.pop("section")
+        section = check_accounting_transaction_data_v2_section(d.pop("section"))
 
-        sub_section = d.pop("subSection")
+        sub_section = check_accounting_transaction_data_v2_sub_section(d.pop("subSection"))
 
         is_reconciled = d.pop("isReconciled", UNSET)
 

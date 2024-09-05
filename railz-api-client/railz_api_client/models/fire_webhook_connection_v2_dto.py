@@ -3,9 +3,18 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.fire_webhook_connection_v2_dto_data_request_status import FireWebhookConnectionV2DtoDataRequestStatus
-from ..models.fire_webhook_connection_v2_dto_event import FireWebhookConnectionV2DtoEvent
-from ..models.fire_webhook_connection_v2_dto_payload_type import FireWebhookConnectionV2DtoPayloadType
+from ..models.fire_webhook_connection_v2_dto_data_request_status import (
+    FireWebhookConnectionV2DtoDataRequestStatus,
+    check_fire_webhook_connection_v2_dto_data_request_status,
+)
+from ..models.fire_webhook_connection_v2_dto_event import (
+    FireWebhookConnectionV2DtoEvent,
+    check_fire_webhook_connection_v2_dto_event,
+)
+from ..models.fire_webhook_connection_v2_dto_payload_type import (
+    FireWebhookConnectionV2DtoPayloadType,
+    check_fire_webhook_connection_v2_dto_payload_type,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="FireWebhookConnectionV2Dto")
@@ -49,7 +58,7 @@ class FireWebhookConnectionV2Dto:
     def to_dict(self) -> Dict[str, Any]:
         connection_uuid = self.connection_uuid
 
-        event = self.event
+        event: str = self.event
 
         request_type = self.request_type
 
@@ -99,7 +108,7 @@ class FireWebhookConnectionV2Dto:
         d = src_dict.copy()
         connection_uuid = d.pop("connectionUuid")
 
-        event = d.pop("event")
+        event = check_fire_webhook_connection_v2_dto_event(d.pop("event"))
 
         request_type = d.pop("requestType", UNSET)
 
@@ -116,14 +125,14 @@ class FireWebhookConnectionV2Dto:
         if isinstance(_data_request_status, Unset):
             data_request_status = UNSET
         else:
-            data_request_status = _data_request_status
+            data_request_status = check_fire_webhook_connection_v2_dto_data_request_status(_data_request_status)
 
         _payload_type = d.pop("payloadType", UNSET)
         payload_type: Union[Unset, FireWebhookConnectionV2DtoPayloadType]
         if isinstance(_payload_type, Unset):
             payload_type = UNSET
         else:
-            payload_type = _payload_type
+            payload_type = check_fire_webhook_connection_v2_dto_payload_type(_payload_type)
 
         fire_webhook_connection_v2_dto = cls(
             connection_uuid=connection_uuid,

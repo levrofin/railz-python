@@ -3,7 +3,10 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.push_bank_account_response_v2_dto_service_name import PushBankAccountResponseV2DtoServiceName
+from ..models.push_bank_account_response_v2_dto_service_name import (
+    PushBankAccountResponseV2DtoServiceName,
+    check_push_bank_account_response_v2_dto_service_name,
+)
 
 if TYPE_CHECKING:
     from ..models.push_bank_account_v2 import PushBankAccountV2
@@ -33,7 +36,7 @@ class PushBankAccountResponseV2Dto:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         data = self.data.to_dict()
 
@@ -59,7 +62,7 @@ class PushBankAccountResponseV2Dto:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_push_bank_account_response_v2_dto_service_name(d.pop("serviceName"))
 
         data = PushBankAccountV2.from_dict(d.pop("data"))
 

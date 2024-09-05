@@ -3,12 +3,21 @@ from typing import Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.credit_ratings_data_dbrs_rating import CreditRatingsDataDbrsRating
-from ..models.credit_ratings_data_fitch_rating import CreditRatingsDataFitchRating
-from ..models.credit_ratings_data_moodys_rating import CreditRatingsDataMoodysRating
-from ..models.credit_ratings_data_railz_grade import CreditRatingsDataRailzGrade
-from ..models.credit_ratings_data_railz_rating import CreditRatingsDataRailzRating
-from ..models.credit_ratings_data_sp_rating import CreditRatingsDataSpRating
+from ..models.credit_ratings_data_dbrs_rating import CreditRatingsDataDbrsRating, check_credit_ratings_data_dbrs_rating
+from ..models.credit_ratings_data_fitch_rating import (
+    CreditRatingsDataFitchRating,
+    check_credit_ratings_data_fitch_rating,
+)
+from ..models.credit_ratings_data_moodys_rating import (
+    CreditRatingsDataMoodysRating,
+    check_credit_ratings_data_moodys_rating,
+)
+from ..models.credit_ratings_data_railz_grade import CreditRatingsDataRailzGrade, check_credit_ratings_data_railz_grade
+from ..models.credit_ratings_data_railz_rating import (
+    CreditRatingsDataRailzRating,
+    check_credit_ratings_data_railz_rating,
+)
+from ..models.credit_ratings_data_sp_rating import CreditRatingsDataSpRating, check_credit_ratings_data_sp_rating
 
 T = TypeVar("T", bound="CreditRatingsData")
 
@@ -36,17 +45,17 @@ class CreditRatingsData:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        sp_rating = self.sp_rating
+        sp_rating: str = self.sp_rating
 
-        moodys_rating = self.moodys_rating
+        moodys_rating: str = self.moodys_rating
 
-        fitch_rating = self.fitch_rating
+        fitch_rating: str = self.fitch_rating
 
-        dbrs_rating = self.dbrs_rating
+        dbrs_rating: str = self.dbrs_rating
 
-        railz_rating = self.railz_rating
+        railz_rating: str = self.railz_rating
 
-        railz_grade = self.railz_grade
+        railz_grade: str = self.railz_grade
 
         description = self.description
 
@@ -69,17 +78,17 @@ class CreditRatingsData:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        sp_rating = d.pop("spRating")
+        sp_rating = check_credit_ratings_data_sp_rating(d.pop("spRating"))
 
-        moodys_rating = d.pop("moodysRating")
+        moodys_rating = check_credit_ratings_data_moodys_rating(d.pop("moodysRating"))
 
-        fitch_rating = d.pop("fitchRating")
+        fitch_rating = check_credit_ratings_data_fitch_rating(d.pop("fitchRating"))
 
-        dbrs_rating = d.pop("dbrsRating")
+        dbrs_rating = check_credit_ratings_data_dbrs_rating(d.pop("dbrsRating"))
 
-        railz_rating = d.pop("railzRating")
+        railz_rating = check_credit_ratings_data_railz_rating(d.pop("railzRating"))
 
-        railz_grade = d.pop("railzGrade")
+        railz_grade = check_credit_ratings_data_railz_grade(d.pop("railzGrade"))
 
         description = d.pop("description")
 

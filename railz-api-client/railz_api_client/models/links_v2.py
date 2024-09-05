@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.links_v2_type import LinksV2Type
+from ..models.links_v2_type import LinksV2Type, check_links_v2_type
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="LinksV2")
@@ -50,7 +50,7 @@ class LinksV2:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_links_v2_type(_type)
 
         links_v2 = cls(
             id=id,

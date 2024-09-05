@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.ar_aging_meta_data_service_name import ArAgingMetaDataServiceName
+from ..models.ar_aging_meta_data_service_name import ArAgingMetaDataServiceName, check_ar_aging_meta_data_service_name
 
 T = TypeVar("T", bound="ArAgingMetaData")
 
@@ -37,7 +37,7 @@ class ArAgingMetaData:
     def to_dict(self) -> Dict[str, Any]:
         report_id = self.report_id
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         business_name = self.business_name
 
@@ -73,7 +73,7 @@ class ArAgingMetaData:
         d = src_dict.copy()
         report_id = cast(List[str], d.pop("reportId"))
 
-        service_name = d.pop("serviceName")
+        service_name = check_ar_aging_meta_data_service_name(d.pop("serviceName"))
 
         business_name = d.pop("businessName")
 

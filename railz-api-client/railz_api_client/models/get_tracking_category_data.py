@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_tracking_category_data_status import GetTrackingCategoryDataStatus
+from ..models.get_tracking_category_data_status import (
+    GetTrackingCategoryDataStatus,
+    check_get_tracking_category_data_status,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -42,7 +45,7 @@ class GetTrackingCategoryData:
 
         is_editable = self.is_editable
 
-        status = self.status
+        status: str = self.status
 
         parent_ref: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.parent_ref, Unset):
@@ -80,7 +83,7 @@ class GetTrackingCategoryData:
 
         is_editable = d.pop("isEditable")
 
-        status = d.pop("status")
+        status = check_get_tracking_category_data_status(d.pop("status"))
 
         _parent_ref = d.pop("parentRef", UNSET)
         parent_ref: Union[Unset, ParentRef]

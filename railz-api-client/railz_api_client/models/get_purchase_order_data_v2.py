@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_purchase_order_data_v2_status import GetPurchaseOrderDataV2Status
+from ..models.get_purchase_order_data_v2_status import (
+    GetPurchaseOrderDataV2Status,
+    check_get_purchase_order_data_v2_status,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -78,7 +81,7 @@ class GetPurchaseOrderDataV2:
 
         total_amount = self.total_amount
 
-        status = self.status
+        status: str = self.status
 
         vendor_ref = self.vendor_ref.to_dict()
 
@@ -194,7 +197,7 @@ class GetPurchaseOrderDataV2:
 
         total_amount = d.pop("totalAmount")
 
-        status = d.pop("status")
+        status = check_get_purchase_order_data_v2_status(d.pop("status"))
 
         vendor_ref = VendorRef.from_dict(d.pop("vendorRef"))
 

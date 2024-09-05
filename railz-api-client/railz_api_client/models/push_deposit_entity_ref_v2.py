@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.push_deposit_entity_ref_v2_type import PushDepositEntityRefV2Type
+from ..models.push_deposit_entity_ref_v2_type import PushDepositEntityRefV2Type, check_push_deposit_entity_ref_v2_type
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="PushDepositEntityRefV2")
@@ -50,7 +50,7 @@ class PushDepositEntityRefV2:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_push_deposit_entity_ref_v2_type(_type)
 
         push_deposit_entity_ref_v2 = cls(
             id=id,

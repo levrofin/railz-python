@@ -3,7 +3,10 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.metadata_object_dto_webhook_location_item import MetadataObjectDtoWebhookLocationItem
+from ..models.metadata_object_dto_webhook_location_item import (
+    MetadataObjectDtoWebhookLocationItem,
+    check_metadata_object_dto_webhook_location_item,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="MetadataObjectDto")
@@ -32,7 +35,7 @@ class MetadataObjectDto:
         if not isinstance(self.webhook_location, Unset):
             webhook_location = []
             for webhook_location_item_data in self.webhook_location:
-                webhook_location_item = webhook_location_item_data
+                webhook_location_item: str = webhook_location_item_data
                 webhook_location.append(webhook_location_item)
 
         field_dict: Dict[str, Any] = {}
@@ -58,7 +61,7 @@ class MetadataObjectDto:
         webhook_location = []
         _webhook_location = d.pop("webhookLocation", UNSET)
         for webhook_location_item_data in _webhook_location or []:
-            webhook_location_item = webhook_location_item_data
+            webhook_location_item = check_metadata_object_dto_webhook_location_item(webhook_location_item_data)
 
             webhook_location.append(webhook_location_item)
 

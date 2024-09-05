@@ -3,7 +3,10 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.push_bank_transaction_response_dto_service_name import PushBankTransactionResponseDtoServiceName
+from ..models.push_bank_transaction_response_dto_service_name import (
+    PushBankTransactionResponseDtoServiceName,
+    check_push_bank_transaction_response_dto_service_name,
+)
 
 if TYPE_CHECKING:
     from ..models.push_bank_transaction import PushBankTransaction
@@ -29,7 +32,7 @@ class PushBankTransactionResponseDto:
     def to_dict(self) -> Dict[str, Any]:
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         data = self.data.to_dict()
 
@@ -52,7 +55,7 @@ class PushBankTransactionResponseDto:
         d = src_dict.copy()
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_push_bank_transaction_response_dto_service_name(d.pop("serviceName"))
 
         data = PushBankTransaction.from_dict(d.pop("data"))
 

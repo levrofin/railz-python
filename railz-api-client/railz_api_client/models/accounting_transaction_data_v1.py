@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.accounting_transaction_data_v1_type import AccountingTransactionDataV1Type
+from ..models.accounting_transaction_data_v1_type import (
+    AccountingTransactionDataV1Type,
+    check_accounting_transaction_data_v1_type,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -65,7 +68,7 @@ class AccountingTransactionDataV1:
     def to_dict(self) -> Dict[str, Any]:
         posted_date = self.posted_date.isoformat()
 
-        type = self.type
+        type: str = self.type
 
         is_posting = self.is_posting
 
@@ -161,7 +164,7 @@ class AccountingTransactionDataV1:
         d = src_dict.copy()
         posted_date = isoparse(d.pop("postedDate")).date()
 
-        type = d.pop("type")
+        type = check_accounting_transaction_data_v1_type(d.pop("type"))
 
         is_posting = d.pop("isPosting")
 

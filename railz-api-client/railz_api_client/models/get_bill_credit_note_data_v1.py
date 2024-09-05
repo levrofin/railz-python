@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_bill_credit_note_data_v1_status import GetBillCreditNoteDataV1Status
+from ..models.get_bill_credit_note_data_v1_status import (
+    GetBillCreditNoteDataV1Status,
+    check_get_bill_credit_note_data_v1_status,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -70,7 +73,7 @@ class GetBillCreditNoteDataV1:
 
         total_amount = self.total_amount
 
-        status = self.status
+        status: str = self.status
 
         allocated_on_date: Union[Unset, str] = UNSET
         if not isinstance(self.allocated_on_date, Unset):
@@ -176,7 +179,7 @@ class GetBillCreditNoteDataV1:
 
         total_amount = d.pop("totalAmount")
 
-        status = d.pop("status")
+        status = check_get_bill_credit_note_data_v1_status(d.pop("status"))
 
         _allocated_on_date = d.pop("allocatedOnDate", UNSET)
         allocated_on_date: Union[Unset, datetime.datetime]

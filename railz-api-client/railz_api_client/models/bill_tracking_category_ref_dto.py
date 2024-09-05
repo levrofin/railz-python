@@ -3,7 +3,10 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.bill_tracking_category_ref_dto_type import BillTrackingCategoryRefDtoType
+from ..models.bill_tracking_category_ref_dto_type import (
+    BillTrackingCategoryRefDtoType,
+    check_bill_tracking_category_ref_dto_type,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="BillTrackingCategoryRefDto")
@@ -50,7 +53,7 @@ class BillTrackingCategoryRefDto:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_bill_tracking_category_ref_dto_type(_type)
 
         bill_tracking_category_ref_dto = cls(
             id=id,

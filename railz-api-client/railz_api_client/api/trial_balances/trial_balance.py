@@ -9,7 +9,9 @@ from ...models.error_400_response_dto_v2 import Error400ResponseDtoV2
 from ...models.error_401_response_dto import Error401ResponseDto
 from ...models.error_403_response_dto import Error403ResponseDto
 from ...models.error_500_response_dto import Error500ResponseDto
-from ...models.trial_balance_accounting_method import TrialBalanceAccountingMethod
+from ...models.trial_balance_accounting_method import (
+    TrialBalanceAccountingMethod,
+)
 from ...models.trial_balance_report_frequency import TrialBalanceReportFrequency
 from ...models.trial_balance_section import TrialBalanceSection
 from ...models.trial_balance_sub_section import TrialBalanceSubSection
@@ -43,7 +45,7 @@ def _get_kwargs(
 
     params["connectionUuid"] = connection_uuid
 
-    json_report_frequency = report_frequency
+    json_report_frequency: str = report_frequency
     params["reportFrequency"] = json_report_frequency
 
     json_accounting_method: Union[Unset, str] = UNSET

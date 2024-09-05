@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.push_vendor_individual_response_v2_dto_status import PushVendorIndividualResponseV2DtoStatus
+from ..models.push_vendor_individual_response_v2_dto_status import (
+    PushVendorIndividualResponseV2DtoStatus,
+    check_push_vendor_individual_response_v2_dto_status,
+)
 
 if TYPE_CHECKING:
     from ..models.push_vendor_v2 import PushVendorV2
@@ -35,7 +38,7 @@ class PushVendorIndividualResponseV2Dto:
 
         requested_on = self.requested_on.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         data = self.data.to_dict()
 
@@ -61,7 +64,7 @@ class PushVendorIndividualResponseV2Dto:
 
         requested_on = isoparse(d.pop("requestedOn"))
 
-        status = d.pop("status")
+        status = check_push_vendor_individual_response_v2_dto_status(d.pop("status"))
 
         data = PushVendorV2.from_dict(d.pop("data"))
 

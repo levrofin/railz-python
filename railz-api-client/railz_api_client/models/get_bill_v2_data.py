@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_bill_v2_data_status import GetBillV2DataStatus
+from ..models.get_bill_v2_data_status import GetBillV2DataStatus, check_get_bill_v2_data_status
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -73,7 +73,7 @@ class GetBillV2Data:
             lines_item = lines_item_data.to_dict()
             lines.append(lines_item)
 
-        status = self.status
+        status: str = self.status
 
         total_amount = self.total_amount
 
@@ -184,7 +184,7 @@ class GetBillV2Data:
 
             lines.append(lines_item)
 
-        status = d.pop("status")
+        status = check_get_bill_v2_data_status(d.pop("status"))
 
         total_amount = d.pop("totalAmount")
 

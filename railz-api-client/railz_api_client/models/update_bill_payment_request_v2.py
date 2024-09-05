@@ -3,7 +3,10 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.update_bill_payment_request_v2_state import UpdateBillPaymentRequestV2State
+from ..models.update_bill_payment_request_v2_state import (
+    UpdateBillPaymentRequestV2State,
+    check_update_bill_payment_request_v2_state,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="UpdateBillPaymentRequestV2")
@@ -40,7 +43,7 @@ class UpdateBillPaymentRequestV2:
         if isinstance(_state, Unset):
             state = UNSET
         else:
-            state = _state
+            state = check_update_bill_payment_request_v2_state(_state)
 
         update_bill_payment_request_v2 = cls(
             state=state,

@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_estimate_data_status import GetEstimateDataStatus
+from ..models.get_estimate_data_status import GetEstimateDataStatus, check_get_estimate_data_status
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -69,7 +69,7 @@ class GetEstimateData:
 
         total_amount = self.total_amount
 
-        status = self.status
+        status: str = self.status
 
         customer_ref: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.customer_ref, Unset):
@@ -173,7 +173,7 @@ class GetEstimateData:
 
         total_amount = d.pop("totalAmount")
 
-        status = d.pop("status")
+        status = check_get_estimate_data_status(d.pop("status"))
 
         _customer_ref = d.pop("customerRef", UNSET)
         customer_ref: Union[Unset, CustomerRef]

@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_bill_payment_v2_data_payment_method import GetBillPaymentV2DataPaymentMethod
+from ..models.get_bill_payment_v2_data_payment_method import (
+    GetBillPaymentV2DataPaymentMethod,
+    check_get_bill_payment_v2_data_payment_method,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -172,7 +175,7 @@ class GetBillPaymentV2Data:
         if isinstance(_payment_method, Unset):
             payment_method = UNSET
         else:
-            payment_method = _payment_method
+            payment_method = check_get_bill_payment_v2_data_payment_method(_payment_method)
 
         _payment_method_ref = d.pop("paymentMethodRef", UNSET)
         payment_method_ref: Union[Unset, PaymentMethodRefResponse]

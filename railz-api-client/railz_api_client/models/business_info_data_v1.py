@@ -3,7 +3,10 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.business_info_data_v1_business_type import BusinessInfoDataV1BusinessType
+from ..models.business_info_data_v1_business_type import (
+    BusinessInfoDataV1BusinessType,
+    check_business_info_data_v1_business_type,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -238,7 +241,7 @@ class BusinessInfoDataV1:
         if isinstance(_business_type, Unset):
             business_type = UNSET
         else:
-            business_type = _business_type
+            business_type = check_business_info_data_v1_business_type(_business_type)
 
         accounting_method = d.pop("accountingMethod", UNSET)
 

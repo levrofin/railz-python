@@ -3,7 +3,10 @@ from typing import Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.push_update_bills_connection_service_name import PushUpdateBillsConnectionServiceName
+from ..models.push_update_bills_connection_service_name import (
+    PushUpdateBillsConnectionServiceName,
+    check_push_update_bills_connection_service_name,
+)
 
 T = TypeVar("T", bound="PushUpdateBillsConnection")
 
@@ -23,7 +26,7 @@ class PushUpdateBillsConnection:
     def to_dict(self) -> Dict[str, Any]:
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -41,7 +44,7 @@ class PushUpdateBillsConnection:
         d = src_dict.copy()
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_push_update_bills_connection_service_name(d.pop("serviceName"))
 
         push_update_bills_connection = cls(
             business_name=business_name,

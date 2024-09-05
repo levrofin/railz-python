@@ -5,11 +5,17 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.cashflow_statements_accounting_method import CashflowStatementsAccountingMethod
-from ...models.cashflow_statements_report_frequency import CashflowStatementsReportFrequency
+from ...models.cashflow_statements_accounting_method import (
+    CashflowStatementsAccountingMethod,
+)
+from ...models.cashflow_statements_report_frequency import (
+    CashflowStatementsReportFrequency,
+)
 from ...models.cashflow_statements_response_v2_dto import CashflowStatementsResponseV2Dto
 from ...models.cashflow_statements_section import CashflowStatementsSection
-from ...models.cashflow_statements_sub_section import CashflowStatementsSubSection
+from ...models.cashflow_statements_sub_section import (
+    CashflowStatementsSubSection,
+)
 from ...models.error_400_response_dto_v2 import Error400ResponseDtoV2
 from ...models.error_401_response_dto import Error401ResponseDto
 from ...models.error_403_response_dto import Error403ResponseDto
@@ -46,7 +52,7 @@ def _get_kwargs(
 
     params["accountingMethod"] = json_accounting_method
 
-    json_report_frequency = report_frequency
+    json_report_frequency: str = report_frequency
     params["reportFrequency"] = json_report_frequency
 
     params["startDate"] = start_date

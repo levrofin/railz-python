@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_invoice_v1_data_status import GetInvoiceV1DataStatus
+from ..models.get_invoice_v1_data_status import GetInvoiceV1DataStatus, check_get_invoice_v1_data_status
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -68,7 +68,7 @@ class GetInvoiceV1Data:
     def to_dict(self) -> Dict[str, Any]:
         id = self.id
 
-        status = self.status
+        status: str = self.status
 
         posted_date = self.posted_date.isoformat()
 
@@ -182,7 +182,7 @@ class GetInvoiceV1Data:
         d = src_dict.copy()
         id = d.pop("id")
 
-        status = d.pop("status")
+        status = check_get_invoice_v1_data_status(d.pop("status"))
 
         posted_date = isoparse(d.pop("postedDate"))
 

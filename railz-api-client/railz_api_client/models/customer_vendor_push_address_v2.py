@@ -3,7 +3,10 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.customer_vendor_push_address_v2_type import CustomerVendorPushAddressV2Type
+from ..models.customer_vendor_push_address_v2_type import (
+    CustomerVendorPushAddressV2Type,
+    check_customer_vendor_push_address_v2_type,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="CustomerVendorPushAddressV2")
@@ -88,7 +91,7 @@ class CustomerVendorPushAddressV2:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_customer_vendor_push_address_v2_type(_type)
 
         customer_vendor_push_address_v2 = cls(
             line1=line1,

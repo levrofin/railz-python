@@ -5,8 +5,14 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.push_bank_transfers_response_v2_dto_service_name import PushBankTransfersResponseV2DtoServiceName
-from ..models.push_bank_transfers_response_v2_dto_status import PushBankTransfersResponseV2DtoStatus
+from ..models.push_bank_transfers_response_v2_dto_service_name import (
+    PushBankTransfersResponseV2DtoServiceName,
+    check_push_bank_transfers_response_v2_dto_service_name,
+)
+from ..models.push_bank_transfers_response_v2_dto_status import (
+    PushBankTransfersResponseV2DtoStatus,
+    check_push_bank_transfers_response_v2_dto_status,
+)
 
 if TYPE_CHECKING:
     from ..models.push_bank_transfers_v2 import PushBankTransfersV2
@@ -42,13 +48,13 @@ class PushBankTransfersResponseV2Dto:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         push_communication_id = self.push_communication_id
 
         requested_on = self.requested_on.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         data = self.data.to_dict()
 
@@ -77,13 +83,13 @@ class PushBankTransfersResponseV2Dto:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_push_bank_transfers_response_v2_dto_service_name(d.pop("serviceName"))
 
         push_communication_id = d.pop("pushCommunicationId")
 
         requested_on = isoparse(d.pop("requestedOn"))
 
-        status = d.pop("status")
+        status = check_push_bank_transfers_response_v2_dto_status(d.pop("status"))
 
         data = PushBankTransfersV2.from_dict(d.pop("data"))
 

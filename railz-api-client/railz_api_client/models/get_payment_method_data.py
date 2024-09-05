@@ -5,8 +5,8 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_payment_method_data_status import GetPaymentMethodDataStatus
-from ..models.get_payment_method_data_type import GetPaymentMethodDataType
+from ..models.get_payment_method_data_status import GetPaymentMethodDataStatus, check_get_payment_method_data_status
+from ..models.get_payment_method_data_type import GetPaymentMethodDataType, check_get_payment_method_data_type
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="GetPaymentMethodData")
@@ -35,7 +35,7 @@ class GetPaymentMethodData:
 
         name = self.name
 
-        type = self.type
+        type: str = self.type
 
         status: Union[Unset, str] = UNSET
         if not isinstance(self.status, Unset):
@@ -68,14 +68,14 @@ class GetPaymentMethodData:
 
         name = d.pop("name")
 
-        type = d.pop("type")
+        type = check_get_payment_method_data_type(d.pop("type"))
 
         _status = d.pop("status", UNSET)
         status: Union[Unset, GetPaymentMethodDataStatus]
         if isinstance(_status, Unset):
             status = UNSET
         else:
-            status = _status
+            status = check_get_payment_method_data_status(_status)
 
         _source_modified_date = d.pop("sourceModifiedDate", UNSET)
         source_modified_date: Union[Unset, datetime.datetime]

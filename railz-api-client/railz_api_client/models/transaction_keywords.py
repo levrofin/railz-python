@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.transaction_keywords_type import TransactionKeywordsType
+from ..models.transaction_keywords_type import TransactionKeywordsType, check_transaction_keywords_type
 
 T = TypeVar("T", bound="TransactionKeywords")
 
@@ -21,7 +21,7 @@ class TransactionKeywords:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        type = self.type
+        type: str = self.type
 
         count = self.count
 
@@ -39,7 +39,7 @@ class TransactionKeywords:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        type = d.pop("type")
+        type = check_transaction_keywords_type(d.pop("type"))
 
         count = d.pop("count")
 

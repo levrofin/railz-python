@@ -10,9 +10,15 @@ from ...models.error_401_response_dto import Error401ResponseDto
 from ...models.error_403_response_dto import Error403ResponseDto
 from ...models.error_500_response_dto import Error500ResponseDto
 from ...models.financial_forecast_response_v2_dto import FinancialForecastResponseV2Dto
-from ...models.financial_forecasts_financial_statement_type import FinancialForecastsFinancialStatementType
-from ...models.financial_forecasts_reconstruct import FinancialForecastsReconstruct
-from ...models.financial_forecasts_report_frequency import FinancialForecastsReportFrequency
+from ...models.financial_forecasts_financial_statement_type import (
+    FinancialForecastsFinancialStatementType,
+)
+from ...models.financial_forecasts_reconstruct import (
+    FinancialForecastsReconstruct,
+)
+from ...models.financial_forecasts_report_frequency import (
+    FinancialForecastsReportFrequency,
+)
 from ...types import UNSET, Response, Unset
 
 
@@ -34,10 +40,10 @@ def _get_kwargs(
 
     params["endDate"] = end_date
 
-    json_financial_statement_type = financial_statement_type
+    json_financial_statement_type: str = financial_statement_type
     params["financialStatementType"] = json_financial_statement_type
 
-    json_report_frequency = report_frequency
+    json_report_frequency: str = report_frequency
     params["reportFrequency"] = json_report_frequency
 
     params["percentile"] = percentile

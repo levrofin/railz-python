@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.invoice_payment_link_dto_type import InvoicePaymentLinkDtoType
+from ..models.invoice_payment_link_dto_type import InvoicePaymentLinkDtoType, check_invoice_payment_link_dto_type
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="InvoicePaymentLinkDto")
@@ -50,7 +50,7 @@ class InvoicePaymentLinkDto:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_invoice_payment_link_dto_type(_type)
 
         invoice_payment_link_dto = cls(
             id=id,

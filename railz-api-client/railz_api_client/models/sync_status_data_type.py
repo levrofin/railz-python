@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Set, cast
 
 SyncStatusDataType = Literal[
     "accountingTransactions",
@@ -8,9 +8,9 @@ SyncStatusDataType = Literal[
     "attachments",
     "balanceSheets",
     "bankAccounts",
+    "bankingReconciliation",
     "bankTransactions",
     "bankTransfers",
-    "bankingReconciliation",
     "billCreditNotes",
     "billPaymentRequests",
     "billPayments",
@@ -48,3 +48,58 @@ SyncStatusDataType = Literal[
     "vendorBankAccounts",
     "vendors",
 ]
+
+SYNC_STATUS_DATA_TYPE_VALUES: Set[SyncStatusDataType] = {
+    "accountingTransactions",
+    "accounts",
+    "agedPayable",
+    "agedReceivable",
+    "attachments",
+    "balanceSheets",
+    "bankAccounts",
+    "bankingReconciliation",
+    "bankTransactions",
+    "bankTransfers",
+    "billCreditNotes",
+    "billPaymentRequests",
+    "billPayments",
+    "bills",
+    "businessInfo",
+    "businessValuations",
+    "cashflowStatements",
+    "contacts",
+    "creditScore",
+    "customerBankAccounts",
+    "customers",
+    "deposits",
+    "estimates",
+    "expenses",
+    "financialBenchmarking",
+    "financialForecasts",
+    "financialRatios",
+    "fraudRiskMetrics",
+    "incomeStatements",
+    "inventory",
+    "invoiceCreditNotes",
+    "invoicePayments",
+    "invoices",
+    "journalEntries",
+    "journals",
+    "paymentMethods",
+    "portfolioMetrics",
+    "probabilityOfDefault",
+    "purchaseOrders",
+    "refunds",
+    "taxBenchmarking",
+    "taxRates",
+    "trackingCategories",
+    "trialBalances",
+    "vendorBankAccounts",
+    "vendors",
+}
+
+
+def check_sync_status_data_type(value: str) -> SyncStatusDataType:
+    if value in SYNC_STATUS_DATA_TYPE_VALUES:
+        return cast(SyncStatusDataType, value)
+    raise TypeError(f"Unexpected value {value!r}. Expected one of {SYNC_STATUS_DATA_TYPE_VALUES!r}")

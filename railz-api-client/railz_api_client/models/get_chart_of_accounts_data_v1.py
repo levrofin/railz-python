@@ -5,8 +5,14 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_chart_of_accounts_data_v1_section import GetChartOfAccountsDataV1Section
-from ..models.get_chart_of_accounts_data_v1_sub_section import GetChartOfAccountsDataV1SubSection
+from ..models.get_chart_of_accounts_data_v1_section import (
+    GetChartOfAccountsDataV1Section,
+    check_get_chart_of_accounts_data_v1_section,
+)
+from ..models.get_chart_of_accounts_data_v1_sub_section import (
+    GetChartOfAccountsDataV1SubSection,
+    check_get_chart_of_accounts_data_v1_sub_section,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -75,9 +81,9 @@ class GetChartOfAccountsDataV1:
 
         type = self.type
 
-        section = self.section
+        section: str = self.section
 
-        sub_section = self.sub_section
+        sub_section: str = self.sub_section
 
         nominal_code = self.nominal_code
 
@@ -181,9 +187,9 @@ class GetChartOfAccountsDataV1:
 
         type = d.pop("type")
 
-        section = d.pop("section")
+        section = check_get_chart_of_accounts_data_v1_section(d.pop("section"))
 
-        sub_section = d.pop("subSection")
+        sub_section = check_get_chart_of_accounts_data_v1_sub_section(d.pop("subSection"))
 
         nominal_code = d.pop("nominalCode", UNSET)
 

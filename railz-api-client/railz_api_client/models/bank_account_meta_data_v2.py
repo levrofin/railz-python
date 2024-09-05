@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.bank_account_meta_data_v2_service_name import BankAccountMetaDataV2ServiceName
+from ..models.bank_account_meta_data_v2_service_name import (
+    BankAccountMetaDataV2ServiceName,
+    check_bank_account_meta_data_v2_service_name,
+)
 
 T = TypeVar("T", bound="BankAccountMetaDataV2")
 
@@ -35,7 +38,7 @@ class BankAccountMetaDataV2:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         report_id = self.report_id
 
@@ -65,7 +68,7 @@ class BankAccountMetaDataV2:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_bank_account_meta_data_v2_service_name(d.pop("serviceName"))
 
         report_id = cast(List[str], d.pop("reportId"))
 

@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.attachment_link_type import AttachmentLinkType
+from ..models.attachment_link_type import AttachmentLinkType, check_attachment_link_type
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="AttachmentLink")
@@ -46,7 +46,7 @@ class AttachmentLink:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_attachment_link_type(_type)
 
         id = d.pop("id", UNSET)
 

@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_product_data_status import GetProductDataStatus
+from ..models.get_product_data_status import GetProductDataStatus, check_get_product_data_status
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -50,7 +50,7 @@ class GetProductData:
 
         source_modified_date = self.source_modified_date.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         type = self.type
 
@@ -100,7 +100,7 @@ class GetProductData:
 
         source_modified_date = isoparse(d.pop("sourceModifiedDate"))
 
-        status = d.pop("status")
+        status = check_get_product_data_status(d.pop("status"))
 
         type = d.pop("type", UNSET)
 

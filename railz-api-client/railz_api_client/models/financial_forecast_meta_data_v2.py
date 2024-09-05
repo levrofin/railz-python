@@ -7,8 +7,12 @@ from dateutil.parser import isoparse
 
 from ..models.financial_forecast_meta_data_v2_financial_statement_type import (
     FinancialForecastMetaDataV2FinancialStatementType,
+    check_financial_forecast_meta_data_v2_financial_statement_type,
 )
-from ..models.financial_forecast_meta_data_v2_service_name import FinancialForecastMetaDataV2ServiceName
+from ..models.financial_forecast_meta_data_v2_service_name import (
+    FinancialForecastMetaDataV2ServiceName,
+    check_financial_forecast_meta_data_v2_service_name,
+)
 
 T = TypeVar("T", bound="FinancialForecastMetaDataV2")
 
@@ -46,11 +50,11 @@ class FinancialForecastMetaDataV2:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         report_id = self.report_id
 
-        financial_statement_type = self.financial_statement_type
+        financial_statement_type: str = self.financial_statement_type
 
         report_frequency = self.report_frequency
 
@@ -88,11 +92,13 @@ class FinancialForecastMetaDataV2:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_financial_forecast_meta_data_v2_service_name(d.pop("serviceName"))
 
         report_id = d.pop("reportId")
 
-        financial_statement_type = d.pop("financialStatementType")
+        financial_statement_type = check_financial_forecast_meta_data_v2_financial_statement_type(
+            d.pop("financialStatementType")
+        )
 
         report_frequency = d.pop("reportFrequency")
 

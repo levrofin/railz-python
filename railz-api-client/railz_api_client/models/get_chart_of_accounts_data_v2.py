@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_chart_of_accounts_data_v2_sub_type import GetChartOfAccountsDataV2SubType
+from ..models.get_chart_of_accounts_data_v2_sub_type import (
+    GetChartOfAccountsDataV2SubType,
+    check_get_chart_of_accounts_data_v2_sub_type,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -232,7 +235,7 @@ class GetChartOfAccountsDataV2:
         if isinstance(_sub_type, Unset):
             sub_type = UNSET
         else:
-            sub_type = _sub_type
+            sub_type = check_get_chart_of_accounts_data_v2_sub_type(_sub_type)
 
         is_bank_account = d.pop("isBankAccount", UNSET)
 

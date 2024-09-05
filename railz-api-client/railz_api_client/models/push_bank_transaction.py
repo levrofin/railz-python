@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.push_bank_transaction_transaction_type import PushBankTransactionTransactionType
+from ..models.push_bank_transaction_transaction_type import (
+    PushBankTransactionTransactionType,
+    check_push_bank_transaction_transaction_type,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -40,7 +43,7 @@ class PushBankTransaction:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        transaction_type = self.transaction_type
+        transaction_type: str = self.transaction_type
 
         bank_account_ref = self.bank_account_ref
 
@@ -88,7 +91,7 @@ class PushBankTransaction:
         from ..models.push_bank_transaction_line import PushBankTransactionLine
 
         d = src_dict.copy()
-        transaction_type = d.pop("transactionType")
+        transaction_type = check_push_bank_transaction_transaction_type(d.pop("transactionType"))
 
         bank_account_ref = d.pop("bankAccountRef")
 

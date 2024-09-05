@@ -5,9 +5,11 @@ from attrs import field as _attrs_field
 
 from ..models.report_financial_ratios_response_200_meta_report_frequency import (
     ReportFinancialRatiosResponse200MetaReportFrequency,
+    check_report_financial_ratios_response_200_meta_report_frequency,
 )
 from ..models.report_financial_ratios_response_200_meta_service_name import (
     ReportFinancialRatiosResponse200MetaServiceName,
+    check_report_financial_ratios_response_200_meta_service_name,
 )
 
 T = TypeVar("T", bound="ReportFinancialRatiosResponse200Meta")
@@ -38,7 +40,7 @@ class ReportFinancialRatiosResponse200Meta:
     def to_dict(self) -> Dict[str, Any]:
         report_id = self.report_id
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         business_name = self.business_name
 
@@ -46,7 +48,7 @@ class ReportFinancialRatiosResponse200Meta:
 
         start_date = self.start_date
 
-        report_frequency = self.report_frequency
+        report_frequency: str = self.report_frequency
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -68,7 +70,7 @@ class ReportFinancialRatiosResponse200Meta:
         d = src_dict.copy()
         report_id = cast(List[str], d.pop("reportId"))
 
-        service_name = d.pop("serviceName")
+        service_name = check_report_financial_ratios_response_200_meta_service_name(d.pop("serviceName"))
 
         business_name = d.pop("businessName")
 
@@ -76,7 +78,7 @@ class ReportFinancialRatiosResponse200Meta:
 
         start_date = d.pop("startDate")
 
-        report_frequency = d.pop("reportFrequency")
+        report_frequency = check_report_financial_ratios_response_200_meta_report_frequency(d.pop("reportFrequency"))
 
         report_financial_ratios_response_200_meta = cls(
             report_id=report_id,

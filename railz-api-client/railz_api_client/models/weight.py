@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.weight_unit_of_measure import WeightUnitOfMeasure
+from ..models.weight_unit_of_measure import WeightUnitOfMeasure, check_weight_unit_of_measure
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="Weight")
@@ -48,7 +48,7 @@ class Weight:
         if isinstance(_unit_of_measure, Unset):
             unit_of_measure = UNSET
         else:
-            unit_of_measure = _unit_of_measure
+            unit_of_measure = check_weight_unit_of_measure(_unit_of_measure)
 
         weight = cls(
             value=value,

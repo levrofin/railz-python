@@ -3,7 +3,10 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.invoice_tracking_category_ref_type import InvoiceTrackingCategoryRefType
+from ..models.invoice_tracking_category_ref_type import (
+    InvoiceTrackingCategoryRefType,
+    check_invoice_tracking_category_ref_type,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="InvoiceTrackingCategoryRef")
@@ -56,7 +59,7 @@ class InvoiceTrackingCategoryRef:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_invoice_tracking_category_ref_type(_type)
 
         invoice_tracking_category_ref = cls(
             id=id,

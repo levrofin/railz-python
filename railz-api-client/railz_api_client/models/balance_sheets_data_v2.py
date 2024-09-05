@@ -3,8 +3,11 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.balance_sheets_data_v2_section import BalanceSheetsDataV2Section
-from ..models.balance_sheets_data_v2_sub_section import BalanceSheetsDataV2SubSection
+from ..models.balance_sheets_data_v2_section import BalanceSheetsDataV2Section, check_balance_sheets_data_v2_section
+from ..models.balance_sheets_data_v2_sub_section import (
+    BalanceSheetsDataV2SubSection,
+    check_balance_sheets_data_v2_sub_section,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="BalanceSheetsDataV2")
@@ -49,9 +52,9 @@ class BalanceSheetsDataV2:
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        section = self.section
+        section: str = self.section
 
-        sub_section = self.sub_section
+        sub_section: str = self.sub_section
 
         depth = self.depth
 
@@ -113,9 +116,9 @@ class BalanceSheetsDataV2:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        section = d.pop("section")
+        section = check_balance_sheets_data_v2_section(d.pop("section"))
 
-        sub_section = d.pop("subSection")
+        sub_section = check_balance_sheets_data_v2_sub_section(d.pop("subSection"))
 
         depth = d.pop("depth")
 

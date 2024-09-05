@@ -3,8 +3,14 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.push_tracking_categories_v2_status import PushTrackingCategoriesV2Status
-from ..models.push_tracking_categories_v2_type import PushTrackingCategoriesV2Type
+from ..models.push_tracking_categories_v2_status import (
+    PushTrackingCategoriesV2Status,
+    check_push_tracking_categories_v2_status,
+)
+from ..models.push_tracking_categories_v2_type import (
+    PushTrackingCategoriesV2Type,
+    check_push_tracking_categories_v2_type,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -124,7 +130,7 @@ class PushTrackingCategoriesV2:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_push_tracking_categories_v2_type(_type)
 
         is_editable = d.pop("isEditable", UNSET)
 
@@ -135,7 +141,7 @@ class PushTrackingCategoriesV2:
         if isinstance(_status, Unset):
             status = UNSET
         else:
-            status = _status
+            status = check_push_tracking_categories_v2_status(_status)
 
         subsidiary_refs = []
         _subsidiary_refs = d.pop("subsidiaryRefs", UNSET)

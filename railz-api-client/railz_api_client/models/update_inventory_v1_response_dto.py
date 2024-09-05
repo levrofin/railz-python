@@ -5,8 +5,14 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.update_inventory_v1_response_dto_service_name import UpdateInventoryV1ResponseDtoServiceName
-from ..models.update_inventory_v1_response_dto_status import UpdateInventoryV1ResponseDtoStatus
+from ..models.update_inventory_v1_response_dto_service_name import (
+    UpdateInventoryV1ResponseDtoServiceName,
+    check_update_inventory_v1_response_dto_service_name,
+)
+from ..models.update_inventory_v1_response_dto_status import (
+    UpdateInventoryV1ResponseDtoStatus,
+    check_update_inventory_v1_response_dto_status,
+)
 
 if TYPE_CHECKING:
     from ..models.update_inventory_v1 import UpdateInventoryV1
@@ -40,11 +46,11 @@ class UpdateInventoryV1ResponseDto:
 
         requested_on = self.requested_on.isoformat()
 
-        status = self.status
+        status: str = self.status
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         data = self.data.to_dict()
 
@@ -72,11 +78,11 @@ class UpdateInventoryV1ResponseDto:
 
         requested_on = isoparse(d.pop("requestedOn"))
 
-        status = d.pop("status")
+        status = check_update_inventory_v1_response_dto_status(d.pop("status"))
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_update_inventory_v1_response_dto_service_name(d.pop("serviceName"))
 
         data = UpdateInventoryV1.from_dict(d.pop("data"))
 

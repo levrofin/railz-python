@@ -9,7 +9,9 @@ from ...models.error_400_response_dto import Error400ResponseDto
 from ...models.error_401_response_dto import Error401ResponseDto
 from ...models.error_403_response_dto import Error403ResponseDto
 from ...models.error_500_response_dto import Error500ResponseDto
-from ...models.report_financial_ratios_report_frequency import ReportFinancialRatiosReportFrequency
+from ...models.report_financial_ratios_report_frequency import (
+    ReportFinancialRatiosReportFrequency,
+)
 from ...models.report_financial_ratios_response_200 import ReportFinancialRatiosResponse200
 from ...types import UNSET, Response
 
@@ -29,7 +31,7 @@ def _get_kwargs(
 
     params["endDate"] = end_date
 
-    json_report_frequency = report_frequency
+    json_report_frequency: str = report_frequency
     params["reportFrequency"] = json_report_frequency
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}

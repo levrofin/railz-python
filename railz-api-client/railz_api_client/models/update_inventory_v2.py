@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.update_inventory_v2_type import UpdateInventoryV2Type
+from ..models.update_inventory_v2_type import UpdateInventoryV2Type, check_update_inventory_v2_type
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -129,7 +129,7 @@ class UpdateInventoryV2:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_update_inventory_v2_type(_type)
 
         quantity_on_hand = []
         _quantity_on_hand = d.pop("quantityOnHand", UNSET)

@@ -1,7 +1,21 @@
-from typing import Literal
+from typing import Literal, Set, cast
 
-ReportFinancialRatiosResponse200MetaReportFrequency = Literal[
+ReportFinancialRatiosResponse200MetaReportFrequency = Literal["month", "quarter", "year"]
+
+REPORT_FINANCIAL_RATIOS_RESPONSE_200_META_REPORT_FREQUENCY_VALUES: Set[
+    ReportFinancialRatiosResponse200MetaReportFrequency
+] = {
     "month",
     "quarter",
     "year",
-]
+}
+
+
+def check_report_financial_ratios_response_200_meta_report_frequency(
+    value: str,
+) -> ReportFinancialRatiosResponse200MetaReportFrequency:
+    if value in REPORT_FINANCIAL_RATIOS_RESPONSE_200_META_REPORT_FREQUENCY_VALUES:
+        return cast(ReportFinancialRatiosResponse200MetaReportFrequency, value)
+    raise TypeError(
+        f"Unexpected value {value!r}. Expected one of {REPORT_FINANCIAL_RATIOS_RESPONSE_200_META_REPORT_FREQUENCY_VALUES!r}"
+    )

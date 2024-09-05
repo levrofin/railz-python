@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_journal_data_status import GetJournalDataStatus
+from ..models.get_journal_data_status import GetJournalDataStatus, check_get_journal_data_status
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -46,7 +46,7 @@ class GetJournalData:
 
         name = self.name
 
-        status = self.status
+        status: str = self.status
 
         journal_code = self.journal_code
 
@@ -99,7 +99,7 @@ class GetJournalData:
 
         name = d.pop("name")
 
-        status = d.pop("status")
+        status = check_get_journal_data_status(d.pop("status"))
 
         journal_code = d.pop("journalCode", UNSET)
 

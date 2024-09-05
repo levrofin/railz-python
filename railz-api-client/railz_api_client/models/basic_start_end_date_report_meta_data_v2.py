@@ -5,7 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.basic_start_end_date_report_meta_data_v2_service_name import BasicStartEndDateReportMetaDataV2ServiceName
+from ..models.basic_start_end_date_report_meta_data_v2_service_name import (
+    BasicStartEndDateReportMetaDataV2ServiceName,
+    check_basic_start_end_date_report_meta_data_v2_service_name,
+)
 
 T = TypeVar("T", bound="BasicStartEndDateReportMetaDataV2")
 
@@ -39,7 +42,7 @@ class BasicStartEndDateReportMetaDataV2:
 
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
         report_id = self.report_id
 
@@ -75,7 +78,7 @@ class BasicStartEndDateReportMetaDataV2:
 
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_basic_start_end_date_report_meta_data_v2_service_name(d.pop("serviceName"))
 
         report_id = cast(List[str], d.pop("reportId"))
 

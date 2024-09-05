@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.link_ref_dto_type import LinkRefDtoType
+from ..models.link_ref_dto_type import LinkRefDtoType, check_link_ref_dto_type
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="LinkRefDto")
@@ -50,7 +50,7 @@ class LinkRefDto:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_link_ref_dto_type(_type)
 
         link_ref_dto = cls(
             id=id,

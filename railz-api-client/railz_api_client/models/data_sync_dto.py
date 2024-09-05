@@ -3,8 +3,8 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.data_sync_dto_data_type import DataSyncDtoDataType
-from ..models.data_sync_dto_service_name import DataSyncDtoServiceName
+from ..models.data_sync_dto_data_type import DataSyncDtoDataType, check_data_sync_dto_data_type
+from ..models.data_sync_dto_service_name import DataSyncDtoServiceName, check_data_sync_dto_service_name
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="DataSyncDto")
@@ -29,9 +29,9 @@ class DataSyncDto:
     def to_dict(self) -> Dict[str, Any]:
         business_name = self.business_name
 
-        service_name = self.service_name
+        service_name: str = self.service_name
 
-        data_type = self.data_type
+        data_type: str = self.data_type
 
         full_sync = self.full_sync
 
@@ -54,9 +54,9 @@ class DataSyncDto:
         d = src_dict.copy()
         business_name = d.pop("businessName")
 
-        service_name = d.pop("serviceName")
+        service_name = check_data_sync_dto_service_name(d.pop("serviceName"))
 
-        data_type = d.pop("dataType")
+        data_type = check_data_sync_dto_data_type(d.pop("dataType"))
 
         full_sync = d.pop("fullSync", UNSET)
 

@@ -5,10 +5,22 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_bank_transactions_data_payment_channel import GetBankTransactionsDataPaymentChannel
-from ..models.get_bank_transactions_data_section import GetBankTransactionsDataSection
-from ..models.get_bank_transactions_data_sub_section import GetBankTransactionsDataSubSection
-from ..models.get_bank_transactions_data_transaction_type import GetBankTransactionsDataTransactionType
+from ..models.get_bank_transactions_data_payment_channel import (
+    GetBankTransactionsDataPaymentChannel,
+    check_get_bank_transactions_data_payment_channel,
+)
+from ..models.get_bank_transactions_data_section import (
+    GetBankTransactionsDataSection,
+    check_get_bank_transactions_data_section,
+)
+from ..models.get_bank_transactions_data_sub_section import (
+    GetBankTransactionsDataSubSection,
+    check_get_bank_transactions_data_sub_section,
+)
+from ..models.get_bank_transactions_data_transaction_type import (
+    GetBankTransactionsDataTransactionType,
+    check_get_bank_transactions_data_transaction_type,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -75,7 +87,7 @@ class GetBankTransactionsData:
 
         currency = self.currency
 
-        payment_channel = self.payment_channel
+        payment_channel: str = self.payment_channel
 
         description = self.description
 
@@ -165,7 +177,7 @@ class GetBankTransactionsData:
 
         currency = d.pop("currency")
 
-        payment_channel = d.pop("paymentChannel")
+        payment_channel = check_get_bank_transactions_data_payment_channel(d.pop("paymentChannel"))
 
         description = d.pop("description")
 
@@ -181,7 +193,7 @@ class GetBankTransactionsData:
         if isinstance(_transaction_type, Unset):
             transaction_type = UNSET
         else:
-            transaction_type = _transaction_type
+            transaction_type = check_get_bank_transactions_data_transaction_type(_transaction_type)
 
         categories = cast(List[str], d.pop("categories", UNSET))
 
@@ -201,14 +213,14 @@ class GetBankTransactionsData:
         if isinstance(_section, Unset):
             section = UNSET
         else:
-            section = _section
+            section = check_get_bank_transactions_data_section(_section)
 
         _sub_section = d.pop("subSection", UNSET)
         sub_section: Union[Unset, GetBankTransactionsDataSubSection]
         if isinstance(_sub_section, Unset):
             sub_section = UNSET
         else:
-            sub_section = _sub_section
+            sub_section = check_get_bank_transactions_data_sub_section(_sub_section)
 
         group = d.pop("group", UNSET)
 

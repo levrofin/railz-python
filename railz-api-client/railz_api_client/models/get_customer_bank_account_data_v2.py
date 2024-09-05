@@ -3,7 +3,10 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.get_customer_bank_account_data_v2_type import GetCustomerBankAccountDataV2Type
+from ..models.get_customer_bank_account_data_v2_type import (
+    GetCustomerBankAccountDataV2Type,
+    check_get_customer_bank_account_data_v2_type,
+)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -138,7 +141,7 @@ class GetCustomerBankAccountDataV2:
         if isinstance(_type, Unset):
             type = UNSET
         else:
-            type = _type
+            type = check_get_customer_bank_account_data_v2_type(_type)
 
         _customer_ref = d.pop("customerRef", UNSET)
         customer_ref: Union[Unset, ParentRefDtoV2]
