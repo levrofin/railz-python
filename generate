@@ -1,1 +1,10 @@
+#!/bin/bash
 openapi-python-client generate --config openapi-python-client.yaml --path schema.json --overwrite --custom-template-path=templates
+if [[ -z "$(git status --porcelain railz-api-client)" ]]; then
+  echo "Already up to date"
+  exit
+fi
+prev_ver="$(grep package_version_override openapi-python-client.yaml | sed 's/.*: //')"
+new_ver="v2a$(python -m uuid)"
+sed -i "s/${prev_ver}/${new_ver}/" openapi-python-client.yaml railz-api-client/pyproject.toml
+echo "Bumped version from ${prev_ver} to ${new_ver}"
