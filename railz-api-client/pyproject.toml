@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "railz-api-client"
-version = "v2ad13d2460-2ef8-4b81-9a18-9e093e87a500"
+version = "2.0.0"
 description = "A client library for accessing Railz API"
 authors = []
 readme = "README.md"
