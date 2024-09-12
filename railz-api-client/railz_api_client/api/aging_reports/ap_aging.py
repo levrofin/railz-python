@@ -22,8 +22,12 @@ def _get_kwargs(
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     report_frequency: ApAgingReportFrequency,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
 
     params["connectionUuid"] = connection_uuid
 
@@ -100,6 +104,7 @@ def sync_detailed(
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     report_frequency: ApAgingReportFrequency,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[Union[Any, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]]:
     """List Aged Payables
 
@@ -151,6 +156,7 @@ def sync(
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     report_frequency: ApAgingReportFrequency,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[Union[Any, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]]:
     """List Aged Payables
 
@@ -197,6 +203,7 @@ async def asyncio_detailed(
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     report_frequency: ApAgingReportFrequency,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[Union[Any, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]]:
     """List Aged Payables
 
@@ -246,6 +253,7 @@ async def asyncio(
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     report_frequency: ApAgingReportFrequency,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[Union[Any, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]]:
     """List Aged Payables
 

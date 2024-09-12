@@ -24,6 +24,7 @@ class PushBankAccountV2:
         routing_number (Union[Unset, str]):  Example: 123456789.
         bank_code (Union[Unset, str]):  Example: TD.
         i_ban (Union[Unset, str]):  Example: CA123456789012345678901234.
+        location_id (Union[Unset, str]):  Example: 100.
         institution_name (Union[Unset, str]):  Example: TD Bank.
         currency (Union[Unset, str]):  Example: CAD.
         current_balance (Union[Unset, float]):  Example: 24.55.
@@ -40,6 +41,7 @@ class PushBankAccountV2:
     routing_number: Union[Unset, str] = UNSET
     bank_code: Union[Unset, str] = UNSET
     i_ban: Union[Unset, str] = UNSET
+    location_id: Union[Unset, str] = UNSET
     institution_name: Union[Unset, str] = UNSET
     currency: Union[Unset, str] = UNSET
     current_balance: Union[Unset, float] = UNSET
@@ -66,6 +68,8 @@ class PushBankAccountV2:
         bank_code = self.bank_code
 
         i_ban = self.i_ban
+
+        location_id = self.location_id
 
         institution_name = self.institution_name
 
@@ -98,6 +102,8 @@ class PushBankAccountV2:
             field_dict["bankCode"] = bank_code
         if i_ban is not UNSET:
             field_dict["iBan"] = i_ban
+        if location_id is not UNSET:
+            field_dict["locationId"] = location_id
         if institution_name is not UNSET:
             field_dict["institutionName"] = institution_name
         if currency is not UNSET:
@@ -137,6 +143,8 @@ class PushBankAccountV2:
 
         i_ban = d.pop("iBan", UNSET)
 
+        location_id = d.pop("locationId", UNSET)
+
         institution_name = d.pop("institutionName", UNSET)
 
         currency = d.pop("currency", UNSET)
@@ -158,6 +166,7 @@ class PushBankAccountV2:
             routing_number=routing_number,
             bank_code=bank_code,
             i_ban=i_ban,
+            location_id=location_id,
             institution_name=institution_name,
             currency=currency,
             current_balance=current_balance,

@@ -25,8 +25,12 @@ def _get_kwargs(
     total_amount: Union[Unset, float] = UNSET,
     remaining_credit: Union[Unset, float] = UNSET,
     status: Union[Unset, InvoiceCreditNotesStatus] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
 
     params["connectionUuid"] = connection_uuid
 
@@ -138,6 +142,7 @@ def sync_detailed(
     total_amount: Union[Unset, float] = UNSET,
     remaining_credit: Union[Unset, float] = UNSET,
     status: Union[Unset, InvoiceCreditNotesStatus] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -205,6 +210,7 @@ def sync(
     total_amount: Union[Unset, float] = UNSET,
     remaining_credit: Union[Unset, float] = UNSET,
     status: Union[Unset, InvoiceCreditNotesStatus] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -267,6 +273,7 @@ async def asyncio_detailed(
     total_amount: Union[Unset, float] = UNSET,
     remaining_credit: Union[Unset, float] = UNSET,
     status: Union[Unset, InvoiceCreditNotesStatus] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -332,6 +339,7 @@ async def asyncio(
     total_amount: Union[Unset, float] = UNSET,
     remaining_credit: Union[Unset, float] = UNSET,
     status: Union[Unset, InvoiceCreditNotesStatus] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Any,

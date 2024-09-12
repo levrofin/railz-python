@@ -1,11 +1,17 @@
+import datetime
 from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
 from ..models.push_bank_account_response_v2_dto_service_name import (
     PushBankAccountResponseV2DtoServiceName,
     check_push_bank_account_response_v2_dto_service_name,
+)
+from ..models.push_bank_account_response_v2_dto_status import (
+    PushBankAccountResponseV2DtoStatus,
+    check_push_bank_account_response_v2_dto_status,
 )
 
 if TYPE_CHECKING:
@@ -22,12 +28,18 @@ class PushBankAccountResponseV2Dto:
         connection_uuid (str):  Example: CON-396d5daa-26b2-4979-89b6-cafb2c298155.
         business_name (str):  Example: Railz.
         service_name (PushBankAccountResponseV2DtoServiceName):  Example: xero.
+        push_communication_id (str):  Example: 60473b57f0cdd1683ca71f60.
+        requested_on (datetime.datetime):  Example: 2021-03-09T08:15:22.035Z.
+        status (PushBankAccountResponseV2DtoStatus):  Example: pending.
         data (PushBankAccountV2):
     """
 
     connection_uuid: str
     business_name: str
     service_name: PushBankAccountResponseV2DtoServiceName
+    push_communication_id: str
+    requested_on: datetime.datetime
+    status: PushBankAccountResponseV2DtoStatus
     data: "PushBankAccountV2"
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -38,6 +50,12 @@ class PushBankAccountResponseV2Dto:
 
         service_name: str = self.service_name
 
+        push_communication_id = self.push_communication_id
+
+        requested_on = self.requested_on.isoformat()
+
+        status: str = self.status
+
         data = self.data.to_dict()
 
         field_dict: Dict[str, Any] = {}
@@ -47,6 +65,9 @@ class PushBankAccountResponseV2Dto:
                 "connectionUuid": connection_uuid,
                 "businessName": business_name,
                 "serviceName": service_name,
+                "pushCommunicationId": push_communication_id,
+                "requestedOn": requested_on,
+                "status": status,
                 "data": data,
             }
         )
@@ -64,12 +85,21 @@ class PushBankAccountResponseV2Dto:
 
         service_name = check_push_bank_account_response_v2_dto_service_name(d.pop("serviceName"))
 
+        push_communication_id = d.pop("pushCommunicationId")
+
+        requested_on = isoparse(d.pop("requestedOn"))
+
+        status = check_push_bank_account_response_v2_dto_status(d.pop("status"))
+
         data = PushBankAccountV2.from_dict(d.pop("data"))
 
         push_bank_account_response_v2_dto = cls(
             connection_uuid=connection_uuid,
             business_name=business_name,
             service_name=service_name,
+            push_communication_id=push_communication_id,
+            requested_on=requested_on,
+            status=status,
             data=data,
         )
 

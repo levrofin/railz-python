@@ -18,8 +18,12 @@ def _get_kwargs(
     connection_uuid: str,
     start_date: str,
     end_date: str,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
 
     params["connectionUuid"] = connection_uuid
 
@@ -108,6 +112,7 @@ def sync_detailed(
     connection_uuid: str,
     start_date: str,
     end_date: str,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -157,6 +162,7 @@ def sync(
     connection_uuid: str,
     start_date: str,
     end_date: str,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -201,6 +207,7 @@ async def asyncio_detailed(
     connection_uuid: str,
     start_date: str,
     end_date: str,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -248,6 +255,7 @@ async def asyncio(
     connection_uuid: str,
     start_date: str,
     end_date: str,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Any,

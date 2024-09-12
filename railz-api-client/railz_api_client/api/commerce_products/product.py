@@ -25,8 +25,12 @@ def _get_kwargs(
     status: Union[Unset, ProductStatus] = UNSET,
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
 
     params["connectionUuid"] = connection_uuid
 
@@ -138,6 +142,7 @@ def sync_detailed(
     status: Union[Unset, ProductStatus] = UNSET,
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -204,6 +209,7 @@ def sync(
     status: Union[Unset, ProductStatus] = UNSET,
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -265,6 +271,7 @@ async def asyncio_detailed(
     status: Union[Unset, ProductStatus] = UNSET,
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -329,6 +336,7 @@ async def asyncio(
     status: Union[Unset, ProductStatus] = UNSET,
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Any,

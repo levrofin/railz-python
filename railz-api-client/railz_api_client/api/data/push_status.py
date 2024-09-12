@@ -18,8 +18,12 @@ def _get_kwargs(
     connection_uuid: str,
     push_communication_id: Union[Unset, str] = UNSET,
     batch_id: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
 
     params["connectionUuid"] = connection_uuid
 
@@ -88,6 +92,7 @@ def sync_detailed(
     connection_uuid: str,
     push_communication_id: Union[Unset, str] = UNSET,
     batch_id: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PushStatusResponseV2Dto]
 ]:
@@ -130,6 +135,7 @@ def sync(
     connection_uuid: str,
     push_communication_id: Union[Unset, str] = UNSET,
     batch_id: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PushStatusResponseV2Dto]
 ]:
@@ -167,6 +173,7 @@ async def asyncio_detailed(
     connection_uuid: str,
     push_communication_id: Union[Unset, str] = UNSET,
     batch_id: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PushStatusResponseV2Dto]
 ]:
@@ -207,6 +214,7 @@ async def asyncio(
     connection_uuid: str,
     push_communication_id: Union[Unset, str] = UNSET,
     batch_id: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PushStatusResponseV2Dto]
 ]:

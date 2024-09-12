@@ -11,18 +11,27 @@ from ...models.error_400_response_dto import Error400ResponseDto
 from ...models.error_401_response_dto import Error401ResponseDto
 from ...models.error_403_response_dto import Error403ResponseDto
 from ...models.error_500_response_dto import Error500ResponseDto
-from ...types import Response
+from ...types import UNSET, Response
 
 
 def _get_kwargs(
     *,
     body: DisableConnectionDto,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     headers: Dict[str, Any] = {}
+
+    params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: Dict[str, Any] = {
         "method": "put",
         "url": "/v2/connections/disconnect",
+        "params": params,
     }
 
     _body = body.to_dict()
@@ -82,6 +91,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: DisableConnectionDto,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[DisconnectResponseDto, Error400ResponseDto, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -113,6 +123,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: DisableConnectionDto,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[DisconnectResponseDto, Error400ResponseDto, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -139,6 +150,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: DisableConnectionDto,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[DisconnectResponseDto, Error400ResponseDto, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -168,6 +180,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: DisableConnectionDto,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[DisconnectResponseDto, Error400ResponseDto, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:

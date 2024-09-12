@@ -20,8 +20,12 @@ def _get_kwargs(
     is_beta: Union[Unset, bool] = UNSET,
     data_type: Union[Unset, DataTypesDataType] = UNSET,
     is_more_readable: Union[Unset, bool] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
 
     params["serviceType"] = service_type
 
@@ -97,6 +101,7 @@ def sync_detailed(
     is_beta: Union[Unset, bool] = UNSET,
     data_type: Union[Unset, DataTypesDataType] = UNSET,
     is_more_readable: Union[Unset, bool] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[Union[Error400ResponseDtoV2, Error500ResponseDto, List["DataTypesResponseV2Dto"]]]:
     """List Supported Data Types
 
@@ -143,6 +148,7 @@ def sync(
     is_beta: Union[Unset, bool] = UNSET,
     data_type: Union[Unset, DataTypesDataType] = UNSET,
     is_more_readable: Union[Unset, bool] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[Union[Error400ResponseDtoV2, Error500ResponseDto, List["DataTypesResponseV2Dto"]]]:
     """List Supported Data Types
 
@@ -184,6 +190,7 @@ async def asyncio_detailed(
     is_beta: Union[Unset, bool] = UNSET,
     data_type: Union[Unset, DataTypesDataType] = UNSET,
     is_more_readable: Union[Unset, bool] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[Union[Error400ResponseDtoV2, Error500ResponseDto, List["DataTypesResponseV2Dto"]]]:
     """List Supported Data Types
 
@@ -228,6 +235,7 @@ async def asyncio(
     is_beta: Union[Unset, bool] = UNSET,
     data_type: Union[Unset, DataTypesDataType] = UNSET,
     is_more_readable: Union[Unset, bool] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[Union[Error400ResponseDtoV2, Error500ResponseDto, List["DataTypesResponseV2Dto"]]]:
     """List Supported Data Types
 

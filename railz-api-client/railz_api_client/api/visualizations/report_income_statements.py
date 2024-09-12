@@ -26,8 +26,12 @@ def _get_kwargs(
     end_date: str,
     report_frequency: ReportIncomeStatementsReportFrequency,
     accounting_method: Union[Unset, ReportIncomeStatementsAccountingMethod] = "accrual",
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
 
     params["connectionUuid"] = connection_uuid
 
@@ -127,6 +131,7 @@ def sync_detailed(
     end_date: str,
     report_frequency: ReportIncomeStatementsReportFrequency,
     accounting_method: Union[Unset, ReportIncomeStatementsAccountingMethod] = "accrual",
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -182,6 +187,7 @@ def sync(
     end_date: str,
     report_frequency: ReportIncomeStatementsReportFrequency,
     accounting_method: Union[Unset, ReportIncomeStatementsAccountingMethod] = "accrual",
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -232,6 +238,7 @@ async def asyncio_detailed(
     end_date: str,
     report_frequency: ReportIncomeStatementsReportFrequency,
     accounting_method: Union[Unset, ReportIncomeStatementsAccountingMethod] = "accrual",
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -285,6 +292,7 @@ async def asyncio(
     end_date: str,
     report_frequency: ReportIncomeStatementsReportFrequency,
     accounting_method: Union[Unset, ReportIncomeStatementsAccountingMethod] = "accrual",
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Any,

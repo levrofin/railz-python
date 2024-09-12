@@ -28,8 +28,12 @@ def _get_kwargs(
     accounting_method: Union[Unset, SyncStatusAccountingMethod] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     request_id: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
 
     params["connectionUuid"] = connection_uuid
 
@@ -130,6 +134,7 @@ def sync_detailed(
     accounting_method: Union[Unset, SyncStatusAccountingMethod] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     request_id: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[DataStatusResponseV2Dto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -196,6 +201,7 @@ def sync(
     accounting_method: Union[Unset, SyncStatusAccountingMethod] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     request_id: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[DataStatusResponseV2Dto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -257,6 +263,7 @@ async def asyncio_detailed(
     accounting_method: Union[Unset, SyncStatusAccountingMethod] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     request_id: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[DataStatusResponseV2Dto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -321,6 +328,7 @@ async def asyncio(
     accounting_method: Union[Unset, SyncStatusAccountingMethod] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     request_id: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[DataStatusResponseV2Dto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:

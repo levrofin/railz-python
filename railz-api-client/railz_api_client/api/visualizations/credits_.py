@@ -23,8 +23,12 @@ def _get_kwargs(
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, CreditsReconstruct] = "false",
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
 
     params["connectionUuid"] = connection_uuid
 
@@ -116,6 +120,7 @@ def sync_detailed(
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, CreditsReconstruct] = "false",
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[Any, CreditsResponseDto, Error400ResponseDto, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -123,7 +128,7 @@ def sync_detailed(
 
      **Supported for:**
 
-    `quickbooks` `xero` `freshbooks` `quickbooksDesktop` `dynamicsBusinessCentral`
+    `quickbooks` `xero` `freshbooks` `quickbooksDesktop` `dynamicsBusinessCentral` `zohoBooks`
 
     Args:
         connection_uuid (str):
@@ -169,6 +174,7 @@ def sync(
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, CreditsReconstruct] = "false",
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[Any, CreditsResponseDto, Error400ResponseDto, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -176,7 +182,7 @@ def sync(
 
      **Supported for:**
 
-    `quickbooks` `xero` `freshbooks` `quickbooksDesktop` `dynamicsBusinessCentral`
+    `quickbooks` `xero` `freshbooks` `quickbooksDesktop` `dynamicsBusinessCentral` `zohoBooks`
 
     Args:
         connection_uuid (str):
@@ -217,6 +223,7 @@ async def asyncio_detailed(
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, CreditsReconstruct] = "false",
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[Any, CreditsResponseDto, Error400ResponseDto, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -224,7 +231,7 @@ async def asyncio_detailed(
 
      **Supported for:**
 
-    `quickbooks` `xero` `freshbooks` `quickbooksDesktop` `dynamicsBusinessCentral`
+    `quickbooks` `xero` `freshbooks` `quickbooksDesktop` `dynamicsBusinessCentral` `zohoBooks`
 
     Args:
         connection_uuid (str):
@@ -268,6 +275,7 @@ async def asyncio(
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, CreditsReconstruct] = "false",
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[Any, CreditsResponseDto, Error400ResponseDto, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -275,7 +283,7 @@ async def asyncio(
 
      **Supported for:**
 
-    `quickbooks` `xero` `freshbooks` `quickbooksDesktop` `dynamicsBusinessCentral`
+    `quickbooks` `xero` `freshbooks` `quickbooksDesktop` `dynamicsBusinessCentral` `zohoBooks`
 
     Args:
         connection_uuid (str):

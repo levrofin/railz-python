@@ -11,18 +11,27 @@ from ...models.error_403_response_dto import Error403ResponseDto
 from ...models.error_500_response_dto import Error500ResponseDto
 from ...models.push_bill_credit_note_response_v2_dto import PushBillCreditNoteResponseV2Dto
 from ...models.push_bill_credit_note_v2_dto import PushBillCreditNoteV2Dto
-from ...types import Response
+from ...types import UNSET, Response
 
 
 def _get_kwargs(
     *,
     body: PushBillCreditNoteV2Dto,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     headers: Dict[str, Any] = {}
+
+    params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: Dict[str, Any] = {
         "method": "post",
         "url": "/v2/accounting/bills/creditNotes",
+        "params": params,
     }
 
     _body = body.to_dict()
@@ -94,6 +103,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: PushBillCreditNoteV2Dto,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Error400ResponseDtoV2,
@@ -135,6 +145,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: PushBillCreditNoteV2Dto,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Error400ResponseDtoV2,
@@ -171,6 +182,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: PushBillCreditNoteV2Dto,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Error400ResponseDtoV2,
@@ -210,6 +222,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: PushBillCreditNoteV2Dto,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Error400ResponseDtoV2,

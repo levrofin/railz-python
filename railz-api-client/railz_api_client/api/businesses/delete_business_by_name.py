@@ -10,15 +10,24 @@ from ...models.error_400_response_dto_v2 import Error400ResponseDtoV2
 from ...models.error_401_response_dto import Error401ResponseDto
 from ...models.error_403_response_dto import Error403ResponseDto
 from ...models.error_500_response_dto import Error500ResponseDto
-from ...types import Response
+from ...types import UNSET, Response
 
 
 def _get_kwargs(
     uuid: str,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
+    params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: Dict[str, Any] = {
         "method": "delete",
         "url": f"/v2/businesses/{uuid}",
+        "params": params,
     }
 
     return _kwargs
@@ -76,6 +85,7 @@ def sync_detailed(
     uuid: str,
     *,
     client: AuthenticatedClient,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         DeleteBusinessResponseDto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto
@@ -109,6 +119,7 @@ def sync(
     uuid: str,
     *,
     client: AuthenticatedClient,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         DeleteBusinessResponseDto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto
@@ -137,6 +148,7 @@ async def asyncio_detailed(
     uuid: str,
     *,
     client: AuthenticatedClient,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         DeleteBusinessResponseDto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto
@@ -168,6 +180,7 @@ async def asyncio(
     uuid: str,
     *,
     client: AuthenticatedClient,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         DeleteBusinessResponseDto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto

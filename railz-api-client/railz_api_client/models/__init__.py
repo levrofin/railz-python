@@ -181,6 +181,7 @@ from .bill_payment_line_v2 import BillPaymentLineV2
 from .bill_payment_line_v2_item import BillPaymentLineV2Item
 from .bill_payment_link import BillPaymentLink
 from .bill_payment_link_type import BillPaymentLinkType
+from .bill_payment_request_links import BillPaymentRequestLinks
 from .bill_payment_request_meta_data import BillPaymentRequestMetaData
 from .bill_payment_request_meta_data_service_name import BillPaymentRequestMetaDataServiceName
 from .bill_tracking_category_ref_dto import BillTrackingCategoryRefDto
@@ -740,6 +741,11 @@ from .portfolio_metrics_report import PortfolioMetricsReport
 from .portfolio_metrics_report_data import PortfolioMetricsReportData
 from .portfolio_metrics_report_meta_data import PortfolioMetricsReportMetaData
 from .portfolio_metrics_response_dto import PortfolioMetricsResponseDto
+from .post_bill_payment_request_response_v2_dto import PostBillPaymentRequestResponseV2Dto
+from .post_bill_payment_request_response_v2_dto_service_name import PostBillPaymentRequestResponseV2DtoServiceName
+from .post_bill_payment_request_response_v2_dto_status import PostBillPaymentRequestResponseV2DtoStatus
+from .post_bill_payment_request_v2 import PostBillPaymentRequestV2
+from .post_bill_payment_request_v2_dto import PostBillPaymentRequestV2Dto
 from .post_businesses_response_dto import PostBusinessesResponseDto
 from .post_businesses_response_dto_v2 import PostBusinessesResponseDtoV2
 from .probability_of_default_data import ProbabilityOfDefaultData
@@ -780,6 +786,7 @@ from .push_attachment_v2_response_dto_service_name import PushAttachmentV2Respon
 from .push_attachment_v2_response_dto_status import PushAttachmentV2ResponseDtoStatus
 from .push_bank_account_response_v2_dto import PushBankAccountResponseV2Dto
 from .push_bank_account_response_v2_dto_service_name import PushBankAccountResponseV2DtoServiceName
+from .push_bank_account_response_v2_dto_status import PushBankAccountResponseV2DtoStatus
 from .push_bank_account_v2 import PushBankAccountV2
 from .push_bank_account_v2_account_type import PushBankAccountV2AccountType
 from .push_bank_account_v2_dto import PushBankAccountV2Dto
@@ -795,6 +802,7 @@ from .push_bank_transaction_response_dto import PushBankTransactionResponseDto
 from .push_bank_transaction_response_dto_service_name import PushBankTransactionResponseDtoServiceName
 from .push_bank_transaction_response_v2_dto import PushBankTransactionResponseV2Dto
 from .push_bank_transaction_response_v2_dto_service_name import PushBankTransactionResponseV2DtoServiceName
+from .push_bank_transaction_response_v2_dto_status import PushBankTransactionResponseV2DtoStatus
 from .push_bank_transaction_transaction_type import PushBankTransactionTransactionType
 from .push_bank_transaction_v2 import PushBankTransactionV2
 from .push_bank_transaction_v2_dto import PushBankTransactionV2Dto
@@ -1048,6 +1056,12 @@ from .push_status_meta_data_v2 import PushStatusMetaDataV2
 from .push_status_meta_data_v2_service_name import PushStatusMetaDataV2ServiceName
 from .push_status_response_dto import PushStatusResponseDto
 from .push_status_response_v2_dto import PushStatusResponseV2Dto
+from .push_tax_rate import PushTaxRate
+from .push_tax_rate_component import PushTaxRateComponent
+from .push_tax_rate_dto import PushTaxRateDto
+from .push_tax_rate_response_dto import PushTaxRateResponseDto
+from .push_tax_rate_response_dto_service_name import PushTaxRateResponseDtoServiceName
+from .push_tax_rate_response_dto_status import PushTaxRateResponseDtoStatus
 from .push_tracking_categories_connection import PushTrackingCategoriesConnection
 from .push_tracking_categories_connection_service_name import PushTrackingCategoriesConnectionServiceName
 from .push_tracking_categories_response_v1_dto import PushTrackingCategoriesResponseV1Dto
@@ -1569,6 +1583,7 @@ from .update_bank_transaction_line import UpdateBankTransactionLine
 from .update_bank_transaction_pass_through import UpdateBankTransactionPassThrough
 from .update_bank_transaction_response_dto import UpdateBankTransactionResponseDto
 from .update_bank_transaction_response_dto_service_name import UpdateBankTransactionResponseDtoServiceName
+from .update_bank_transaction_response_dto_status import UpdateBankTransactionResponseDtoStatus
 from .update_bank_transaction_transaction_type import UpdateBankTransactionTransactionType
 from .update_bill_line_item_v1 import UpdateBillLineItemV1
 from .update_bill_line_item_v1_billable_status import UpdateBillLineItemV1BillableStatus
@@ -1825,6 +1840,7 @@ __all__ = (
     "BillPaymentLineV2Item",
     "BillPaymentLink",
     "BillPaymentLinkType",
+    "BillPaymentRequestLinks",
     "BillPaymentRequestMetaData",
     "BillPaymentRequestMetaDataServiceName",
     "BillPLinks",
@@ -2382,6 +2398,11 @@ __all__ = (
     "PortfolioMetricsReportData",
     "PortfolioMetricsReportMetaData",
     "PortfolioMetricsResponseDto",
+    "PostBillPaymentRequestResponseV2Dto",
+    "PostBillPaymentRequestResponseV2DtoServiceName",
+    "PostBillPaymentRequestResponseV2DtoStatus",
+    "PostBillPaymentRequestV2",
+    "PostBillPaymentRequestV2Dto",
     "PostBusinessesResponseDto",
     "PostBusinessesResponseDtoV2",
     "ProbabilityOfDefaultData",
@@ -2422,6 +2443,7 @@ __all__ = (
     "PushAttachmentV2ResponseDtoStatus",
     "PushBankAccountResponseV2Dto",
     "PushBankAccountResponseV2DtoServiceName",
+    "PushBankAccountResponseV2DtoStatus",
     "PushBankAccountV2",
     "PushBankAccountV2AccountType",
     "PushBankAccountV2Dto",
@@ -2437,6 +2459,7 @@ __all__ = (
     "PushBankTransactionResponseDtoServiceName",
     "PushBankTransactionResponseV2Dto",
     "PushBankTransactionResponseV2DtoServiceName",
+    "PushBankTransactionResponseV2DtoStatus",
     "PushBankTransactionTransactionType",
     "PushBankTransactionV2",
     "PushBankTransactionV2Dto",
@@ -2690,6 +2713,12 @@ __all__ = (
     "PushStatusMetaDataV2ServiceName",
     "PushStatusResponseDto",
     "PushStatusResponseV2Dto",
+    "PushTaxRate",
+    "PushTaxRateComponent",
+    "PushTaxRateDto",
+    "PushTaxRateResponseDto",
+    "PushTaxRateResponseDtoServiceName",
+    "PushTaxRateResponseDtoStatus",
     "PushTrackingCategoriesConnection",
     "PushTrackingCategoriesConnectionServiceName",
     "PushTrackingCategoriesResponseV1Dto",
@@ -3017,6 +3046,7 @@ __all__ = (
     "UpdateBankTransactionPassThrough",
     "UpdateBankTransactionResponseDto",
     "UpdateBankTransactionResponseDtoServiceName",
+    "UpdateBankTransactionResponseDtoStatus",
     "UpdateBankTransactionTransactionType",
     "UpdateBillLineItemV1",
     "UpdateBillLineItemV1BillableStatus",

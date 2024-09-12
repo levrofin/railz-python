@@ -11,19 +11,28 @@ from ...models.error_403_response_dto import Error403ResponseDto
 from ...models.error_500_response_dto import Error500ResponseDto
 from ...models.push_update_vendor_v2_dto import PushUpdateVendorV2Dto
 from ...models.put_vendor_v2_response_dto import PutVendorV2ResponseDto
-from ...types import Response
+from ...types import UNSET, Response
 
 
 def _get_kwargs(
     id: str,
     *,
     body: PushUpdateVendorV2Dto,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     headers: Dict[str, Any] = {}
+
+    params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: Dict[str, Any] = {
         "method": "put",
         "url": f"/v2/accounting/vendors/{id}",
+        "params": params,
     }
 
     _body = body.to_dict()
@@ -84,6 +93,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: PushUpdateVendorV2Dto,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PutVendorV2ResponseDto]
 ]:
@@ -123,6 +133,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: PushUpdateVendorV2Dto,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PutVendorV2ResponseDto]
 ]:
@@ -157,6 +168,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: PushUpdateVendorV2Dto,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PutVendorV2ResponseDto]
 ]:
@@ -194,6 +206,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: PushUpdateVendorV2Dto,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PutVendorV2ResponseDto]
 ]:

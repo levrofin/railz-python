@@ -17,8 +17,12 @@ def _get_kwargs(
     id: str,
     *,
     connection_uuid: str,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
 
     params["connectionUuid"] = connection_uuid
 
@@ -94,6 +98,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     connection_uuid: str,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Error400ResponseDtoV2,
@@ -138,6 +143,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     connection_uuid: str,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Error400ResponseDtoV2,
@@ -177,6 +183,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     connection_uuid: str,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Error400ResponseDtoV2,
@@ -219,6 +226,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     connection_uuid: str,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Error400ResponseDtoV2,

@@ -21,8 +21,12 @@ def _get_kwargs(
     report_frequency: GetPortfolioMetricsReportFrequency,
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
 
     json_report_frequency: str = report_frequency
     params["reportFrequency"] = json_report_frequency
@@ -113,6 +117,7 @@ def sync_detailed(
     report_frequency: GetPortfolioMetricsReportFrequency,
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -157,6 +162,7 @@ def sync(
     report_frequency: GetPortfolioMetricsReportFrequency,
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -196,6 +202,7 @@ async def asyncio_detailed(
     report_frequency: GetPortfolioMetricsReportFrequency,
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -238,6 +245,7 @@ async def asyncio(
     report_frequency: GetPortfolioMetricsReportFrequency,
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Any,

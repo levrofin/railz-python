@@ -11,7 +11,7 @@ from ...models.error_403_response_dto import Error403ResponseDto
 from ...models.error_500_response_dto import Error500ResponseDto
 from ...models.push_attachment_v2_dto import PushAttachmentV2Dto
 from ...models.push_attachment_v2_response_dto import PushAttachmentV2ResponseDto
-from ...types import Response
+from ...types import UNSET, Response
 
 
 def _get_kwargs(
@@ -20,12 +20,21 @@ def _get_kwargs(
         PushAttachmentV2Dto,
         PushAttachmentV2Dto,
     ],
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     headers: Dict[str, Any] = {}
+
+    params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: Dict[str, Any] = {
         "method": "post",
         "url": "/v2/accounting/attachments",
+        "params": params,
     }
 
     if isinstance(body, PushAttachmentV2Dto):
@@ -106,6 +115,7 @@ def sync_detailed(
         PushAttachmentV2Dto,
         PushAttachmentV2Dto,
     ],
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Error400ResponseDtoV2,
@@ -152,6 +162,7 @@ def sync(
         PushAttachmentV2Dto,
         PushAttachmentV2Dto,
     ],
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Error400ResponseDtoV2,
@@ -193,6 +204,7 @@ async def asyncio_detailed(
         PushAttachmentV2Dto,
         PushAttachmentV2Dto,
     ],
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Error400ResponseDtoV2,
@@ -237,6 +249,7 @@ async def asyncio(
         PushAttachmentV2Dto,
         PushAttachmentV2Dto,
     ],
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Error400ResponseDtoV2,

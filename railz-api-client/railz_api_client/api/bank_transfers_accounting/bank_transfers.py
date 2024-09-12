@@ -21,8 +21,12 @@ def _get_kwargs(
     offset: Union[Unset, float] = UNSET,
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
 
     params["connectionUuid"] = connection_uuid
 
@@ -121,6 +125,7 @@ def sync_detailed(
     offset: Union[Unset, float] = UNSET,
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -178,6 +183,7 @@ def sync(
     offset: Union[Unset, float] = UNSET,
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -230,6 +236,7 @@ async def asyncio_detailed(
     offset: Union[Unset, float] = UNSET,
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -285,6 +292,7 @@ async def asyncio(
     offset: Union[Unset, float] = UNSET,
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Any,

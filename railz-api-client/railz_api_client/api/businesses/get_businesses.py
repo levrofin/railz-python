@@ -22,8 +22,12 @@ def _get_kwargs(
     status: Union[Unset, List[GetBusinessesStatusItem]] = UNSET,
     limit: Union[Unset, float] = UNSET,
     offset: Union[Unset, float] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
+
+    if additional_query_params:
+        params.update(additional_query_params)
 
     params["businessName"] = business_name
 
@@ -133,6 +137,7 @@ def sync_detailed(
     status: Union[Unset, List[GetBusinessesStatusItem]] = UNSET,
     limit: Union[Unset, float] = UNSET,
     offset: Union[Unset, float] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -186,6 +191,7 @@ def sync(
     status: Union[Unset, List[GetBusinessesStatusItem]] = UNSET,
     limit: Union[Unset, float] = UNSET,
     offset: Union[Unset, float] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -234,6 +240,7 @@ async def asyncio_detailed(
     status: Union[Unset, List[GetBusinessesStatusItem]] = UNSET,
     limit: Union[Unset, float] = UNSET,
     offset: Union[Unset, float] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -285,6 +292,7 @@ async def asyncio(
     status: Union[Unset, List[GetBusinessesStatusItem]] = UNSET,
     limit: Union[Unset, float] = UNSET,
     offset: Union[Unset, float] = UNSET,
+    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
 ) -> Optional[
     Union[
         Any,
