@@ -24,7 +24,7 @@ def _get_kwargs(
     status: Union[Unset, TransactionsStatus] = UNSET,
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
@@ -138,7 +138,7 @@ def sync_detailed(
     status: Union[Unset, TransactionsStatus] = UNSET,
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -164,6 +164,7 @@ def sync_detailed(
         status (Union[Unset, TransactionsStatus]):
         start_date (Union[Unset, str]):
         end_date (Union[Unset, str]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -182,6 +183,7 @@ def sync_detailed(
         status=status,
         start_date=start_date,
         end_date=end_date,
+        additional_query_params=additional_query_params,
     )
 
     response = client.get_httpx_client().request(
@@ -202,7 +204,7 @@ def sync(
     status: Union[Unset, TransactionsStatus] = UNSET,
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -228,6 +230,7 @@ def sync(
         status (Union[Unset, TransactionsStatus]):
         start_date (Union[Unset, str]):
         end_date (Union[Unset, str]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -247,6 +250,7 @@ def sync(
         status=status,
         start_date=start_date,
         end_date=end_date,
+        additional_query_params=additional_query_params,
     ).parsed
 
 
@@ -261,7 +265,7 @@ async def asyncio_detailed(
     status: Union[Unset, TransactionsStatus] = UNSET,
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -287,6 +291,7 @@ async def asyncio_detailed(
         status (Union[Unset, TransactionsStatus]):
         start_date (Union[Unset, str]):
         end_date (Union[Unset, str]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -305,6 +310,7 @@ async def asyncio_detailed(
         status=status,
         start_date=start_date,
         end_date=end_date,
+        additional_query_params=additional_query_params,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -323,7 +329,7 @@ async def asyncio(
     status: Union[Unset, TransactionsStatus] = UNSET,
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -349,6 +355,7 @@ async def asyncio(
         status (Union[Unset, TransactionsStatus]):
         start_date (Union[Unset, str]):
         end_date (Union[Unset, str]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -369,5 +376,6 @@ async def asyncio(
             status=status,
             start_date=start_date,
             end_date=end_date,
+            additional_query_params=additional_query_params,
         )
     ).parsed

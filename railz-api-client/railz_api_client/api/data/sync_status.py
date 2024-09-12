@@ -28,7 +28,7 @@ def _get_kwargs(
     accounting_method: Union[Unset, SyncStatusAccountingMethod] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     request_id: Union[Unset, str] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
@@ -134,7 +134,7 @@ def sync_detailed(
     accounting_method: Union[Unset, SyncStatusAccountingMethod] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     request_id: Union[Unset, str] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[DataStatusResponseV2Dto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -157,6 +157,7 @@ def sync_detailed(
         accounting_method (Union[Unset, SyncStatusAccountingMethod]):
         order_by (Union[Unset, str]):
         request_id (Union[Unset, str]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -178,6 +179,7 @@ def sync_detailed(
         accounting_method=accounting_method,
         order_by=order_by,
         request_id=request_id,
+        additional_query_params=additional_query_params,
     )
 
     response = client.get_httpx_client().request(
@@ -201,7 +203,7 @@ def sync(
     accounting_method: Union[Unset, SyncStatusAccountingMethod] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     request_id: Union[Unset, str] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[DataStatusResponseV2Dto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -224,6 +226,7 @@ def sync(
         accounting_method (Union[Unset, SyncStatusAccountingMethod]):
         order_by (Union[Unset, str]):
         request_id (Union[Unset, str]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -246,6 +249,7 @@ def sync(
         accounting_method=accounting_method,
         order_by=order_by,
         request_id=request_id,
+        additional_query_params=additional_query_params,
     ).parsed
 
 
@@ -263,7 +267,7 @@ async def asyncio_detailed(
     accounting_method: Union[Unset, SyncStatusAccountingMethod] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     request_id: Union[Unset, str] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[DataStatusResponseV2Dto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -286,6 +290,7 @@ async def asyncio_detailed(
         accounting_method (Union[Unset, SyncStatusAccountingMethod]):
         order_by (Union[Unset, str]):
         request_id (Union[Unset, str]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -307,6 +312,7 @@ async def asyncio_detailed(
         accounting_method=accounting_method,
         order_by=order_by,
         request_id=request_id,
+        additional_query_params=additional_query_params,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -328,7 +334,7 @@ async def asyncio(
     accounting_method: Union[Unset, SyncStatusAccountingMethod] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     request_id: Union[Unset, str] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[DataStatusResponseV2Dto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -351,6 +357,7 @@ async def asyncio(
         accounting_method (Union[Unset, SyncStatusAccountingMethod]):
         order_by (Union[Unset, str]):
         request_id (Union[Unset, str]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -374,5 +381,6 @@ async def asyncio(
             accounting_method=accounting_method,
             order_by=order_by,
             request_id=request_id,
+            additional_query_params=additional_query_params,
         )
     ).parsed

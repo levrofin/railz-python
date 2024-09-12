@@ -18,7 +18,7 @@ def _get_kwargs(
     *,
     connection_uuid: str,
     data_type: Union[Unset, PushOptionsDataType] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
@@ -93,7 +93,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     connection_uuid: str,
     data_type: Union[Unset, PushOptionsDataType] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PushOptionsResponseDto]
 ]:
@@ -107,6 +107,7 @@ def sync_detailed(
     Args:
         connection_uuid (str):
         data_type (Union[Unset, PushOptionsDataType]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -119,6 +120,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         connection_uuid=connection_uuid,
         data_type=data_type,
+        additional_query_params=additional_query_params,
     )
 
     response = client.get_httpx_client().request(
@@ -133,7 +135,7 @@ def sync(
     client: AuthenticatedClient,
     connection_uuid: str,
     data_type: Union[Unset, PushOptionsDataType] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PushOptionsResponseDto]
 ]:
@@ -147,6 +149,7 @@ def sync(
     Args:
         connection_uuid (str):
         data_type (Union[Unset, PushOptionsDataType]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -160,6 +163,7 @@ def sync(
         client=client,
         connection_uuid=connection_uuid,
         data_type=data_type,
+        additional_query_params=additional_query_params,
     ).parsed
 
 
@@ -168,7 +172,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     connection_uuid: str,
     data_type: Union[Unset, PushOptionsDataType] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PushOptionsResponseDto]
 ]:
@@ -182,6 +186,7 @@ async def asyncio_detailed(
     Args:
         connection_uuid (str):
         data_type (Union[Unset, PushOptionsDataType]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -194,6 +199,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         connection_uuid=connection_uuid,
         data_type=data_type,
+        additional_query_params=additional_query_params,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -206,7 +212,7 @@ async def asyncio(
     client: AuthenticatedClient,
     connection_uuid: str,
     data_type: Union[Unset, PushOptionsDataType] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PushOptionsResponseDto]
 ]:
@@ -220,6 +226,7 @@ async def asyncio(
     Args:
         connection_uuid (str):
         data_type (Union[Unset, PushOptionsDataType]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -234,5 +241,6 @@ async def asyncio(
             client=client,
             connection_uuid=connection_uuid,
             data_type=data_type,
+            additional_query_params=additional_query_params,
         )
     ).parsed

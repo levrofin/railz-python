@@ -23,7 +23,7 @@ def _get_kwargs(
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     status: Union[Unset, InvoicesStatus] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
@@ -134,7 +134,7 @@ def sync_detailed(
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     status: Union[Unset, InvoicesStatus] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -160,6 +160,7 @@ def sync_detailed(
         limit (Union[Unset, float]):
         order_by (Union[Unset, str]):
         status (Union[Unset, InvoicesStatus]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -177,6 +178,7 @@ def sync_detailed(
         limit=limit,
         order_by=order_by,
         status=status,
+        additional_query_params=additional_query_params,
     )
 
     response = client.get_httpx_client().request(
@@ -196,7 +198,7 @@ def sync(
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     status: Union[Unset, InvoicesStatus] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -222,6 +224,7 @@ def sync(
         limit (Union[Unset, float]):
         order_by (Union[Unset, str]):
         status (Union[Unset, InvoicesStatus]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -240,6 +243,7 @@ def sync(
         limit=limit,
         order_by=order_by,
         status=status,
+        additional_query_params=additional_query_params,
     ).parsed
 
 
@@ -253,7 +257,7 @@ async def asyncio_detailed(
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     status: Union[Unset, InvoicesStatus] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -279,6 +283,7 @@ async def asyncio_detailed(
         limit (Union[Unset, float]):
         order_by (Union[Unset, str]):
         status (Union[Unset, InvoicesStatus]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -296,6 +301,7 @@ async def asyncio_detailed(
         limit=limit,
         order_by=order_by,
         status=status,
+        additional_query_params=additional_query_params,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -313,7 +319,7 @@ async def asyncio(
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     status: Union[Unset, InvoicesStatus] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -339,6 +345,7 @@ async def asyncio(
         limit (Union[Unset, float]):
         order_by (Union[Unset, str]):
         status (Union[Unset, InvoicesStatus]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -358,5 +365,6 @@ async def asyncio(
             limit=limit,
             order_by=order_by,
             status=status,
+            additional_query_params=additional_query_params,
         )
     ).parsed

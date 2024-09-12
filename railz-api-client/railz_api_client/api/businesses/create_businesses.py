@@ -17,7 +17,7 @@ from ...types import UNSET, Response
 def _get_kwargs(
     *,
     body: CreateBusinessDto,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     headers: Dict[str, Any] = {}
 
@@ -103,7 +103,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateBusinessDto,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Error400ResponseDtoV2,
@@ -117,6 +117,7 @@ def sync_detailed(
 
     Args:
         body (CreateBusinessDto):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -128,6 +129,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         body=body,
+        additional_query_params=additional_query_params,
     )
 
     response = client.get_httpx_client().request(
@@ -141,7 +143,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: CreateBusinessDto,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Error400ResponseDtoV2,
@@ -155,6 +157,7 @@ def sync(
 
     Args:
         body (CreateBusinessDto):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -167,6 +170,7 @@ def sync(
     return sync_detailed(
         client=client,
         body=body,
+        additional_query_params=additional_query_params,
     ).parsed
 
 
@@ -174,7 +178,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: CreateBusinessDto,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Error400ResponseDtoV2,
@@ -188,6 +192,7 @@ async def asyncio_detailed(
 
     Args:
         body (CreateBusinessDto):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -199,6 +204,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         body=body,
+        additional_query_params=additional_query_params,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -210,7 +216,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: CreateBusinessDto,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Error400ResponseDtoV2,
@@ -224,6 +230,7 @@ async def asyncio(
 
     Args:
         body (CreateBusinessDto):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -237,5 +244,6 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             body=body,
+            additional_query_params=additional_query_params,
         )
     ).parsed

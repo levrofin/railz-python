@@ -18,7 +18,7 @@ def _get_kwargs(
     uuid: str,
     *,
     body: ConnectionMigrationDto,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     headers: Dict[str, Any] = {}
 
@@ -105,7 +105,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: ConnectionMigrationDto,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         ConnectionMigrationResponseDto,
@@ -120,6 +120,7 @@ def sync_detailed(
     Args:
         uuid (str):
         body (ConnectionMigrationDto):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -132,6 +133,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         uuid=uuid,
         body=body,
+        additional_query_params=additional_query_params,
     )
 
     response = client.get_httpx_client().request(
@@ -146,7 +148,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: ConnectionMigrationDto,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         ConnectionMigrationResponseDto,
@@ -161,6 +163,7 @@ def sync(
     Args:
         uuid (str):
         body (ConnectionMigrationDto):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -174,6 +177,7 @@ def sync(
         uuid=uuid,
         client=client,
         body=body,
+        additional_query_params=additional_query_params,
     ).parsed
 
 
@@ -182,7 +186,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: ConnectionMigrationDto,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         ConnectionMigrationResponseDto,
@@ -197,6 +201,7 @@ async def asyncio_detailed(
     Args:
         uuid (str):
         body (ConnectionMigrationDto):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -209,6 +214,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         uuid=uuid,
         body=body,
+        additional_query_params=additional_query_params,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -221,7 +227,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: ConnectionMigrationDto,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         ConnectionMigrationResponseDto,
@@ -236,6 +242,7 @@ async def asyncio(
     Args:
         uuid (str):
         body (ConnectionMigrationDto):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -250,5 +257,6 @@ async def asyncio(
             uuid=uuid,
             client=client,
             body=body,
+            additional_query_params=additional_query_params,
         )
     ).parsed

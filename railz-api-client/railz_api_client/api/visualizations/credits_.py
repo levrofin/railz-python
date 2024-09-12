@@ -23,7 +23,7 @@ def _get_kwargs(
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, CreditsReconstruct] = "false",
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
@@ -120,7 +120,7 @@ def sync_detailed(
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, CreditsReconstruct] = "false",
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[Any, CreditsResponseDto, Error400ResponseDto, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -138,6 +138,7 @@ def sync_detailed(
         start_date (Union[Unset, str]):
         end_date (Union[Unset, str]):
         reconstruct (Union[Unset, CreditsReconstruct]):  Default: 'false'.
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -155,6 +156,7 @@ def sync_detailed(
         start_date=start_date,
         end_date=end_date,
         reconstruct=reconstruct,
+        additional_query_params=additional_query_params,
     )
 
     response = client.get_httpx_client().request(
@@ -174,7 +176,7 @@ def sync(
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, CreditsReconstruct] = "false",
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[Any, CreditsResponseDto, Error400ResponseDto, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -192,6 +194,7 @@ def sync(
         start_date (Union[Unset, str]):
         end_date (Union[Unset, str]):
         reconstruct (Union[Unset, CreditsReconstruct]):  Default: 'false'.
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -210,6 +213,7 @@ def sync(
         start_date=start_date,
         end_date=end_date,
         reconstruct=reconstruct,
+        additional_query_params=additional_query_params,
     ).parsed
 
 
@@ -223,7 +227,7 @@ async def asyncio_detailed(
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, CreditsReconstruct] = "false",
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[Any, CreditsResponseDto, Error400ResponseDto, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -241,6 +245,7 @@ async def asyncio_detailed(
         start_date (Union[Unset, str]):
         end_date (Union[Unset, str]):
         reconstruct (Union[Unset, CreditsReconstruct]):  Default: 'false'.
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -258,6 +263,7 @@ async def asyncio_detailed(
         start_date=start_date,
         end_date=end_date,
         reconstruct=reconstruct,
+        additional_query_params=additional_query_params,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -275,7 +281,7 @@ async def asyncio(
     start_date: Union[Unset, str] = UNSET,
     end_date: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, CreditsReconstruct] = "false",
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[Any, CreditsResponseDto, Error400ResponseDto, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto]
 ]:
@@ -293,6 +299,7 @@ async def asyncio(
         start_date (Union[Unset, str]):
         end_date (Union[Unset, str]):
         reconstruct (Union[Unset, CreditsReconstruct]):  Default: 'false'.
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -312,5 +319,6 @@ async def asyncio(
             start_date=start_date,
             end_date=end_date,
             reconstruct=reconstruct,
+            additional_query_params=additional_query_params,
         )
     ).parsed

@@ -8,5 +8,5 @@ prev_ver="$(grep package_version_override openapi-python-client.yaml | sed 's/.*
 prev_ver_num="$(echo "${prev_ver}" | sed -r 's/.*[^0-9]//')"
 new_ver_num="$(( ${prev_ver_num} + 1 ))"
 new_ver="$(echo "${prev_ver}" | sed -r 's/[0-9]+$/'"${new_ver_num}/" )"
-sed -i "s/v2.0a${prev_ver}/${new_ver}/" openapi-python-client.yaml railz-api-client/pyproject.toml
+sed -i "s/${prev_ver}/${new_ver}/" openapi-python-client.yaml railz-api-client/pyproject.toml
 echo "Bumped version from ${prev_ver} to ${new_ver}"

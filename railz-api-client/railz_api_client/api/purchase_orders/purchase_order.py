@@ -24,7 +24,7 @@ def _get_kwargs(
     order_by: Union[Unset, str] = UNSET,
     total_amount: Union[Unset, float] = UNSET,
     status: Union[Unset, PurchaseOrderStatus] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
@@ -138,7 +138,7 @@ def sync_detailed(
     order_by: Union[Unset, str] = UNSET,
     total_amount: Union[Unset, float] = UNSET,
     status: Union[Unset, PurchaseOrderStatus] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -165,6 +165,7 @@ def sync_detailed(
         order_by (Union[Unset, str]):
         total_amount (Union[Unset, float]):
         status (Union[Unset, PurchaseOrderStatus]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -183,6 +184,7 @@ def sync_detailed(
         order_by=order_by,
         total_amount=total_amount,
         status=status,
+        additional_query_params=additional_query_params,
     )
 
     response = client.get_httpx_client().request(
@@ -203,7 +205,7 @@ def sync(
     order_by: Union[Unset, str] = UNSET,
     total_amount: Union[Unset, float] = UNSET,
     status: Union[Unset, PurchaseOrderStatus] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -230,6 +232,7 @@ def sync(
         order_by (Union[Unset, str]):
         total_amount (Union[Unset, float]):
         status (Union[Unset, PurchaseOrderStatus]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -249,6 +252,7 @@ def sync(
         order_by=order_by,
         total_amount=total_amount,
         status=status,
+        additional_query_params=additional_query_params,
     ).parsed
 
 
@@ -263,7 +267,7 @@ async def asyncio_detailed(
     order_by: Union[Unset, str] = UNSET,
     total_amount: Union[Unset, float] = UNSET,
     status: Union[Unset, PurchaseOrderStatus] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -290,6 +294,7 @@ async def asyncio_detailed(
         order_by (Union[Unset, str]):
         total_amount (Union[Unset, float]):
         status (Union[Unset, PurchaseOrderStatus]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -308,6 +313,7 @@ async def asyncio_detailed(
         order_by=order_by,
         total_amount=total_amount,
         status=status,
+        additional_query_params=additional_query_params,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -326,7 +332,7 @@ async def asyncio(
     order_by: Union[Unset, str] = UNSET,
     total_amount: Union[Unset, float] = UNSET,
     status: Union[Unset, PurchaseOrderStatus] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -353,6 +359,7 @@ async def asyncio(
         order_by (Union[Unset, str]):
         total_amount (Union[Unset, float]):
         status (Union[Unset, PurchaseOrderStatus]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -373,5 +380,6 @@ async def asyncio(
             order_by=order_by,
             total_amount=total_amount,
             status=status,
+            additional_query_params=additional_query_params,
         )
     ).parsed

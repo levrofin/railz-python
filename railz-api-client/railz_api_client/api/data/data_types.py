@@ -20,7 +20,7 @@ def _get_kwargs(
     is_beta: Union[Unset, bool] = UNSET,
     data_type: Union[Unset, DataTypesDataType] = UNSET,
     is_more_readable: Union[Unset, bool] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
@@ -101,7 +101,7 @@ def sync_detailed(
     is_beta: Union[Unset, bool] = UNSET,
     data_type: Union[Unset, DataTypesDataType] = UNSET,
     is_more_readable: Union[Unset, bool] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[Union[Error400ResponseDtoV2, Error500ResponseDto, List["DataTypesResponseV2Dto"]]]:
     """List Supported Data Types
 
@@ -116,6 +116,7 @@ def sync_detailed(
         is_beta (Union[Unset, bool]):
         data_type (Union[Unset, DataTypesDataType]):
         is_more_readable (Union[Unset, bool]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -131,6 +132,7 @@ def sync_detailed(
         is_beta=is_beta,
         data_type=data_type,
         is_more_readable=is_more_readable,
+        additional_query_params=additional_query_params,
     )
 
     response = client.get_httpx_client().request(
@@ -148,7 +150,7 @@ def sync(
     is_beta: Union[Unset, bool] = UNSET,
     data_type: Union[Unset, DataTypesDataType] = UNSET,
     is_more_readable: Union[Unset, bool] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[Union[Error400ResponseDtoV2, Error500ResponseDto, List["DataTypesResponseV2Dto"]]]:
     """List Supported Data Types
 
@@ -163,6 +165,7 @@ def sync(
         is_beta (Union[Unset, bool]):
         data_type (Union[Unset, DataTypesDataType]):
         is_more_readable (Union[Unset, bool]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -179,6 +182,7 @@ def sync(
         is_beta=is_beta,
         data_type=data_type,
         is_more_readable=is_more_readable,
+        additional_query_params=additional_query_params,
     ).parsed
 
 
@@ -190,7 +194,7 @@ async def asyncio_detailed(
     is_beta: Union[Unset, bool] = UNSET,
     data_type: Union[Unset, DataTypesDataType] = UNSET,
     is_more_readable: Union[Unset, bool] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Response[Union[Error400ResponseDtoV2, Error500ResponseDto, List["DataTypesResponseV2Dto"]]]:
     """List Supported Data Types
 
@@ -205,6 +209,7 @@ async def asyncio_detailed(
         is_beta (Union[Unset, bool]):
         data_type (Union[Unset, DataTypesDataType]):
         is_more_readable (Union[Unset, bool]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -220,6 +225,7 @@ async def asyncio_detailed(
         is_beta=is_beta,
         data_type=data_type,
         is_more_readable=is_more_readable,
+        additional_query_params=additional_query_params,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -235,7 +241,7 @@ async def asyncio(
     is_beta: Union[Unset, bool] = UNSET,
     data_type: Union[Unset, DataTypesDataType] = UNSET,
     is_more_readable: Union[Unset, bool] = UNSET,
-    additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+    additional_query_params: dict[str, str | list[str]] | None = None,
 ) -> Optional[Union[Error400ResponseDtoV2, Error500ResponseDto, List["DataTypesResponseV2Dto"]]]:
     """List Supported Data Types
 
@@ -250,6 +256,7 @@ async def asyncio(
         is_beta (Union[Unset, bool]):
         data_type (Union[Unset, DataTypesDataType]):
         is_more_readable (Union[Unset, bool]):
+        additional_query_params: extra query params
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -267,5 +274,6 @@ async def asyncio(
             is_beta=is_beta,
             data_type=data_type,
             is_more_readable=is_more_readable,
+            additional_query_params=additional_query_params,
         )
     ).parsed

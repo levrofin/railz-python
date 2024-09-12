@@ -128,7 +128,7 @@ body: Union[
 {{ parameter.to_string() }},
 {% endfor %}
 {# extra_params #}
-additional_query_params: dict[str, str] | list[tuple[str, str]] | None = None,
+additional_query_params: dict[str, str | list[str]] | None = None,
 {% endmacro %}
 
 {# Just lists all kwargs to endpoints as name=name for passing to other functions #}
@@ -151,6 +151,7 @@ body=body,
 {% for parameter in endpoint.cookie_parameters %}
 {{ parameter.python_name }}={{ parameter.python_name }},
 {% endfor %}
+additional_query_params=additional_query_params,
 {% endmacro %}
 
 {% macro docstring_content(endpoint, return_string, is_detailed) %}
@@ -170,6 +171,7 @@ Args:
     {% for parameter in all_parameters %}
     {{ parameter.to_docstring() | wordwrap(90) | indent(8) }}
     {% endfor %}
+    additional_query_params: extra query params
 
 {% endif %}
 Raises:
