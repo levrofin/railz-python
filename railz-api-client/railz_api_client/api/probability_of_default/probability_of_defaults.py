@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Dict, Mapping, Optional, Union, cast
 
 import httpx
 
@@ -25,7 +25,7 @@ def _get_kwargs(
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, ProbabilityOfDefaultsReconstruct] = "false",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
@@ -136,7 +136,7 @@ def sync_detailed(
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, ProbabilityOfDefaultsReconstruct] = "false",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -199,7 +199,7 @@ def sync(
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, ProbabilityOfDefaultsReconstruct] = "false",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -257,7 +257,7 @@ async def asyncio_detailed(
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, ProbabilityOfDefaultsReconstruct] = "false",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -318,7 +318,7 @@ async def asyncio(
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, ProbabilityOfDefaultsReconstruct] = "false",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,

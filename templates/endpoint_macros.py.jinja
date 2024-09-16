@@ -128,7 +128,7 @@ body: Union[
 {{ parameter.to_string() }},
 {% endfor %}
 {# extra_params #}
-additional_query_params: dict[str, str | list[str]] | None = None,
+additional_query_params: Mapping[str, str | list[str]] | None = None,
 {% endmacro %}
 
 {# Just lists all kwargs to endpoints as name=name for passing to other functions #}

@@ -1,5 +1,8 @@
 #!/bin/bash
 openapi-python-client generate --config openapi-python-client.yaml --path schema.json --overwrite --custom-template-path=templates
+rg --files-with-matches --type=py '\bMapping\b' railz-api-client | xargs sed -r -i '0,/(.*\bimport\b.*)/s//from typing import Mapping\n\1/'
+ruff check --fix .
+ruff format .
 if [[ -z "$(git status --porcelain railz-api-client)" ]]; then
   echo "Already up to date"
   exit

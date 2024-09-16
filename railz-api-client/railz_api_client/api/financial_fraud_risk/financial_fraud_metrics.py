@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Dict, Mapping, Optional, Union, cast
 
 import httpx
 
@@ -29,7 +29,7 @@ def _get_kwargs(
     order_by: Union[Unset, str] = UNSET,
     report_frequency: FinancialFraudMetricsReportFrequency = "month",
     reconstruct: Union[Unset, FinancialFraudMetricsReconstruct] = "false",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
@@ -144,7 +144,7 @@ def sync_detailed(
     order_by: Union[Unset, str] = UNSET,
     report_frequency: FinancialFraudMetricsReportFrequency = "month",
     reconstruct: Union[Unset, FinancialFraudMetricsReconstruct] = "false",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -210,7 +210,7 @@ def sync(
     order_by: Union[Unset, str] = UNSET,
     report_frequency: FinancialFraudMetricsReportFrequency = "month",
     reconstruct: Union[Unset, FinancialFraudMetricsReconstruct] = "false",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -271,7 +271,7 @@ async def asyncio_detailed(
     order_by: Union[Unset, str] = UNSET,
     report_frequency: FinancialFraudMetricsReportFrequency = "month",
     reconstruct: Union[Unset, FinancialFraudMetricsReconstruct] = "false",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -335,7 +335,7 @@ async def asyncio(
     order_by: Union[Unset, str] = UNSET,
     report_frequency: FinancialFraudMetricsReportFrequency = "month",
     reconstruct: Union[Unset, FinancialFraudMetricsReconstruct] = "false",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,

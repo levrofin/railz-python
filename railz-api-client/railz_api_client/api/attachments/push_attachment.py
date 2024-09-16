@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, Mapping, Optional, Union
 
 import httpx
 
@@ -20,7 +20,7 @@ def _get_kwargs(
         PushAttachmentV2Dto,
         PushAttachmentV2Dto,
     ],
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     headers: Dict[str, Any] = {}
 
@@ -115,7 +115,7 @@ def sync_detailed(
         PushAttachmentV2Dto,
         PushAttachmentV2Dto,
     ],
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Error400ResponseDtoV2,
@@ -164,7 +164,7 @@ def sync(
         PushAttachmentV2Dto,
         PushAttachmentV2Dto,
     ],
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Error400ResponseDtoV2,
@@ -208,7 +208,7 @@ async def asyncio_detailed(
         PushAttachmentV2Dto,
         PushAttachmentV2Dto,
     ],
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Error400ResponseDtoV2,
@@ -255,7 +255,7 @@ async def asyncio(
         PushAttachmentV2Dto,
         PushAttachmentV2Dto,
     ],
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Error400ResponseDtoV2,

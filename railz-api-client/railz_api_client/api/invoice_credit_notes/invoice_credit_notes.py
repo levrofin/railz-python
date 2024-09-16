@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Dict, Mapping, Optional, Union, cast
 
 import httpx
 
@@ -25,7 +25,7 @@ def _get_kwargs(
     total_amount: Union[Unset, float] = UNSET,
     remaining_credit: Union[Unset, float] = UNSET,
     status: Union[Unset, InvoiceCreditNotesStatus] = UNSET,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
@@ -142,7 +142,7 @@ def sync_detailed(
     total_amount: Union[Unset, float] = UNSET,
     remaining_credit: Union[Unset, float] = UNSET,
     status: Union[Unset, InvoiceCreditNotesStatus] = UNSET,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -212,7 +212,7 @@ def sync(
     total_amount: Union[Unset, float] = UNSET,
     remaining_credit: Union[Unset, float] = UNSET,
     status: Union[Unset, InvoiceCreditNotesStatus] = UNSET,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -277,7 +277,7 @@ async def asyncio_detailed(
     total_amount: Union[Unset, float] = UNSET,
     remaining_credit: Union[Unset, float] = UNSET,
     status: Union[Unset, InvoiceCreditNotesStatus] = UNSET,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -345,7 +345,7 @@ async def asyncio(
     total_amount: Union[Unset, float] = UNSET,
     remaining_credit: Union[Unset, float] = UNSET,
     status: Union[Unset, InvoiceCreditNotesStatus] = UNSET,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,

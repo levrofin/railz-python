@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Dict, Mapping, Optional, Union, cast
 
 import httpx
 
@@ -26,7 +26,7 @@ def _get_kwargs(
     end_date: str,
     report_frequency: ReportCashflowStatementsReportFrequency,
     accounting_method: Union[Unset, ReportCashflowStatementsAccountingMethod] = "accrual",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
@@ -131,7 +131,7 @@ def sync_detailed(
     end_date: str,
     report_frequency: ReportCashflowStatementsReportFrequency,
     accounting_method: Union[Unset, ReportCashflowStatementsAccountingMethod] = "accrual",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -189,7 +189,7 @@ def sync(
     end_date: str,
     report_frequency: ReportCashflowStatementsReportFrequency,
     accounting_method: Union[Unset, ReportCashflowStatementsAccountingMethod] = "accrual",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -242,7 +242,7 @@ async def asyncio_detailed(
     end_date: str,
     report_frequency: ReportCashflowStatementsReportFrequency,
     accounting_method: Union[Unset, ReportCashflowStatementsAccountingMethod] = "accrual",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -298,7 +298,7 @@ async def asyncio(
     end_date: str,
     report_frequency: ReportCashflowStatementsReportFrequency,
     accounting_method: Union[Unset, ReportCashflowStatementsAccountingMethod] = "accrual",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,

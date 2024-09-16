@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Dict, Mapping, Optional, Union, cast
 
 import httpx
 
@@ -21,7 +21,7 @@ def _get_kwargs(
     offset: Union[Unset, float] = UNSET,
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
@@ -125,7 +125,7 @@ def sync_detailed(
     offset: Union[Unset, float] = UNSET,
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -186,7 +186,7 @@ def sync(
     offset: Union[Unset, float] = UNSET,
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -242,7 +242,7 @@ async def asyncio_detailed(
     offset: Union[Unset, float] = UNSET,
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -301,7 +301,7 @@ async def asyncio(
     offset: Union[Unset, float] = UNSET,
     limit: Union[Unset, float] = UNSET,
     order_by: Union[Unset, str] = UNSET,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,

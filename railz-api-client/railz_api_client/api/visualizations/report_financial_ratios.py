@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Dict, Mapping, Optional, Union, cast
 
 import httpx
 
@@ -22,7 +22,7 @@ def _get_kwargs(
     start_date: str,
     end_date: str,
     report_frequency: ReportFinancialRatiosReportFrequency,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
@@ -120,7 +120,7 @@ def sync_detailed(
     start_date: str,
     end_date: str,
     report_frequency: ReportFinancialRatiosReportFrequency,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -174,7 +174,7 @@ def sync(
     start_date: str,
     end_date: str,
     report_frequency: ReportFinancialRatiosReportFrequency,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -223,7 +223,7 @@ async def asyncio_detailed(
     start_date: str,
     end_date: str,
     report_frequency: ReportFinancialRatiosReportFrequency,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -275,7 +275,7 @@ async def asyncio(
     start_date: str,
     end_date: str,
     report_frequency: ReportFinancialRatiosReportFrequency,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,

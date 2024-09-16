@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Dict, Mapping, Optional, Union, cast
 
 import httpx
 
@@ -19,7 +19,7 @@ def _get_kwargs(
     connection_uuid: str,
     end_date: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, CreditRatingsReconstruct] = "false",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
@@ -118,7 +118,7 @@ def sync_detailed(
     connection_uuid: str,
     end_date: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, CreditRatingsReconstruct] = "false",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -169,7 +169,7 @@ def sync(
     connection_uuid: str,
     end_date: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, CreditRatingsReconstruct] = "false",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,
@@ -215,7 +215,7 @@ async def asyncio_detailed(
     connection_uuid: str,
     end_date: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, CreditRatingsReconstruct] = "false",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         Any,
@@ -264,7 +264,7 @@ async def asyncio(
     connection_uuid: str,
     end_date: Union[Unset, str] = UNSET,
     reconstruct: Union[Unset, CreditRatingsReconstruct] = "false",
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         Any,

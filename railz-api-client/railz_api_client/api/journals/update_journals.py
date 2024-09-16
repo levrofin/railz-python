@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, Mapping, Optional, Union
 
 import httpx
 
@@ -18,7 +18,7 @@ def _get_kwargs(
     id: str,
     *,
     body: PushUpdateJournalsDto,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     headers: Dict[str, Any] = {}
 
@@ -93,7 +93,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: PushUpdateJournalsDto,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PushJournalsResponseDto]
 ]:
@@ -134,7 +134,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: PushUpdateJournalsDto,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PushJournalsResponseDto]
 ]:
@@ -170,7 +170,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: PushUpdateJournalsDto,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PushJournalsResponseDto]
 ]:
@@ -209,7 +209,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: PushUpdateJournalsDto,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto, PushJournalsResponseDto]
 ]:

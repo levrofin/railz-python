@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, Mapping, Optional, Union
 
 import httpx
 
@@ -15,7 +15,7 @@ from ...types import UNSET, Response
 
 def _get_kwargs(
     uuid: str,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     params: Dict[str, Any] = {}
 
@@ -85,7 +85,7 @@ def sync_detailed(
     uuid: str,
     *,
     client: AuthenticatedClient,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         DeleteBusinessResponseDto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto
@@ -121,7 +121,7 @@ def sync(
     uuid: str,
     *,
     client: AuthenticatedClient,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         DeleteBusinessResponseDto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto
@@ -152,7 +152,7 @@ async def asyncio_detailed(
     uuid: str,
     *,
     client: AuthenticatedClient,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Response[
     Union[
         DeleteBusinessResponseDto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto
@@ -186,7 +186,7 @@ async def asyncio(
     uuid: str,
     *,
     client: AuthenticatedClient,
-    additional_query_params: dict[str, str | list[str]] | None = None,
+    additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Optional[
     Union[
         DeleteBusinessResponseDto, Error400ResponseDtoV2, Error401ResponseDto, Error403ResponseDto, Error500ResponseDto
