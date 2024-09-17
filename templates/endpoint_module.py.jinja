@@ -122,6 +122,7 @@ def sync(
         {{ kwargs(endpoint) }}
     ).parsed
 {% endif %}
+{#
 
 async def asyncio_detailed(
     {{ arguments(endpoint) | indent(4) }}
@@ -148,3 +149,4 @@ async def asyncio(
         {{ kwargs(endpoint) }}
     )).parsed
 {% endif %}
+#}
