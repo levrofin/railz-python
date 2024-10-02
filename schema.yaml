@@ -14993,17 +14993,18 @@ components:
         subType:
           type: string
           example: cash&Bank
-          enum:
-            - cash&Bank
-            - currentAsset
-            - propertyPlantAndEquipment
-            - longTermAsset
-            - currentLiability
-            - longTermLiability
-            - equity
-            - income
-            - costOfGoodsSold
-            - operatingExpense
+# Hack to circumvent the server returning an something not listed here
+#          enum:
+#            - cash&Bank
+#            - currentAsset
+#            - propertyPlantAndEquipment
+#            - longTermAsset
+#            - currentLiability
+#            - longTermLiability
+#            - equity
+#            - income
+#            - costOfGoodsSold
+#            - operatingExpense
         isBankAccount:
           type: boolean
           example: true

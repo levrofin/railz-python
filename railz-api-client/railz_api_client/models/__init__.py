@@ -504,7 +504,6 @@ from .get_chart_of_accounts_data_v1 import GetChartOfAccountsDataV1
 from .get_chart_of_accounts_data_v1_section import GetChartOfAccountsDataV1Section
 from .get_chart_of_accounts_data_v1_sub_section import GetChartOfAccountsDataV1SubSection
 from .get_chart_of_accounts_data_v2 import GetChartOfAccountsDataV2
-from .get_chart_of_accounts_data_v2_sub_type import GetChartOfAccountsDataV2SubType
 from .get_chart_of_accounts_response_v1_dto import GetChartOfAccountsResponseV1Dto
 from .get_chart_of_accounts_v2_response_dto import GetChartOfAccountsV2ResponseDto
 from .get_contact_data import GetContactData
@@ -2145,7 +2144,6 @@ __all__ = (
     "GetChartOfAccountsDataV1Section",
     "GetChartOfAccountsDataV1SubSection",
     "GetChartOfAccountsDataV2",
-    "GetChartOfAccountsDataV2SubType",
     "GetChartOfAccountsResponseV1Dto",
     "GetChartOfAccountsV2ResponseDto",
     "GetContactData",

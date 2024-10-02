@@ -5,10 +5,6 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.get_chart_of_accounts_data_v2_sub_type import (
-    GetChartOfAccountsDataV2SubType,
-    check_get_chart_of_accounts_data_v2_sub_type,
-)
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -37,7 +33,7 @@ class GetChartOfAccountsDataV2:
         fully_qualified_name (Union[Unset, str]):  Example: Expenses : Transportation : Car Mileage.
         depth (Union[Unset, float]):  Example: 3.
         current_balance (Union[Unset, float]):
-        sub_type (Union[Unset, GetChartOfAccountsDataV2SubType]):  Example: cash&Bank.
+        sub_type (Union[Unset, str]):  Example: cash&Bank.
         is_bank_account (Union[Unset, bool]):  Example: True.
         is_sub_account (Union[Unset, bool]):  Example: True.
         subsidiary_refs (Union[Unset, List['SubsidiaryRef']]):
@@ -64,7 +60,7 @@ class GetChartOfAccountsDataV2:
     fully_qualified_name: Union[Unset, str] = UNSET
     depth: Union[Unset, float] = UNSET
     current_balance: Union[Unset, float] = UNSET
-    sub_type: Union[Unset, GetChartOfAccountsDataV2SubType] = UNSET
+    sub_type: Union[Unset, str] = UNSET
     is_bank_account: Union[Unset, bool] = UNSET
     is_sub_account: Union[Unset, bool] = UNSET
     subsidiary_refs: Union[Unset, List["SubsidiaryRef"]] = UNSET
@@ -105,9 +101,7 @@ class GetChartOfAccountsDataV2:
 
         current_balance = self.current_balance
 
-        sub_type: Union[Unset, str] = UNSET
-        if not isinstance(self.sub_type, Unset):
-            sub_type = self.sub_type
+        sub_type = self.sub_type
 
         is_bank_account = self.is_bank_account
 
@@ -230,12 +224,7 @@ class GetChartOfAccountsDataV2:
 
         current_balance = d.pop("currentBalance", UNSET)
 
-        _sub_type = d.pop("subType", UNSET)
-        sub_type: Union[Unset, GetChartOfAccountsDataV2SubType]
-        if isinstance(_sub_type, Unset):
-            sub_type = UNSET
-        else:
-            sub_type = check_get_chart_of_accounts_data_v2_sub_type(_sub_type)
+        sub_type = d.pop("subType", UNSET)
 
         is_bank_account = d.pop("isBankAccount", UNSET)
 
