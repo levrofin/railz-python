@@ -1,1 +1,8 @@
-curl https://api.railz.ai/swagger/v2 -o schema.json
+#!/bin/bash
+
+if ! command -v yq 2>&1 >/dev/null; then
+  echo "Please install yq from https://github.com/mikefarah/yq/#install"
+  exit 1
+fi
+
+curl https://api.railz.ai/swagger/v2 | yq -Poy > schema.yaml
