@@ -379,6 +379,7 @@ paths:
               - refunds
               - taxBenchmarking
               - taxRates
+              - taxAuthority
               - trackingCategories
               - trialBalances
               - vendors
@@ -623,6 +624,7 @@ paths:
               - refunds
               - taxBenchmarking
               - taxRates
+              - taxAuthority
               - trackingCategories
               - trialBalances
               - vendors
@@ -665,130 +667,6 @@ paths:
                 $ref: '#/components/schemas/Error500ResponseDto'
       security:
         - bearer: []
-      tags:
-        - Data
-  /v2/data/dataTypes:
-    get:
-      operationId: dataTypes
-      summary: List Supported Data Types
-      description: |-
-        **Supported for:**
-
-        `freshbooks` `quickbooks` `quickbooksDesktop` `xero` `oracleNetsuite` `sageBusinessCloud` `sageIntacct` `dynamicsBusinessCentral` `wave` `shopify` `square` `plaid` `zohoBooks`
-      parameters:
-        - name: serviceType
-          required: false
-          in: query
-          schema:
-            type: string
-        - name: serviceName
-          required: false
-          in: query
-          schema:
-            enum:
-              - freshbooks
-              - quickbooks
-              - quickbooksDesktop
-              - xero
-              - oracleNetsuite
-              - sageBusinessCloud
-              - sageIntacct
-              - dynamicsBusinessCentral
-              - wave
-              - shopify
-              - square
-              - plaid
-              - zohoBooks
-            type: string
-        - name: isBeta
-          required: false
-          in: query
-          schema:
-            type: boolean
-        - name: dataType
-          required: false
-          in: query
-          schema:
-            enum:
-              - accountingTransactions
-              - accounts
-              - agedPayable
-              - agedReceivable
-              - attachments
-              - balanceSheets
-              - bankingReconciliation
-              - bankTransactions
-              - bankAccounts
-              - bankTransfers
-              - billCreditNotes
-              - billPayments
-              - bills
-              - businessInfo
-              - businessValuations
-              - cashflowStatements
-              - creditScore
-              - customers
-              - deposits
-              - estimates
-              - financialBenchmarking
-              - financialForecasts
-              - financialRatios
-              - fraudRiskMetrics
-              - incomeStatements
-              - inventory
-              - invoiceCreditNotes
-              - invoicePayments
-              - invoices
-              - journalEntries
-              - journals
-              - probabilityOfDefault
-              - purchaseOrders
-              - refunds
-              - taxBenchmarking
-              - taxRates
-              - trackingCategories
-              - trialBalances
-              - vendors
-              - paymentMethods
-              - portfolioMetrics
-              - expenses
-              - contacts
-              - vendorBankAccounts
-              - customerBankAccounts
-              - billPaymentRequests
-              - transactions
-              - products
-              - orders
-              - disputes
-              - bankAssets
-            type: string
-        - name: isMoreReadable
-          required: false
-          in: query
-          description: Identifies whether to return description and non supported types
-          schema:
-            type: boolean
-      responses:
-        "200":
-          description: ""
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DataTypesResponseV2Dto'
-        "400":
-          description: Bad Request Error - Thrown if fields sent via query does not follow specifications
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error400ResponseDtoV2'
-        "500":
-          description: Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500ResponseDto'
       tags:
         - Data
   /v2/accounting/accounts:
@@ -7639,6 +7517,85 @@ paths:
         - bearer: []
       tags:
         - Tax Rates
+  /v2/accounting/taxAuthority:
+    get:
+      operationId: taxAuthority
+      summary: List Tax Authorities
+      description: |-
+        **Supported for:**
+
+        `quickbooks` `zohoBooks`
+      parameters:
+        - name: connectionUuid
+          required: true
+          in: query
+          description: Unique connection identifier.
+          example: CON-396d5daa-26b2-4979-89b6-cafb2c298155
+          schema:
+            type: string
+        - name: offset
+          required: false
+          in: query
+          description: The offset is the position in the dataset of a particular record.
+          schema:
+            format: integer
+            type: number
+        - name: limit
+          required: false
+          in: query
+          description: 'This is the size of the results set you would like (default: 100).'
+          example: 100
+          schema:
+            format: integer
+            type: number
+        - name: orderBy
+          required: false
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTaxAuthorityResponseDto'
+        "202":
+          description: Data in pending state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTaxAuthorityResponseDto'
+        "204":
+          description: No data available
+        "400":
+          description: Bad Request Error - Thrown if fields sent via query does not follow specifications
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400ResponseDtoV2'
+        "401":
+          description: Unauthorized - Not logged in or log in expired
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401ResponseDto'
+        "403":
+          description: Forbidden - Not enough permission
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403ResponseDto'
+        "500":
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500ResponseDto'
+      security:
+        - bearer: []
+      tags:
+        - Tax Authority
   /v2/accounting/trackingCategories:
     get:
       operationId: trackingCategories
@@ -13823,6 +13780,7 @@ components:
             - refunds
             - taxBenchmarking
             - taxRates
+            - taxAuthority
             - trackingCategories
             - trialBalances
             - vendors
@@ -14339,6 +14297,7 @@ components:
             - refunds
             - taxBenchmarking
             - taxRates
+            - taxAuthority
             - trackingCategories
             - trialBalances
             - vendors
@@ -14396,6 +14355,7 @@ components:
               - refunds
               - taxBenchmarking
               - taxRates
+              - taxAuthority
               - trackingCategories
               - trialBalances
               - vendors
@@ -14537,6 +14497,7 @@ components:
             - refunds
             - taxBenchmarking
             - taxRates
+            - taxAuthority
             - trackingCategories
             - trialBalances
             - vendors
@@ -14585,287 +14546,6 @@ components:
             $ref: '#/components/schemas/PushOptionsData'
       required:
         - data
-    DataTypesData:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-          enum:
-            - accountingTransactions
-            - accounts
-            - agedPayable
-            - agedReceivable
-            - attachments
-            - balanceSheets
-            - bankingReconciliation
-            - bankTransactions
-            - bankAccounts
-            - bankTransfers
-            - billCreditNotes
-            - billPayments
-            - bills
-            - businessInfo
-            - businessValuations
-            - cashflowStatements
-            - creditScore
-            - customers
-            - deposits
-            - estimates
-            - financialBenchmarking
-            - financialForecasts
-            - financialRatios
-            - fraudRiskMetrics
-            - incomeStatements
-            - inventory
-            - invoiceCreditNotes
-            - invoicePayments
-            - invoices
-            - journalEntries
-            - journals
-            - probabilityOfDefault
-            - purchaseOrders
-            - refunds
-            - taxBenchmarking
-            - taxRates
-            - trackingCategories
-            - trialBalances
-            - vendors
-            - paymentMethods
-            - portfolioMetrics
-            - expenses
-            - contacts
-            - vendorBankAccounts
-            - customerBankAccounts
-            - billPaymentRequests
-            - transactions
-            - products
-            - orders
-            - disputes
-            - bankAccounts
-            - bankTransactions
-            - bankAssets
-        description:
-          type: string
-          readOnly: true
-          example: AP Aging
-        action:
-          type: array
-          items:
-            type: string
-            enum:
-              - delete
-              - pull
-              - push_create
-              - push_create_batch
-              - push_update_batch
-              - push_update
-              - pull_not_supported
-              - push_not_supported
-              - push_update_not_supported
-              - push_not_applicable
-              - pull_not_applicable
-        accountingMethod:
-          type: string
-          enum:
-            - cash
-            - accrual
-        reportType:
-          type: string
-          enum:
-            - accounting
-            - banking
-            - commerce
-            - analytics
-      required:
-        - name
-        - description
-        - action
-        - reportType
-    DataTypesResponseDto:
-      type: object
-      properties:
-        serviceName:
-          type: string
-          readOnly: true
-          enum:
-            - freshbooks
-            - quickbooks
-            - quickbooksDesktop
-            - xero
-            - oracleNetsuite
-            - sageBusinessCloud
-            - sageIntacct
-            - dynamicsBusinessCentral
-            - wave
-            - shopify
-            - square
-            - plaid
-            - zohoBooks
-        serviceNameDescription:
-          type: string
-          readOnly: true
-        serviceType:
-          type: string
-          readOnly: true
-          enum:
-            - accounting
-            - banking
-            - commerce
-        isBeta:
-          type: boolean
-          readOnly: true
-        dataTypes:
-          readOnly: true
-          type: array
-          items:
-            $ref: '#/components/schemas/DataTypesData'
-      required:
-        - serviceName
-        - serviceNameDescription
-        - serviceType
-        - isBeta
-        - dataTypes
-    DataTypesDataV2:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-          enum:
-            - accountingTransactions
-            - accounts
-            - agedPayable
-            - agedReceivable
-            - attachments
-            - balanceSheets
-            - bankingReconciliation
-            - bankTransactions
-            - bankAccounts
-            - bankTransfers
-            - billCreditNotes
-            - billPayments
-            - bills
-            - businessInfo
-            - businessValuations
-            - cashflowStatements
-            - creditScore
-            - customers
-            - deposits
-            - estimates
-            - financialBenchmarking
-            - financialForecasts
-            - financialRatios
-            - fraudRiskMetrics
-            - incomeStatements
-            - inventory
-            - invoiceCreditNotes
-            - invoicePayments
-            - invoices
-            - journalEntries
-            - journals
-            - probabilityOfDefault
-            - purchaseOrders
-            - refunds
-            - taxBenchmarking
-            - taxRates
-            - trackingCategories
-            - trialBalances
-            - vendors
-            - paymentMethods
-            - portfolioMetrics
-            - expenses
-            - contacts
-            - vendorBankAccounts
-            - customerBankAccounts
-            - billPaymentRequests
-            - transactions
-            - products
-            - orders
-            - disputes
-            - bankAccounts
-            - bankTransactions
-            - bankAssets
-        description:
-          type: string
-          readOnly: true
-          example: AP Aging
-        action:
-          type: array
-          items:
-            type: string
-            enum:
-              - delete
-              - pull
-              - push_create
-              - push_create_batch
-              - push_update_batch
-              - push_update
-              - pull_not_supported
-              - push_not_supported
-              - push_update_not_supported
-              - push_not_applicable
-              - pull_not_applicable
-        accountingMethod:
-          type: string
-          enum:
-            - cash
-            - accrual
-        reportType:
-          type: string
-          enum:
-            - accounting
-            - banking
-            - commerce
-            - analytics
-      required:
-        - name
-        - action
-        - reportType
-    DataTypesResponseV2Dto:
-      type: object
-      properties:
-        serviceName:
-          type: string
-          readOnly: true
-          enum:
-            - freshbooks
-            - quickbooks
-            - quickbooksDesktop
-            - xero
-            - oracleNetsuite
-            - sageBusinessCloud
-            - sageIntacct
-            - dynamicsBusinessCentral
-            - wave
-            - shopify
-            - square
-            - plaid
-            - zohoBooks
-        serviceNameDescription:
-          type: string
-          readOnly: true
-        serviceType:
-          type: string
-          readOnly: true
-          enum:
-            - accounting
-            - banking
-            - commerce
-        isBeta:
-          type: boolean
-          readOnly: true
-        dataTypes:
-          readOnly: true
-          type: array
-          items:
-            $ref: '#/components/schemas/DataTypesDataV2'
-      required:
-        - serviceName
-        - serviceNameDescription
-        - serviceType
-        - isBeta
-        - dataTypes
     ListReportMetaData:
       type: object
       properties:
@@ -34962,6 +34642,39 @@ components:
         - requestedOn
         - status
         - data
+    GetTaxAuthorityData:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "1"
+        name:
+          type: string
+          example: Dept. of Revenue
+        memo:
+          type: string
+        registrationNumber:
+          type: string
+          example: "460000000066001"
+        sourceModifiedDate:
+          format: date-time
+          type: string
+          example: "2021-03-10T11:26:06.619Z"
+      required:
+        - id
+        - name
+    GetTaxAuthorityResponseDto:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/ListReportMetaDataV2'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetTaxAuthorityData'
+      required:
+        - meta
+        - data
     BasicReportMetaData:
       type: object
       properties:
@@ -37883,7 +37596,7 @@ components:
         requestType:
           type: string
           description: Request types for data per type. Required when dataPerType event is present.
-          example: ACCOUNTING_TRANSACTION,ACCOUNTS,AGED_PAYABLE,AGED_RECEIVABLE,ATTACHMENT,BALANCE_SHEETS,BANKING_RECONCILIATION,BANK_TRANSACTION_ACCOUNTING,BANK_ACCOUNT_ACCOUNTING,BANK_TRANSFERS,BILL_CREDIT_NOTES,BILL_PAYMENTS,BILLS,BUSINESS_INFO,BUSINESS_VALUATION,CASH_FLOW_STATEMENTS,CREDIT_SCORE,CUSTOMERS,DEPOSITS,ESTIMATES,FINANCIAL_BENCHMARKING,FINANCIAL_FORECAST,FINANCIAL_RATIO,FRAUD_RISK_METRICS,INCOME_STATEMENTS,INVENTORY,INVOICE_CREDIT_NOTES,INVOICE_PAYMENTS,INVOICES,JOURNAL_ENTRIES,JOURNAL,PROBABILITY_OF_DEFAULT,PURCHASE_ORDERS,REFUNDS,TAX_BENCHMARKING,TAX_RATES,TRACKING_CATEGORIES,TRIAL_BALANCES,VENDORS,PAYMENT_METHODS,PORTFOLIO_METRICS,EXPENSES,CONTACT,VENDOR_BANK_ACCOUNT,CUSTOMER_BANK_ACCOUNT,BILL_PAYMENT_REQUEST,COMMERCE_TRANSACTION,COMMERCE_PRODUCT,COMMERCE_ORDER,COMMERCE_DISPUTE,BANK_ACCOUNT,BANK_TRANSACTION,BANK_ASSET
+          example: ACCOUNTING_TRANSACTION,ACCOUNTS,AGED_PAYABLE,AGED_RECEIVABLE,ATTACHMENT,BALANCE_SHEETS,BANKING_RECONCILIATION,BANK_TRANSACTION_ACCOUNTING,BANK_ACCOUNT_ACCOUNTING,BANK_TRANSFERS,BILL_CREDIT_NOTES,BILL_PAYMENTS,BILLS,BUSINESS_INFO,BUSINESS_VALUATION,CASH_FLOW_STATEMENTS,CREDIT_SCORE,CUSTOMERS,DEPOSITS,ESTIMATES,FINANCIAL_BENCHMARKING,FINANCIAL_FORECAST,FINANCIAL_RATIO,FRAUD_RISK_METRICS,INCOME_STATEMENTS,INVENTORY,INVOICE_CREDIT_NOTES,INVOICE_PAYMENTS,INVOICES,JOURNAL_ENTRIES,JOURNAL,PROBABILITY_OF_DEFAULT,PURCHASE_ORDERS,REFUNDS,TAX_BENCHMARKING,TAX_RATES,TAX_AUTHORITY,TRACKING_CATEGORIES,TRIAL_BALANCES,VENDORS,PAYMENT_METHODS,PORTFOLIO_METRICS,EXPENSES,CONTACT,VENDOR_BANK_ACCOUNT,CUSTOMER_BANK_ACCOUNT,BILL_PAYMENT_REQUEST,COMMERCE_TRANSACTION,COMMERCE_PRODUCT,COMMERCE_ORDER,COMMERCE_DISPUTE,BANK_ACCOUNT,BANK_TRANSACTION,BANK_ASSET
         pushCommunicationId:
           type: string
           format: uuid
@@ -37941,7 +37654,7 @@ components:
         requestType:
           type: string
           description: Request types for data per type. Required when dataPerType event is present.
-          example: ACCOUNTING_TRANSACTION,ACCOUNTS,AGED_PAYABLE,AGED_RECEIVABLE,ATTACHMENT,BALANCE_SHEETS,BANKING_RECONCILIATION,BANK_TRANSACTION_ACCOUNTING,BANK_ACCOUNT_ACCOUNTING,BANK_TRANSFERS,BILL_CREDIT_NOTES,BILL_PAYMENTS,BILLS,BUSINESS_INFO,BUSINESS_VALUATION,CASH_FLOW_STATEMENTS,CREDIT_SCORE,CUSTOMERS,DEPOSITS,ESTIMATES,FINANCIAL_BENCHMARKING,FINANCIAL_FORECAST,FINANCIAL_RATIO,FRAUD_RISK_METRICS,INCOME_STATEMENTS,INVENTORY,INVOICE_CREDIT_NOTES,INVOICE_PAYMENTS,INVOICES,JOURNAL_ENTRIES,JOURNAL,PROBABILITY_OF_DEFAULT,PURCHASE_ORDERS,REFUNDS,TAX_BENCHMARKING,TAX_RATES,TRACKING_CATEGORIES,TRIAL_BALANCES,VENDORS,PAYMENT_METHODS,PORTFOLIO_METRICS,EXPENSES,CONTACT,VENDOR_BANK_ACCOUNT,CUSTOMER_BANK_ACCOUNT,BILL_PAYMENT_REQUEST,COMMERCE_TRANSACTION,COMMERCE_PRODUCT,COMMERCE_ORDER,COMMERCE_DISPUTE,BANK_ACCOUNT,BANK_TRANSACTION,BANK_ASSET
+          example: ACCOUNTING_TRANSACTION,ACCOUNTS,AGED_PAYABLE,AGED_RECEIVABLE,ATTACHMENT,BALANCE_SHEETS,BANKING_RECONCILIATION,BANK_TRANSACTION_ACCOUNTING,BANK_ACCOUNT_ACCOUNTING,BANK_TRANSFERS,BILL_CREDIT_NOTES,BILL_PAYMENTS,BILLS,BUSINESS_INFO,BUSINESS_VALUATION,CASH_FLOW_STATEMENTS,CREDIT_SCORE,CUSTOMERS,DEPOSITS,ESTIMATES,FINANCIAL_BENCHMARKING,FINANCIAL_FORECAST,FINANCIAL_RATIO,FRAUD_RISK_METRICS,INCOME_STATEMENTS,INVENTORY,INVOICE_CREDIT_NOTES,INVOICE_PAYMENTS,INVOICES,JOURNAL_ENTRIES,JOURNAL,PROBABILITY_OF_DEFAULT,PURCHASE_ORDERS,REFUNDS,TAX_BENCHMARKING,TAX_RATES,TAX_AUTHORITY,TRACKING_CATEGORIES,TRIAL_BALANCES,VENDORS,PAYMENT_METHODS,PORTFOLIO_METRICS,EXPENSES,CONTACT,VENDOR_BANK_ACCOUNT,CUSTOMER_BANK_ACCOUNT,BILL_PAYMENT_REQUEST,COMMERCE_TRANSACTION,COMMERCE_PRODUCT,COMMERCE_ORDER,COMMERCE_DISPUTE,BANK_ACCOUNT,BANK_TRANSACTION,BANK_ASSET
         pushCommunicationId:
           type: string
           format: uuid

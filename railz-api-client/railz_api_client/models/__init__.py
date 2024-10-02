@@ -325,24 +325,6 @@ from .data_sync_v2_dto import DataSyncV2Dto
 from .data_sync_v2_dto_data_type import DataSyncV2DtoDataType
 from .data_sync_v2_dto_data_types_item import DataSyncV2DtoDataTypesItem
 from .data_type import DataType
-from .data_types_data import DataTypesData
-from .data_types_data_accounting_method import DataTypesDataAccountingMethod
-from .data_types_data_action_item import DataTypesDataActionItem
-from .data_types_data_name import DataTypesDataName
-from .data_types_data_report_type import DataTypesDataReportType
-from .data_types_data_type import DataTypesDataType
-from .data_types_data_v2 import DataTypesDataV2
-from .data_types_data_v2_accounting_method import DataTypesDataV2AccountingMethod
-from .data_types_data_v2_action_item import DataTypesDataV2ActionItem
-from .data_types_data_v2_name import DataTypesDataV2Name
-from .data_types_data_v2_report_type import DataTypesDataV2ReportType
-from .data_types_response_dto import DataTypesResponseDto
-from .data_types_response_dto_service_name import DataTypesResponseDtoServiceName
-from .data_types_response_dto_service_type import DataTypesResponseDtoServiceType
-from .data_types_response_v2_dto import DataTypesResponseV2Dto
-from .data_types_response_v2_dto_service_name import DataTypesResponseV2DtoServiceName
-from .data_types_response_v2_dto_service_type import DataTypesResponseV2DtoServiceType
-from .data_types_service_name import DataTypesServiceName
 from .delete_business_response_dto import DeleteBusinessResponseDto
 from .delete_status_data_v2 import DeleteStatusDataV2
 from .delete_status_data_v2_service_name import DeleteStatusDataV2ServiceName
@@ -621,6 +603,8 @@ from .get_refund_data_v2 import GetRefundDataV2
 from .get_refund_data_v2_pass_through import GetRefundDataV2PassThrough
 from .get_refund_response_dto import GetRefundResponseDto
 from .get_refund_response_v2_dto import GetRefundResponseV2Dto
+from .get_tax_authority_data import GetTaxAuthorityData
+from .get_tax_authority_response_dto import GetTaxAuthorityResponseDto
 from .get_tax_rates_data_v1 import GetTaxRatesDataV1
 from .get_tax_rates_data_v2 import GetTaxRatesDataV2
 from .get_tax_rates_response_dto import GetTaxRatesResponseDto
@@ -1984,24 +1968,6 @@ __all__ = (
     "DataSyncV2DtoDataType",
     "DataSyncV2DtoDataTypesItem",
     "DataType",
-    "DataTypesData",
-    "DataTypesDataAccountingMethod",
-    "DataTypesDataActionItem",
-    "DataTypesDataName",
-    "DataTypesDataReportType",
-    "DataTypesDataType",
-    "DataTypesDataV2",
-    "DataTypesDataV2AccountingMethod",
-    "DataTypesDataV2ActionItem",
-    "DataTypesDataV2Name",
-    "DataTypesDataV2ReportType",
-    "DataTypesResponseDto",
-    "DataTypesResponseDtoServiceName",
-    "DataTypesResponseDtoServiceType",
-    "DataTypesResponseV2Dto",
-    "DataTypesResponseV2DtoServiceName",
-    "DataTypesResponseV2DtoServiceType",
-    "DataTypesServiceName",
     "DeleteBusinessResponseDto",
     "DeleteStatusDataV2",
     "DeleteStatusDataV2ServiceName",
@@ -2278,6 +2244,8 @@ __all__ = (
     "GetRefundDataV2PassThrough",
     "GetRefundResponseDto",
     "GetRefundResponseV2Dto",
+    "GetTaxAuthorityData",
+    "GetTaxAuthorityResponseDto",
     "GetTaxRatesDataV1",
     "GetTaxRatesDataV2",
     "GetTaxRatesResponseDto",
