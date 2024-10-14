@@ -58,6 +58,10 @@ def _parse_response(
         response_200 = PostBusinessesResponseDtoV2.from_dict(response.json())
 
         return response_200
+    if response.status_code == HTTPStatus.CREATED:
+        response_201 = PostBusinessesResponseDtoV2.from_dict(response.json())
+
+        return response_201
     if response.status_code == HTTPStatus.BAD_REQUEST:
         response_400 = Error400ResponseDtoV2.from_dict(response.json())
 

@@ -3267,6 +3267,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PostBusinessesResponseDtoV2'
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostBusinessesResponseDtoV2'
         "400":
           description: Bad Request Error - Thrown if fields sent via query does not follow specifications
           content:
