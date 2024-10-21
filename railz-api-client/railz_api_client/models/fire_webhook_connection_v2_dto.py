@@ -1,4 +1,5 @@
 from typing import Any, Dict, List, Type, TypeVar, Union
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -35,9 +36,9 @@ class FireWebhookConnectionV2Dto:
             TAX_RATES,TAX_AUTHORITY,TRACKING_CATEGORIES,TRIAL_BALANCES,VENDORS,PAYMENT_METHODS,PORTFOLIO_METRICS,EXPENSES,CO
             NTACT,VENDOR_BANK_ACCOUNT,CUSTOMER_BANK_ACCOUNT,BILL_PAYMENT_REQUEST,COMMERCE_TRANSACTION,COMMERCE_PRODUCT,COMME
             RCE_ORDER,COMMERCE_DISPUTE,BANK_ACCOUNT,BANK_TRANSACTION,BANK_ASSET.
-        push_communication_id (Union[Unset, str]):
-        batch_id (Union[Unset, str]):
-        delete_communication_id (Union[Unset, str]):
+        push_communication_id (Union[Unset, UUID]):
+        batch_id (Union[Unset, UUID]):
+        delete_communication_id (Union[Unset, UUID]):
         customer_request_type (Union[Unset, str]):  Example: customersDataRequest.
         data_request_status (Union[Unset, FireWebhookConnectionV2DtoDataRequestStatus]): status to be returned for
             requests of data webhook Example: success.
@@ -47,9 +48,9 @@ class FireWebhookConnectionV2Dto:
     connection_uuid: str
     event: FireWebhookConnectionV2DtoEvent
     request_type: Union[Unset, str] = UNSET
-    push_communication_id: Union[Unset, str] = UNSET
-    batch_id: Union[Unset, str] = UNSET
-    delete_communication_id: Union[Unset, str] = UNSET
+    push_communication_id: Union[Unset, UUID] = UNSET
+    batch_id: Union[Unset, UUID] = UNSET
+    delete_communication_id: Union[Unset, UUID] = UNSET
     customer_request_type: Union[Unset, str] = UNSET
     data_request_status: Union[Unset, FireWebhookConnectionV2DtoDataRequestStatus] = UNSET
     payload_type: Union[Unset, FireWebhookConnectionV2DtoPayloadType] = UNSET
@@ -62,11 +63,17 @@ class FireWebhookConnectionV2Dto:
 
         request_type = self.request_type
 
-        push_communication_id = self.push_communication_id
+        push_communication_id: Union[Unset, str] = UNSET
+        if not isinstance(self.push_communication_id, Unset):
+            push_communication_id = str(self.push_communication_id)
 
-        batch_id = self.batch_id
+        batch_id: Union[Unset, str] = UNSET
+        if not isinstance(self.batch_id, Unset):
+            batch_id = str(self.batch_id)
 
-        delete_communication_id = self.delete_communication_id
+        delete_communication_id: Union[Unset, str] = UNSET
+        if not isinstance(self.delete_communication_id, Unset):
+            delete_communication_id = str(self.delete_communication_id)
 
         customer_request_type = self.customer_request_type
 
@@ -112,11 +119,26 @@ class FireWebhookConnectionV2Dto:
 
         request_type = d.pop("requestType", UNSET)
 
-        push_communication_id = d.pop("pushCommunicationId", UNSET)
+        _push_communication_id = d.pop("pushCommunicationId", UNSET)
+        push_communication_id: Union[Unset, UUID]
+        if isinstance(_push_communication_id, Unset):
+            push_communication_id = UNSET
+        else:
+            push_communication_id = UUID(_push_communication_id)
 
-        batch_id = d.pop("batchId", UNSET)
+        _batch_id = d.pop("batchId", UNSET)
+        batch_id: Union[Unset, UUID]
+        if isinstance(_batch_id, Unset):
+            batch_id = UNSET
+        else:
+            batch_id = UUID(_batch_id)
 
-        delete_communication_id = d.pop("deleteCommunicationId", UNSET)
+        _delete_communication_id = d.pop("deleteCommunicationId", UNSET)
+        delete_communication_id: Union[Unset, UUID]
+        if isinstance(_delete_communication_id, Unset):
+            delete_communication_id = UNSET
+        else:
+            delete_communication_id = UUID(_delete_communication_id)
 
         customer_request_type = d.pop("customerRequestType", UNSET)
 
