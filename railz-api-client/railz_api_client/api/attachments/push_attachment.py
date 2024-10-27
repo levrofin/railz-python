@@ -16,10 +16,7 @@ from ...types import UNSET, Response
 
 def _get_kwargs(
     *,
-    body: Union[
-        PushAttachmentV2Dto,
-        PushAttachmentV2Dto,
-    ],
+    body: PushAttachmentV2Dto,
     additional_query_params: Mapping[str, str | list[str]] | None = None,
 ) -> Dict[str, Any]:
     headers: Dict[str, Any] = {}
@@ -37,16 +34,9 @@ def _get_kwargs(
         "params": params,
     }
 
-    if isinstance(body, PushAttachmentV2Dto):
-        _files_body = body.to_multipart()
+    _body = body.to_multipart()
 
-        _kwargs["files"] = _files_body
-        headers["Content-Type"] = "multipart/form-data"
-    if isinstance(body, PushAttachmentV2Dto):
-        _json_body = body.to_dict()
-
-        _kwargs["json"] = _json_body
-        headers["Content-Type"] = "application/json"
+    _kwargs["files"] = _body
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -111,10 +101,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PushAttachmentV2Dto,
-        PushAttachmentV2Dto,
-    ],
+    body: PushAttachmentV2Dto,
     additional_query_params: Mapping[str, str | list[str]] | None = None,
     skip_parsing: bool = False,
 ) -> Response[
@@ -134,7 +121,6 @@ def sync_detailed(
     `dynamicsBusinessCentral` `zohoBooks`
 
     Args:
-        body (PushAttachmentV2Dto):
         body (PushAttachmentV2Dto):
         additional_query_params: extra query params
 
@@ -161,10 +147,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: Union[
-        PushAttachmentV2Dto,
-        PushAttachmentV2Dto,
-    ],
+    body: PushAttachmentV2Dto,
     additional_query_params: Mapping[str, str | list[str]] | None = None,
     skip_parsing: bool = False,
 ) -> Optional[
@@ -184,7 +167,6 @@ def sync(
     `dynamicsBusinessCentral` `zohoBooks`
 
     Args:
-        body (PushAttachmentV2Dto):
         body (PushAttachmentV2Dto):
         additional_query_params: extra query params
 

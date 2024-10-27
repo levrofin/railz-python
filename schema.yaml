@@ -1348,9 +1348,6 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/PushAttachmentV2Dto'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PushAttachmentV2Dto'
       responses:
         "200":
           description: ""
