@@ -48,6 +48,7 @@ class GetInvoiceCreditNoteDataV2:
         source_modified_date (Union[Unset, datetime.datetime]):  Example: 2021-03-09T10:18:29.985Z.
         location_ref (Union[Unset, LocationRef]):
         subsidiary_refs (Union[Unset, List['SubsidiaryRef']]):
+        invoice_credit_note_number (Union[Unset, str]): The buyer facing document number of the invoice credit note.
     """
 
     id: str
@@ -70,6 +71,7 @@ class GetInvoiceCreditNoteDataV2:
     source_modified_date: Union[Unset, datetime.datetime] = UNSET
     location_ref: Union[Unset, "LocationRef"] = UNSET
     subsidiary_refs: Union[Unset, List["SubsidiaryRef"]] = UNSET
+    invoice_credit_note_number: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -134,6 +136,8 @@ class GetInvoiceCreditNoteDataV2:
                 subsidiary_refs_item = subsidiary_refs_item_data.to_dict()
                 subsidiary_refs.append(subsidiary_refs_item)
 
+        invoice_credit_note_number = self.invoice_credit_note_number
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -174,6 +178,8 @@ class GetInvoiceCreditNoteDataV2:
             field_dict["locationRef"] = location_ref
         if subsidiary_refs is not UNSET:
             field_dict["subsidiaryRefs"] = subsidiary_refs
+        if invoice_credit_note_number is not UNSET:
+            field_dict["invoiceCreditNoteNumber"] = invoice_credit_note_number
 
         return field_dict
 
@@ -262,6 +268,8 @@ class GetInvoiceCreditNoteDataV2:
 
             subsidiary_refs.append(subsidiary_refs_item)
 
+        invoice_credit_note_number = d.pop("invoiceCreditNoteNumber", UNSET)
+
         get_invoice_credit_note_data_v2 = cls(
             id=id,
             posted_date=posted_date,
@@ -283,6 +291,7 @@ class GetInvoiceCreditNoteDataV2:
             source_modified_date=source_modified_date,
             location_ref=location_ref,
             subsidiary_refs=subsidiary_refs,
+            invoice_credit_note_number=invoice_credit_note_number,
         )
 
         get_invoice_credit_note_data_v2.additional_properties = d

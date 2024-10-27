@@ -1,5 +1,5 @@
 # railz-api-client
-A client library for accessing Railz API
+A client library for accessing FIS® Accounting Data as a Service™ API
 
 ## Usage
 First, create a client:

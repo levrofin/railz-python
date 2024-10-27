@@ -7,6 +7,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.push_tax_rate_component import PushTaxRateComponent
+    from ..models.tax_authority import TaxAuthority
 
 
 T = TypeVar("T", bound="PushTaxRate")
@@ -22,6 +23,7 @@ class PushTaxRate:
         total_tax_rate (Union[Unset, float]):
         bank_name (Union[Unset, str]):  Example: TD Bank.
         components (Union[Unset, List['PushTaxRateComponent']]):
+        tax_authority (Union[Unset, TaxAuthority]):
     """
 
     name: str
@@ -30,6 +32,7 @@ class PushTaxRate:
     total_tax_rate: Union[Unset, float] = UNSET
     bank_name: Union[Unset, str] = UNSET
     components: Union[Unset, List["PushTaxRateComponent"]] = UNSET
+    tax_authority: Union[Unset, "TaxAuthority"] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -50,6 +53,10 @@ class PushTaxRate:
                 components_item = components_item_data.to_dict()
                 components.append(components_item)
 
+        tax_authority: Union[Unset, Dict[str, Any]] = UNSET
+        if not isinstance(self.tax_authority, Unset):
+            tax_authority = self.tax_authority.to_dict()
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -67,12 +74,15 @@ class PushTaxRate:
             field_dict["bankName"] = bank_name
         if components is not UNSET:
             field_dict["components"] = components
+        if tax_authority is not UNSET:
+            field_dict["taxAuthority"] = tax_authority
 
         return field_dict
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         from ..models.push_tax_rate_component import PushTaxRateComponent
+        from ..models.tax_authority import TaxAuthority
 
         d = src_dict.copy()
         name = d.pop("name")
@@ -92,6 +102,13 @@ class PushTaxRate:
 
             components.append(components_item)
 
+        _tax_authority = d.pop("taxAuthority", UNSET)
+        tax_authority: Union[Unset, TaxAuthority]
+        if isinstance(_tax_authority, Unset):
+            tax_authority = UNSET
+        else:
+            tax_authority = TaxAuthority.from_dict(_tax_authority)
+
         push_tax_rate = cls(
             name=name,
             code=code,
@@ -99,6 +116,7 @@ class PushTaxRate:
             total_tax_rate=total_tax_rate,
             bank_name=bank_name,
             components=components,
+            tax_authority=tax_authority,
         )
 
         push_tax_rate.additional_properties = d

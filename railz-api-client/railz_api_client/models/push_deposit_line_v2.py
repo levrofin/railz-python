@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from ..models.links_v2 import LinksV2
     from ..models.push_deposit_entity_ref_v2 import PushDepositEntityRefV2
     from ..models.tax_rate_ref_dto import TaxRateRefDto
+    from ..models.tracking_category_ref_push_dto import TrackingCategoryRefPushDto
 
 
 T = TypeVar("T", bound="PushDepositLineV2")
@@ -27,6 +28,7 @@ class PushDepositLineV2:
         tax_rate_ref (Union[Unset, TaxRateRefDto]):
         entity_ref (Union[Unset, PushDepositEntityRefV2]):
         links (Union[Unset, List['LinksV2']]):
+        tracking_category_refs (Union[Unset, List['TrackingCategoryRefPushDto']]):
     """
 
     quantity: float
@@ -37,6 +39,7 @@ class PushDepositLineV2:
     tax_rate_ref: Union[Unset, "TaxRateRefDto"] = UNSET
     entity_ref: Union[Unset, "PushDepositEntityRefV2"] = UNSET
     links: Union[Unset, List["LinksV2"]] = UNSET
+    tracking_category_refs: Union[Unset, List["TrackingCategoryRefPushDto"]] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -65,6 +68,13 @@ class PushDepositLineV2:
                 links_item = links_item_data.to_dict()
                 links.append(links_item)
 
+        tracking_category_refs: Union[Unset, List[Dict[str, Any]]] = UNSET
+        if not isinstance(self.tracking_category_refs, Unset):
+            tracking_category_refs = []
+            for tracking_category_refs_item_data in self.tracking_category_refs:
+                tracking_category_refs_item = tracking_category_refs_item_data.to_dict()
+                tracking_category_refs.append(tracking_category_refs_item)
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -84,6 +94,8 @@ class PushDepositLineV2:
             field_dict["entityRef"] = entity_ref
         if links is not UNSET:
             field_dict["links"] = links
+        if tracking_category_refs is not UNSET:
+            field_dict["trackingCategoryRefs"] = tracking_category_refs
 
         return field_dict
 
@@ -93,6 +105,7 @@ class PushDepositLineV2:
         from ..models.links_v2 import LinksV2
         from ..models.push_deposit_entity_ref_v2 import PushDepositEntityRefV2
         from ..models.tax_rate_ref_dto import TaxRateRefDto
+        from ..models.tracking_category_ref_push_dto import TrackingCategoryRefPushDto
 
         d = src_dict.copy()
         quantity = d.pop("quantity")
@@ -126,6 +139,13 @@ class PushDepositLineV2:
 
             links.append(links_item)
 
+        tracking_category_refs = []
+        _tracking_category_refs = d.pop("trackingCategoryRefs", UNSET)
+        for tracking_category_refs_item_data in _tracking_category_refs or []:
+            tracking_category_refs_item = TrackingCategoryRefPushDto.from_dict(tracking_category_refs_item_data)
+
+            tracking_category_refs.append(tracking_category_refs_item)
+
         push_deposit_line_v2 = cls(
             quantity=quantity,
             unit_amount=unit_amount,
@@ -135,6 +155,7 @@ class PushDepositLineV2:
             tax_rate_ref=tax_rate_ref,
             entity_ref=entity_ref,
             links=links,
+            tracking_category_refs=tracking_category_refs,
         )
 
         push_deposit_line_v2.additional_properties = d

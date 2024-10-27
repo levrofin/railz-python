@@ -3267,12 +3267,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PostBusinessesResponseDtoV2'
-        "201":
-          description: ""
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PostBusinessesResponseDtoV2'
         "400":
           description: Bad Request Error - Thrown if fields sent via query does not follow specifications
           content:
@@ -3297,6 +3291,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error500ResponseDto'
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostBusinessesResponseDtoV2'
       tags:
         - Businesses
       security:
@@ -7480,7 +7480,7 @@ paths:
       description: |-
         **Supported for:**
 
-        `quickbooks` `xero` `freshbooks` `sageBusinessCloud` `dynamicsBusinessCentral` `zohoBooks`
+        `xero` `freshbooks` `sageBusinessCloud` `dynamicsBusinessCentral`
       parameters: []
       requestBody:
         required: true
@@ -12567,7 +12567,7 @@ paths:
   /v2/visualizations/railzScore:
     get:
       operationId: reportRailzScore
-      summary: List Railz Score report
+      summary: List Credit Score report
       description: |-
         **Supported for:**
 
@@ -13040,7 +13040,7 @@ paths:
       security:
         - bearer: []
 info:
-  title: Railz API
+  title: FIS® Accounting Data as a Service™ API
   description: '[What''s changed in our API](https://docs.railz.ai/changelog)'
   version: v2
   contact: {}
@@ -14999,18 +14999,6 @@ components:
         subType:
           type: string
           example: cash&Bank
-# Hack to circumvent the server returning an something not listed here
-#          enum:
-#            - cash&Bank
-#            - currentAsset
-#            - propertyPlantAndEquipment
-#            - longTermAsset
-#            - currentLiability
-#            - longTermLiability
-#            - equity
-#            - income
-#            - costOfGoodsSold
-#            - operatingExpense
         isBankAccount:
           type: boolean
           example: true
@@ -22483,6 +22471,9 @@ components:
           format: date-time
           type: string
           example: "2021-03-09T10:18:29.985Z"
+        billCreditNoteNumber:
+          type: string
+          description: The buyer facing document number of the bill credit note.
       required:
         - id
         - postedDate
@@ -22615,6 +22606,9 @@ components:
               - DefinitionId: "1"
                 StringValue: my custom value
                 Name: Field One
+        billCreditNoteNumber:
+          type: string
+          description: The buyer facing document number of the bill credit note.
       required:
         - vendorRef
         - lines
@@ -26444,6 +26438,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Links'
+        trackingCategoryRefs:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrackingCategoryRefV2'
       required:
         - amount
     GetDepositV2Data:
@@ -26548,6 +26546,21 @@ components:
           example: "560"
       required:
         - id
+    TrackingCategoryRefPushDto:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "4040"
+        type:
+          type: string
+          enum:
+            - class
+            - department
+            - location
+            - unknown
+      required:
+        - id
     PushDepositLineV2:
       type: object
       properties:
@@ -26575,6 +26588,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinksV2'
+        trackingCategoryRefs:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrackingCategoryRefPushDto'
       required:
         - quantity
         - unitAmount
@@ -27150,16 +27167,6 @@ components:
         - meta
         - pagination
         - data
-    TrackingCategoryRefPushDto:
-      type: object
-      properties:
-        id:
-          type: string
-          example: "4040"
-        type:
-          type: string
-      required:
-        - id
     EstimateLineV2:
       type: object
       properties:
@@ -31076,6 +31083,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/InvoiceBillLineItemsV2'
+        invoiceCreditNoteNumber:
+          type: string
+          description: The buyer facing document number of the invoice credit note.
       required:
         - id
         - postedDate
@@ -31171,6 +31181,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SubsidiaryRefDto'
+        invoiceCreditNoteNumber:
+          type: string
+          description: The buyer facing document number of the invoice credit note.
       required:
         - customerRef
         - lines
@@ -34556,6 +34569,13 @@ components:
         isSalesTax:
           type: boolean
           example: false
+    TaxAuthority:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+        - id
     PushTaxRate:
       type: object
       properties:
@@ -34580,6 +34600,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PushTaxRateComponent'
+        taxAuthority:
+          $ref: '#/components/schemas/TaxAuthority'
       required:
         - name
     PushTaxRateDto:

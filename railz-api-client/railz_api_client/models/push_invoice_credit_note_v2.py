@@ -31,6 +31,7 @@ class PushInvoiceCreditNoteV2:
         memo (Union[Unset, str]):  Example: Example memo..
         currency (Union[Unset, str]):  Example: CAD.
         subsidiary_refs (Union[Unset, List['SubsidiaryRefDto']]):
+        invoice_credit_note_number (Union[Unset, str]): The buyer facing document number of the invoice credit note.
     """
 
     customer_ref: "CustomerRefDto"
@@ -42,6 +43,7 @@ class PushInvoiceCreditNoteV2:
     memo: Union[Unset, str] = UNSET
     currency: Union[Unset, str] = UNSET
     subsidiary_refs: Union[Unset, List["SubsidiaryRefDto"]] = UNSET
+    invoice_credit_note_number: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,6 +79,8 @@ class PushInvoiceCreditNoteV2:
                 subsidiary_refs_item = subsidiary_refs_item_data.to_dict()
                 subsidiary_refs.append(subsidiary_refs_item)
 
+        invoice_credit_note_number = self.invoice_credit_note_number
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -99,6 +103,8 @@ class PushInvoiceCreditNoteV2:
             field_dict["currency"] = currency
         if subsidiary_refs is not UNSET:
             field_dict["subsidiaryRefs"] = subsidiary_refs
+        if invoice_credit_note_number is not UNSET:
+            field_dict["invoiceCreditNoteNumber"] = invoice_credit_note_number
 
         return field_dict
 
@@ -153,6 +159,8 @@ class PushInvoiceCreditNoteV2:
 
             subsidiary_refs.append(subsidiary_refs_item)
 
+        invoice_credit_note_number = d.pop("invoiceCreditNoteNumber", UNSET)
+
         push_invoice_credit_note_v2 = cls(
             customer_ref=customer_ref,
             lines=lines,
@@ -163,6 +171,7 @@ class PushInvoiceCreditNoteV2:
             memo=memo,
             currency=currency,
             subsidiary_refs=subsidiary_refs,
+            invoice_credit_note_number=invoice_credit_note_number,
         )
 
         push_invoice_credit_note_v2.additional_properties = d

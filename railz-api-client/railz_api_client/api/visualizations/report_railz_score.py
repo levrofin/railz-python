@@ -120,7 +120,7 @@ def sync_detailed(
         ReportRailzScoreResponse200,
     ]
 ]:
-    """List Railz Score report
+    """List Credit Score report
 
      **Supported for:**
 
@@ -169,7 +169,7 @@ def sync(
         ReportRailzScoreResponse200,
     ]
 ]:
-    """List Railz Score report
+    """List Credit Score report
 
      **Supported for:**
 

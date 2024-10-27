@@ -31,6 +31,7 @@ class PushBillCreditNoteV2:
         subsidiary_refs (Union[Unset, List['SubsidiaryRefDto']]):
         pass_through (Union[Unset, PushBillCreditNoteV2PassThrough]):  Example: {'CustomField': [{'DefinitionId': '1',
             'StringValue': 'my custom value', 'Name': 'Field One'}]}.
+        bill_credit_note_number (Union[Unset, str]): The buyer facing document number of the bill credit note.
     """
 
     vendor_ref: "VendorRefDto"
@@ -42,6 +43,7 @@ class PushBillCreditNoteV2:
     currency: Union[Unset, str] = UNSET
     subsidiary_refs: Union[Unset, List["SubsidiaryRefDto"]] = UNSET
     pass_through: Union[Unset, "PushBillCreditNoteV2PassThrough"] = UNSET
+    bill_credit_note_number: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,6 +79,8 @@ class PushBillCreditNoteV2:
         if not isinstance(self.pass_through, Unset):
             pass_through = self.pass_through.to_dict()
 
+        bill_credit_note_number = self.bill_credit_note_number
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -99,6 +103,8 @@ class PushBillCreditNoteV2:
             field_dict["subsidiaryRefs"] = subsidiary_refs
         if pass_through is not UNSET:
             field_dict["passThrough"] = pass_through
+        if bill_credit_note_number is not UNSET:
+            field_dict["billCreditNoteNumber"] = bill_credit_note_number
 
         return field_dict
 
@@ -153,6 +159,8 @@ class PushBillCreditNoteV2:
         else:
             pass_through = PushBillCreditNoteV2PassThrough.from_dict(_pass_through)
 
+        bill_credit_note_number = d.pop("billCreditNoteNumber", UNSET)
+
         push_bill_credit_note_v2 = cls(
             vendor_ref=vendor_ref,
             lines=lines,
@@ -163,6 +171,7 @@ class PushBillCreditNoteV2:
             currency=currency,
             subsidiary_refs=subsidiary_refs,
             pass_through=pass_through,
+            bill_credit_note_number=bill_credit_note_number,
         )
 
         push_bill_credit_note_v2.additional_properties = d

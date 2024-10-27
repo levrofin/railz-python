@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from ..models.deposit_entity_ref import DepositEntityRef
     from ..models.links import Links
     from ..models.tax_rate_ref import TaxRateRef
+    from ..models.tracking_category_ref_v2 import TrackingCategoryRefV2
 
 
 T = TypeVar("T", bound="DepositLineV2Items")
@@ -29,6 +30,7 @@ class DepositLineV2Items:
         tax_rate_ref (Union[Unset, TaxRateRef]):
         entity_ref (Union[Unset, DepositEntityRef]):
         links (Union[Unset, List['Links']]):
+        tracking_category_refs (Union[Unset, List['TrackingCategoryRefV2']]):
     """
 
     amount: float
@@ -41,6 +43,7 @@ class DepositLineV2Items:
     tax_rate_ref: Union[Unset, "TaxRateRef"] = UNSET
     entity_ref: Union[Unset, "DepositEntityRef"] = UNSET
     links: Union[Unset, List["Links"]] = UNSET
+    tracking_category_refs: Union[Unset, List["TrackingCategoryRefV2"]] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,6 +78,13 @@ class DepositLineV2Items:
                 links_item = links_item_data.to_dict()
                 links.append(links_item)
 
+        tracking_category_refs: Union[Unset, List[Dict[str, Any]]] = UNSET
+        if not isinstance(self.tracking_category_refs, Unset):
+            tracking_category_refs = []
+            for tracking_category_refs_item_data in self.tracking_category_refs:
+                tracking_category_refs_item = tracking_category_refs_item_data.to_dict()
+                tracking_category_refs.append(tracking_category_refs_item)
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -100,6 +110,8 @@ class DepositLineV2Items:
             field_dict["entityRef"] = entity_ref
         if links is not UNSET:
             field_dict["links"] = links
+        if tracking_category_refs is not UNSET:
+            field_dict["trackingCategoryRefs"] = tracking_category_refs
 
         return field_dict
 
@@ -109,6 +121,7 @@ class DepositLineV2Items:
         from ..models.deposit_entity_ref import DepositEntityRef
         from ..models.links import Links
         from ..models.tax_rate_ref import TaxRateRef
+        from ..models.tracking_category_ref_v2 import TrackingCategoryRefV2
 
         d = src_dict.copy()
         amount = d.pop("amount")
@@ -151,6 +164,13 @@ class DepositLineV2Items:
 
             links.append(links_item)
 
+        tracking_category_refs = []
+        _tracking_category_refs = d.pop("trackingCategoryRefs", UNSET)
+        for tracking_category_refs_item_data in _tracking_category_refs or []:
+            tracking_category_refs_item = TrackingCategoryRefV2.from_dict(tracking_category_refs_item_data)
+
+            tracking_category_refs.append(tracking_category_refs_item)
+
         deposit_line_v2_items = cls(
             amount=amount,
             id=id,
@@ -162,6 +182,7 @@ class DepositLineV2Items:
             tax_rate_ref=tax_rate_ref,
             entity_ref=entity_ref,
             links=links,
+            tracking_category_refs=tracking_category_refs,
         )
 
         deposit_line_v2_items.additional_properties = d

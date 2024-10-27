@@ -1512,6 +1512,7 @@ from .sync_info_status import SyncInfoStatus
 from .sync_info_sync_type import SyncInfoSyncType
 from .sync_status_accounting_method import SyncStatusAccountingMethod
 from .sync_status_data_type import SyncStatusDataType
+from .tax_authority import TaxAuthority
 from .tax_benchmarkings_data import TaxBenchmarkingsData
 from .tax_benchmarkings_report import TaxBenchmarkingsReport
 from .tax_benchmarkings_report_meta_data import TaxBenchmarkingsReportMetaData
@@ -1525,6 +1526,7 @@ from .tracking_category_ref import TrackingCategoryRef
 from .tracking_category_ref_accounting import TrackingCategoryRefAccounting
 from .tracking_category_ref_accounting_type import TrackingCategoryRefAccountingType
 from .tracking_category_ref_push_dto import TrackingCategoryRefPushDto
+from .tracking_category_ref_push_dto_type import TrackingCategoryRefPushDtoType
 from .tracking_category_ref_v2 import TrackingCategoryRefV2
 from .tracking_category_ref_v2_dto import TrackingCategoryRefV2Dto
 from .tracking_category_ref_v2_dto_type import TrackingCategoryRefV2DtoType
@@ -2960,6 +2962,7 @@ __all__ = (
     "SyncInfoSyncType",
     "SyncStatusAccountingMethod",
     "SyncStatusDataType",
+    "TaxAuthority",
     "TaxBenchmarkingsData",
     "TaxBenchmarkingsReport",
     "TaxBenchmarkingsReportMetaData",
@@ -2973,6 +2976,7 @@ __all__ = (
     "TrackingCategoryRefAccounting",
     "TrackingCategoryRefAccountingType",
     "TrackingCategoryRefPushDto",
+    "TrackingCategoryRefPushDtoType",
     "TrackingCategoryRefV2",
     "TrackingCategoryRefV2Dto",
     "TrackingCategoryRefV2DtoType",

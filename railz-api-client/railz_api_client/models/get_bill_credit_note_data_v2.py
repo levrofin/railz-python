@@ -43,6 +43,7 @@ class GetBillCreditNoteDataV2:
         payments (Union[Unset, List['Payments']]):
         subsidiary_refs (Union[Unset, List['SubsidiaryRef']]):
         source_modified_date (Union[Unset, datetime.datetime]):  Example: 2021-03-09T10:18:29.985Z.
+        bill_credit_note_number (Union[Unset, str]): The buyer facing document number of the bill credit note.
     """
 
     id: str
@@ -63,6 +64,7 @@ class GetBillCreditNoteDataV2:
     payments: Union[Unset, List["Payments"]] = UNSET
     subsidiary_refs: Union[Unset, List["SubsidiaryRef"]] = UNSET
     source_modified_date: Union[Unset, datetime.datetime] = UNSET
+    bill_credit_note_number: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -119,6 +121,8 @@ class GetBillCreditNoteDataV2:
         if not isinstance(self.source_modified_date, Unset):
             source_modified_date = self.source_modified_date.isoformat()
 
+        bill_credit_note_number = self.bill_credit_note_number
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -155,6 +159,8 @@ class GetBillCreditNoteDataV2:
             field_dict["subsidiaryRefs"] = subsidiary_refs
         if source_modified_date is not UNSET:
             field_dict["sourceModifiedDate"] = source_modified_date
+        if bill_credit_note_number is not UNSET:
+            field_dict["billCreditNoteNumber"] = bill_credit_note_number
 
         return field_dict
 
@@ -227,6 +233,8 @@ class GetBillCreditNoteDataV2:
         else:
             source_modified_date = isoparse(_source_modified_date)
 
+        bill_credit_note_number = d.pop("billCreditNoteNumber", UNSET)
+
         get_bill_credit_note_data_v2 = cls(
             id=id,
             posted_date=posted_date,
@@ -246,6 +254,7 @@ class GetBillCreditNoteDataV2:
             payments=payments,
             subsidiary_refs=subsidiary_refs,
             source_modified_date=source_modified_date,
+            bill_credit_note_number=bill_credit_note_number,
         )
 
         get_bill_credit_note_data_v2.additional_properties = d
