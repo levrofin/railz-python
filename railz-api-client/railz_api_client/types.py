@@ -1,6 +1,7 @@
 """Contains some shared types for properties"""
 
 import base64
+import urllib.parse
 from http import HTTPStatus
 from typing import BinaryIO, Generic, Literal, MutableMapping, Optional, Tuple, TypeVar
 
@@ -31,7 +32,9 @@ class File:
 
     def to_json(self) -> str:
         """Based on generated sample code from https://docs.railz.ai/reference/pushattachment."""
-        return f"data:{self.mime_type};name={self.file_name};base64,{base64.b64encode(self.payload.read()).decode()}"
+        if self.mime_type is None or self.file_name is None:
+            raise NotImplementedError("JSON-encoding a File without mime type or file name is not implemented.")
+        return f"data:{self.mime_type};name={urllib.parse.quote(self.file_name)};base64,{base64.b64encode(self.payload.read()).decode()}"
 
 
 T = TypeVar("T")
