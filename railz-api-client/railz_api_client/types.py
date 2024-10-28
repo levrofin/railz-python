@@ -31,7 +31,7 @@ class File:
 
     def to_json(self) -> str:
         """Based on generated sample code from https://docs.railz.ai/reference/pushattachment."""
-        return f"{self.mime_type};name={self.file_name};base64,{base64.b64encode(self.payload.read()).decode()}"
+        return f"data:{self.mime_type};name={self.file_name};base64,{base64.b64encode(self.payload.read()).decode()}"
 
 
 T = TypeVar("T")
