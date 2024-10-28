@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cp schema.upstream.yaml schema.yaml
+# The API actually returns 201 but spec only allows 200.
+yq -i '.paths./v2/businesses.post.responses.201 = .paths./v2/businesses.post.responses.200' schema.yaml
+# The API seems to return values not included in the enum.
+yq -i 'del(.components.schemas.GetChartOfAccountsDataV2.properties.subType.enum)' schema.yaml
+# openapi-python-client can't handle multiple content types with the same schema type.
+yq -i 'del(.paths./v2/accounting/attachments.post.requestBody.content.multipart/form-data)' schema.yaml

@@ -1345,7 +1345,7 @@ paths:
       requestBody:
         required: true
         content:
-          multipart/form-data:
+          application/json:
             schema:
               $ref: '#/components/schemas/PushAttachmentV2Dto'
       responses:

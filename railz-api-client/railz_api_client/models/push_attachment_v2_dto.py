@@ -1,6 +1,5 @@
-import json
 from io import BytesIO
-from typing import TYPE_CHECKING, Any, Dict, List, Tuple, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -39,30 +38,6 @@ class PushAttachmentV2Dto:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "connectionUuid": connection_uuid,
-                "file": file,
-            }
-        )
-        if data is not UNSET:
-            field_dict["data"] = data
-
-        return field_dict
-
-    def to_multipart(self) -> Dict[str, Any]:
-        connection_uuid = (None, str(self.connection_uuid).encode(), "text/plain")
-
-        file = self.file.to_tuple()
-
-        data: Union[Unset, Tuple[None, bytes, str]] = UNSET
-        if not isinstance(self.data, Unset):
-            data = (None, json.dumps(self.data.to_dict()).encode(), "application/json")
-
-        field_dict: Dict[str, Any] = {}
-        for prop_name, prop in self.additional_properties.items():
-            field_dict[prop_name] = (None, str(prop).encode(), "text/plain")
-
         field_dict.update(
             {
                 "connectionUuid": connection_uuid,
