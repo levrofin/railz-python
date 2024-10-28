@@ -31,7 +31,7 @@ class PushAttachmentV1Dto:
     def to_dict(self) -> Dict[str, Any]:
         connection = self.connection.to_dict()
 
-        file = self.file.to_json()
+        file = self.file.to_tuple()
 
         data = self.data.to_dict()
 

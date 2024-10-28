@@ -6,4 +6,4 @@ yq -i '.paths./v2/businesses.post.responses.201 = .paths./v2/businesses.post.res
 # The API seems to return values not included in the enum.
 yq -i 'del(.components.schemas.GetChartOfAccountsDataV2.properties.subType.enum)' schema.yaml
 # openapi-python-client can't handle multiple content types with the same schema type.
-yq -i 'del(.paths./v2/accounting/attachments.post.requestBody.content.multipart/form-data)' schema.yaml
+yq -i 'del(.paths./v2/accounting/attachments.post.requestBody.content.application/json)' schema.yaml
