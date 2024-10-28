@@ -1,8 +1,7 @@
-"""Contains some shared types for properties"""
-
+""" Contains some shared types for properties """
 import base64
 from http import HTTPStatus
-from typing import BinaryIO, Generic, Literal, MutableMapping, Optional, Tuple, TypeVar
+from typing import Any, BinaryIO, Generic, MutableMapping, Optional, Tuple, TypeVar, Literal
 
 from attrs import define
 
@@ -14,19 +13,20 @@ class Unset:
 
 UNSET: Unset = Unset()
 
+{# Used as `FileProperty._json_type_string` #}
 FileJsonType = Tuple[Optional[str], BinaryIO, Optional[str]]
 
 
 @define
 class File:
-    """Contains information for file uploads"""
+    """ Contains information for file uploads """
 
     payload: BinaryIO
     file_name: Optional[str] = None
     mime_type: Optional[str] = None
 
     def to_tuple(self) -> FileJsonType:
-        """Return a tuple representation that httpx will accept for multipart/form-data"""
+        """ Return a tuple representation that httpx will accept for multipart/form-data """
         return self.file_name, self.payload, self.mime_type
 
     def to_json(self) -> str:
@@ -39,7 +39,7 @@ T = TypeVar("T")
 
 @define
 class Response(Generic[T]):
-    """A response from an endpoint"""
+    """ A response from an endpoint """
 
     status_code: HTTPStatus
     content: bytes

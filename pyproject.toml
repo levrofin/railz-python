@@ -13,8 +13,10 @@ requires-python = ">= 3.10"
 managed = true
 virtual = true
 dev-dependencies = [
+    "mypy>=1.13.0",
     "openapi-python-client>=0.21.6",
     "ruff>=0.7.0",
+    "types-python-dateutil>=2.9.0.20241003",
 ]
 
 [tool.rye.scripts]

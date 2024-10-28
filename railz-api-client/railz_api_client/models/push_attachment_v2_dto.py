@@ -30,7 +30,7 @@ class PushAttachmentV2Dto:
     def to_dict(self) -> Dict[str, Any]:
         connection_uuid = self.connection_uuid
 
-        file = self.file.to_tuple()
+        file = self.file.to_json()
 
         data: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.data, Unset):

@@ -3,6 +3,10 @@ openapi-python-client generate --config openapi-python-client.yaml --path schema
 rg --files-with-matches --type=py '\bMapping\b' railz-api-client | xargs sed -r -i '0,/(.*\bimport\b.*)/s//from typing import Mapping\n\1/'
 ruff check --fix .
 ruff format .
+if ! mypy railz-api-client; then
+  echo "Type checking failed. Please fix and try again. Not bumping package version." >&2
+  exit 1
+fi
 if [[ -z "$(git status --porcelain railz-api-client)" ]]; then
   echo "Already up to date"
   exit
