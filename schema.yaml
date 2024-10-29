@@ -19189,7 +19189,7 @@ components:
           maxLength: 4000
           example: Example memo.
         postedDate:
-          format: date-time
+          format: date
           type: string
           example: "2020-11-30"
         passThrough:

@@ -33,7 +33,7 @@ class PushBankTransactionV2:
         lines (Union[Unset, List['PushBankTransactionLineV2']]):
         total_amount (Union[Unset, float]):  Example: 150.50.
         memo (Union[Unset, str]):  Example: Example memo..
-        posted_date (Union[Unset, datetime.datetime]):  Example: 2020-11-30.
+        posted_date (Union[Unset, datetime.date]):  Example: 2020-11-30.
         pass_through (Union[Unset, PushBankTransactionV2PassThrough]):  Example: {'CustomField': [{'DefinitionId': '1',
             'StringValue': 'my custom value', 'Name': 'Field One'}]}.
     """
@@ -46,7 +46,7 @@ class PushBankTransactionV2:
     lines: Union[Unset, List["PushBankTransactionLineV2"]] = UNSET
     total_amount: Union[Unset, float] = UNSET
     memo: Union[Unset, str] = UNSET
-    posted_date: Union[Unset, datetime.datetime] = UNSET
+    posted_date: Union[Unset, datetime.date] = UNSET
     pass_through: Union[Unset, "PushBankTransactionV2PassThrough"] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -152,11 +152,11 @@ class PushBankTransactionV2:
         memo = d.pop("memo", UNSET)
 
         _posted_date = d.pop("postedDate", UNSET)
-        posted_date: Union[Unset, datetime.datetime]
+        posted_date: Union[Unset, datetime.date]
         if isinstance(_posted_date, Unset):
             posted_date = UNSET
         else:
-            posted_date = isoparse(_posted_date)
+            posted_date = isoparse(_posted_date).date()
 
         _pass_through = d.pop("passThrough", UNSET)
         pass_through: Union[Unset, PushBankTransactionV2PassThrough]

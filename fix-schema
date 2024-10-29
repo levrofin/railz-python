@@ -9,3 +9,5 @@ yq -i 'del(.components.schemas.GetChartOfAccountsDataV2.properties.subType.enum)
 yq -i 'del(.paths./v2/accounting/attachments.post.requestBody.content.application/json)' schema.yaml
 # push /data/sync doesn't return most of the required fields (at least on sandbox)
 yq -i 'del(.components.schemas.DataSyncResponseV2Dto.required)' schema.yaml
+# API actually wants date, not date-time ("postedDate must be formatted as yyyy-mm-dd")
+yq -i '.components.schemas.PushBankTransactionV2.properties.postedDate.format = "date"' schema.yaml
