@@ -88,18 +88,17 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         return None
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response, skip_parsing: bool = False) -> Response[{{ return_string }}]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[{{ return_string }}]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
         headers=response.headers,
-        parsed=None if skip_parsing else _parse_response(client=client, response=response),
+        parsed=_parse_response(client=client, response=response),
     )
 
 
 def sync_detailed(
     {{ arguments(endpoint) | indent(4) }}
-    skip_parsing: bool = False,
 ) -> Response[{{ return_string }}]:
     {{ docstring(endpoint, return_string, is_detailed=true) | indent(4) }}
 
@@ -111,25 +110,22 @@ def sync_detailed(
         **kwargs,
     )
 
-    return _build_response(client=client, response=response, skip_parsing=skip_parsing)
+    return _build_response(client=client, response=response)
 
 {% if parsed_responses %}
 def sync(
     {{ arguments(endpoint) | indent(4) }}
-    skip_parsing: bool = False,
 ) -> Optional[{{ return_string }}]:
     {{ docstring(endpoint, return_string, is_detailed=false) | indent(4) }}
 
     return sync_detailed(
         {{ kwargs(endpoint) }}
-        skip_parsing=skip_parsing,
     ).parsed
 {% endif %}
 {#
 
 async def asyncio_detailed(
     {{ arguments(endpoint) | indent(4) }}
-    skip_parsing: bool = False,
 ) -> Response[{{ return_string }}]:
     {{ docstring(endpoint, return_string, is_detailed=true) | indent(4) }}
 
@@ -141,18 +137,16 @@ async def asyncio_detailed(
         **kwargs
     )
 
-    return _build_response(client=client, response=response, skip_parsing=skip_parsing)
+    return _build_response(client=client, response=response)
 
 {% if parsed_responses %}
 async def asyncio(
     {{ arguments(endpoint) | indent(4) }}
-    skip_parsing: bool = False,
 ) -> Optional[{{ return_string }}]:
     {{ docstring(endpoint, return_string, is_detailed=false) | indent(4) }}
 
     return (await asyncio_detailed(
         {{ kwargs(endpoint) }}
-        skip_parsing=skip_parsing,
     )).parsed
 {% endif %}
 #}

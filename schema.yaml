@@ -14423,12 +14423,6 @@ components:
           type: string
           readOnly: true
           example: 94652dff-06ab-4b97-bd1b-f91adf7048c3
-      required:
-        - connectionUuid
-        - businessName
-        - serviceName
-        - requestedOn
-        - requestId
     Property:
       type: object
       properties:

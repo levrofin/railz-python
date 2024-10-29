@@ -7,3 +7,5 @@ yq -i '.paths./v2/businesses.post.responses.201 = .paths./v2/businesses.post.res
 yq -i 'del(.components.schemas.GetChartOfAccountsDataV2.properties.subType.enum)' schema.yaml
 # openapi-python-client can't handle multiple content types with the same schema type.
 yq -i 'del(.paths./v2/accounting/attachments.post.requestBody.content.application/json)' schema.yaml
+# push /data/sync doesn't return most of the required fields (at least on sandbox)
+yq -i 'del(.components.schemas.DataSyncResponseV2Dto.required)' schema.yaml

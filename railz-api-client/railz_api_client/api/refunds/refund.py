@@ -100,7 +100,7 @@ def _parse_response(
 
 
 def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response, skip_parsing: bool = False
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Response[
     Union[
         Any,
@@ -115,7 +115,7 @@ def _build_response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
         headers=response.headers,
-        parsed=None if skip_parsing else _parse_response(client=client, response=response),
+        parsed=_parse_response(client=client, response=response),
     )
 
 
@@ -130,7 +130,6 @@ def sync_detailed(
     order_by: Union[Unset, str] = UNSET,
     total_amount: Union[Unset, float] = UNSET,
     additional_query_params: Mapping[str, str | list[str]] | None = None,
-    skip_parsing: bool = False,
 ) -> Response[
     Union[
         Any,
@@ -180,7 +179,7 @@ def sync_detailed(
         **kwargs,
     )
 
-    return _build_response(client=client, response=response, skip_parsing=skip_parsing)
+    return _build_response(client=client, response=response)
 
 
 def sync(
@@ -194,7 +193,6 @@ def sync(
     order_by: Union[Unset, str] = UNSET,
     total_amount: Union[Unset, float] = UNSET,
     additional_query_params: Mapping[str, str | list[str]] | None = None,
-    skip_parsing: bool = False,
 ) -> Optional[
     Union[
         Any,
@@ -239,5 +237,4 @@ def sync(
         order_by=order_by,
         total_amount=total_amount,
         additional_query_params=additional_query_params,
-        skip_parsing=skip_parsing,
     ).parsed
