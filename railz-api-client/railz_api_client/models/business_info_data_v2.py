@@ -23,8 +23,6 @@ T = TypeVar("T", bound="BusinessInfoDataV2")
 class BusinessInfoDataV2:
     """
     Attributes:
-        business_type (BusinessInfoDataV2BusinessType):  Example: organization.
-        accounting_method (str):  Example: accrual.
         business_name (Union[Unset, str]):  Example: Railz.
         legal_name (Union[Unset, str]):  Example: Railz Financial Technologies Inc.
         business_email (Union[Unset, str]):  Example: noreply@railz.ai.
@@ -41,12 +39,12 @@ class BusinessInfoDataV2:
         subsidiary_refs (Union[Unset, List['BusinessInfoSubsidiaryRef']]):
         mailing_address (Union[Unset, BusinessInfoAddressV2]):
         legal_address (Union[Unset, BusinessInfoAddressV2]):
+        business_type (Union[Unset, BusinessInfoDataV2BusinessType]):  Example: organization.
+        accounting_method (Union[Unset, str]):  Example: accrual.
         pass_through (Union[Unset, BusinessInfoDataV2PassThrough]):  Example: {'CustomField': [{'DefinitionId': '1',
             'StringValue': 'my custom value', 'Name': 'Field One'}]}.
     """
 
-    business_type: BusinessInfoDataV2BusinessType
-    accounting_method: str
     business_name: Union[Unset, str] = UNSET
     legal_name: Union[Unset, str] = UNSET
     business_email: Union[Unset, str] = UNSET
@@ -63,14 +61,12 @@ class BusinessInfoDataV2:
     subsidiary_refs: Union[Unset, List["BusinessInfoSubsidiaryRef"]] = UNSET
     mailing_address: Union[Unset, "BusinessInfoAddressV2"] = UNSET
     legal_address: Union[Unset, "BusinessInfoAddressV2"] = UNSET
+    business_type: Union[Unset, BusinessInfoDataV2BusinessType] = UNSET
+    accounting_method: Union[Unset, str] = UNSET
     pass_through: Union[Unset, "BusinessInfoDataV2PassThrough"] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        business_type: str = self.business_type
-
-        accounting_method = self.accounting_method
-
         business_name = self.business_name
 
         legal_name = self.legal_name
@@ -117,18 +113,19 @@ class BusinessInfoDataV2:
         if not isinstance(self.legal_address, Unset):
             legal_address = self.legal_address.to_dict()
 
+        business_type: Union[Unset, str] = UNSET
+        if not isinstance(self.business_type, Unset):
+            business_type = self.business_type
+
+        accounting_method = self.accounting_method
+
         pass_through: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.pass_through, Unset):
             pass_through = self.pass_through.to_dict()
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "businessType": business_type,
-                "accountingMethod": accounting_method,
-            }
-        )
+        field_dict.update({})
         if business_name is not UNSET:
             field_dict["businessName"] = business_name
         if legal_name is not UNSET:
@@ -161,6 +158,10 @@ class BusinessInfoDataV2:
             field_dict["mailingAddress"] = mailing_address
         if legal_address is not UNSET:
             field_dict["legalAddress"] = legal_address
+        if business_type is not UNSET:
+            field_dict["businessType"] = business_type
+        if accounting_method is not UNSET:
+            field_dict["accountingMethod"] = accounting_method
         if pass_through is not UNSET:
             field_dict["passThrough"] = pass_through
 
@@ -174,10 +175,6 @@ class BusinessInfoDataV2:
         from ..models.business_info_subsidiary_ref import BusinessInfoSubsidiaryRef
 
         d = src_dict.copy()
-        business_type = check_business_info_data_v2_business_type(d.pop("businessType"))
-
-        accounting_method = d.pop("accountingMethod")
-
         business_name = d.pop("businessName", UNSET)
 
         legal_name = d.pop("legalName", UNSET)
@@ -230,6 +227,15 @@ class BusinessInfoDataV2:
         else:
             legal_address = BusinessInfoAddressV2.from_dict(_legal_address)
 
+        _business_type = d.pop("businessType", UNSET)
+        business_type: Union[Unset, BusinessInfoDataV2BusinessType]
+        if isinstance(_business_type, Unset):
+            business_type = UNSET
+        else:
+            business_type = check_business_info_data_v2_business_type(_business_type)
+
+        accounting_method = d.pop("accountingMethod", UNSET)
+
         _pass_through = d.pop("passThrough", UNSET)
         pass_through: Union[Unset, BusinessInfoDataV2PassThrough]
         if isinstance(_pass_through, Unset):
@@ -238,8 +244,6 @@ class BusinessInfoDataV2:
             pass_through = BusinessInfoDataV2PassThrough.from_dict(_pass_through)
 
         business_info_data_v2 = cls(
-            business_type=business_type,
-            accounting_method=accounting_method,
             business_name=business_name,
             legal_name=legal_name,
             business_email=business_email,
@@ -256,6 +260,8 @@ class BusinessInfoDataV2:
             subsidiary_refs=subsidiary_refs,
             mailing_address=mailing_address,
             legal_address=legal_address,
+            business_type=business_type,
+            accounting_method=accounting_method,
             pass_through=pass_through,
         )
 

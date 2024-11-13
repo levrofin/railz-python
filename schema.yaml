@@ -23923,9 +23923,6 @@ components:
               - DefinitionId: "1"
                 StringValue: my custom value
                 Name: Field One
-      required:
-        - businessType
-        - accountingMethod
     BusinessInfoResponseDtoV2:
       type: object
       properties:
