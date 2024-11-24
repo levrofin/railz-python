@@ -45,6 +45,7 @@ class GetChartOfAccountsDataV2:
         is_posting (Union[Unset, bool]):  Example: True.
         tax_rate_ref (Union[Unset, TaxRateObjectRefResponse]):
         bank_account_number (Union[Unset, str]):  Example: 11200.
+        payments_enabled (Union[Unset, bool]):  Example: True.
     """
 
     id: str
@@ -72,6 +73,7 @@ class GetChartOfAccountsDataV2:
     is_posting: Union[Unset, bool] = UNSET
     tax_rate_ref: Union[Unset, "TaxRateObjectRefResponse"] = UNSET
     bank_account_number: Union[Unset, str] = UNSET
+    payments_enabled: Union[Unset, bool] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -136,6 +138,8 @@ class GetChartOfAccountsDataV2:
 
         bank_account_number = self.bank_account_number
 
+        payments_enabled = self.payments_enabled
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -188,6 +192,8 @@ class GetChartOfAccountsDataV2:
             field_dict["taxRateRef"] = tax_rate_ref
         if bank_account_number is not UNSET:
             field_dict["bankAccountNumber"] = bank_account_number
+        if payments_enabled is not UNSET:
+            field_dict["paymentsEnabled"] = payments_enabled
 
         return field_dict
 
@@ -268,6 +274,8 @@ class GetChartOfAccountsDataV2:
 
         bank_account_number = d.pop("bankAccountNumber", UNSET)
 
+        payments_enabled = d.pop("paymentsEnabled", UNSET)
+
         get_chart_of_accounts_data_v2 = cls(
             id=id,
             is_active=is_active,
@@ -294,6 +302,7 @@ class GetChartOfAccountsDataV2:
             is_posting=is_posting,
             tax_rate_ref=tax_rate_ref,
             bank_account_number=bank_account_number,
+            payments_enabled=payments_enabled,
         )
 
         get_chart_of_accounts_data_v2.additional_properties = d

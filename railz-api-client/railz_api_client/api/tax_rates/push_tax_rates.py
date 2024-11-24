@@ -99,7 +99,7 @@ def sync_detailed(
 
      **Supported for:**
 
-    `xero` `freshbooks` `sageBusinessCloud` `dynamicsBusinessCentral`
+    `quickbooks` `xero` `freshbooks` `sageBusinessCloud` `dynamicsBusinessCentral` `zohoBooks`
 
     Args:
         body (PushTaxRateDto):
@@ -137,7 +137,7 @@ def sync(
 
      **Supported for:**
 
-    `xero` `freshbooks` `sageBusinessCloud` `dynamicsBusinessCentral`
+    `quickbooks` `xero` `freshbooks` `sageBusinessCloud` `dynamicsBusinessCentral` `zohoBooks`
 
     Args:
         body (PushTaxRateDto):

@@ -54,10 +54,10 @@ def _parse_response(
         PostBusinessesResponseDtoV2,
     ]
 ]:
-    if response.status_code == HTTPStatus.OK:
-        response_200 = PostBusinessesResponseDtoV2.from_dict(response.json())
+    if response.status_code == HTTPStatus.CREATED:
+        response_201 = PostBusinessesResponseDtoV2.from_dict(response.json())
 
-        return response_200
+        return response_201
     if response.status_code == HTTPStatus.BAD_REQUEST:
         response_400 = Error400ResponseDtoV2.from_dict(response.json())
 
@@ -74,10 +74,6 @@ def _parse_response(
         response_500 = Error500ResponseDto.from_dict(response.json())
 
         return response_500
-    if response.status_code == HTTPStatus.CREATED:
-        response_201 = PostBusinessesResponseDtoV2.from_dict(response.json())
-
-        return response_201
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
     else:

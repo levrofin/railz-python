@@ -3258,7 +3258,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateBusinessDto'
       responses:
-        "200":
+        "201":
           description: ""
           content:
             application/json:
@@ -3288,12 +3288,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error500ResponseDto'
-        "201":
-          description: ""
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PostBusinessesResponseDtoV2'
       tags:
         - Businesses
       security:
@@ -7477,7 +7471,7 @@ paths:
       description: |-
         **Supported for:**
 
-        `xero` `freshbooks` `sageBusinessCloud` `dynamicsBusinessCentral`
+        `quickbooks` `xero` `freshbooks` `sageBusinessCloud` `dynamicsBusinessCentral` `zohoBooks`
       parameters: []
       requestBody:
         required: true
@@ -9196,6 +9190,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error500ResponseDto'
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FireWebhookResponseV2Dto'
       tags:
         - Sandbox
       security:
@@ -15032,6 +15032,9 @@ components:
         bankAccountNumber:
           type: string
           example: "11200"
+        paymentsEnabled:
+          type: boolean
+          example: true
       required:
         - id
         - isActive
@@ -21930,6 +21933,7 @@ components:
             - giftCard
             - other
           example: creditCard
+          deprecated: true
         paymentMethodRef:
           $ref: '#/components/schemas/PaymentMethodRefResponse'
         lines:
@@ -22053,6 +22057,7 @@ components:
             $ref: '#/components/schemas/SubsidiaryRefDto'
         paymentMethod:
           type: string
+          deprecated: true
           enum:
             - unknown
             - cash
@@ -22175,6 +22180,7 @@ components:
             $ref: '#/components/schemas/SubsidiaryRefDto'
         paymentMethod:
           type: string
+          deprecated: true
           enum:
             - unknown
             - cash
@@ -31322,6 +31328,7 @@ components:
             - giftCard
             - other
           example: creditCard
+          deprecated: true
         paymentMethodRef:
           $ref: '#/components/schemas/PaymentMethodRefResponse'
         lines:
@@ -31405,6 +31412,7 @@ components:
           example: 1.13
         paymentMethod:
           type: string
+          deprecated: true
           enum:
             - unknown
             - cash
@@ -31546,6 +31554,7 @@ components:
           example: "2021-03-29"
         paymentMethod:
           type: string
+          deprecated: true
           enum:
             - check
             - creditCard
@@ -36613,6 +36622,7 @@ components:
             - giftCard
             - other
           example: creditCard
+          deprecated: true
         paymentMethodRef:
           $ref: '#/components/schemas/PaymentMethodRefResponse'
         memo:
@@ -36704,6 +36714,7 @@ components:
           example: "2021-03-29"
         paymentMethod:
           type: string
+          deprecated: true
           enum:
             - unknown
             - cash
