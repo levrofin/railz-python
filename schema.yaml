@@ -23600,12 +23600,6 @@ components:
               id: "100"
           allOf:
             - $ref: '#/components/schemas/serviceAccountRefType'
-      required:
-        - connectionUuid
-        - serviceName
-        - status
-        - createdAt
-        - updatedAt
     BusinessesResponseDataV2:
       type: object
       properties:

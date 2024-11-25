@@ -23,13 +23,13 @@ T = TypeVar("T", bound="BaseConnectionsResponseDataV2")
 class BaseConnectionsResponseDataV2:
     """
     Attributes:
-        connection_uuid (str):  Example: CON-e66400c1-4d2f-4683-9bea-275799943695.
-        service_name (BaseConnectionsResponseDataV2ServiceName):  Example: xero.
-        status (str):  Example: active.
-        created_at (datetime.datetime):  Example: 2020-12-25T01:02:03Z.
-        updated_at (datetime.datetime):  Example: 2020-12-25T01:02:03Z.
+        connection_uuid (Union[Unset, str]):  Example: CON-e66400c1-4d2f-4683-9bea-275799943695.
         first_record_date (Union[Unset, datetime.datetime]):  Example: 2020-12-25T01:02:03Z.
+        service_name (Union[Unset, BaseConnectionsResponseDataV2ServiceName]):  Example: xero.
         description (Union[Unset, str]):  Example: TD Bank.
+        status (Union[Unset, str]):  Example: active.
+        created_at (Union[Unset, datetime.datetime]):  Example: 2020-12-25T01:02:03Z.
+        updated_at (Union[Unset, datetime.datetime]):  Example: 2020-12-25T01:02:03Z.
         disconnect_reason (Union[Unset, str]):  Example: disconnectedByCustomer.
         sync_time (Union[Unset, float]):  Example: 1.3092.
         institution (Union[Unset, ConnectionsInstitutionData]):
@@ -37,13 +37,13 @@ class BaseConnectionsResponseDataV2:
         service_account_ref (Union[Unset, ServiceAccountRefType]):
     """
 
-    connection_uuid: str
-    service_name: BaseConnectionsResponseDataV2ServiceName
-    status: str
-    created_at: datetime.datetime
-    updated_at: datetime.datetime
+    connection_uuid: Union[Unset, str] = UNSET
     first_record_date: Union[Unset, datetime.datetime] = UNSET
+    service_name: Union[Unset, BaseConnectionsResponseDataV2ServiceName] = UNSET
     description: Union[Unset, str] = UNSET
+    status: Union[Unset, str] = UNSET
+    created_at: Union[Unset, datetime.datetime] = UNSET
+    updated_at: Union[Unset, datetime.datetime] = UNSET
     disconnect_reason: Union[Unset, str] = UNSET
     sync_time: Union[Unset, float] = UNSET
     institution: Union[Unset, "ConnectionsInstitutionData"] = UNSET
@@ -54,19 +54,25 @@ class BaseConnectionsResponseDataV2:
     def to_dict(self) -> Dict[str, Any]:
         connection_uuid = self.connection_uuid
 
-        service_name: str = self.service_name
-
-        status = self.status
-
-        created_at = self.created_at.isoformat()
-
-        updated_at = self.updated_at.isoformat()
-
         first_record_date: Union[Unset, str] = UNSET
         if not isinstance(self.first_record_date, Unset):
             first_record_date = self.first_record_date.isoformat()
 
+        service_name: Union[Unset, str] = UNSET
+        if not isinstance(self.service_name, Unset):
+            service_name = self.service_name
+
         description = self.description
+
+        status = self.status
+
+        created_at: Union[Unset, str] = UNSET
+        if not isinstance(self.created_at, Unset):
+            created_at = self.created_at.isoformat()
+
+        updated_at: Union[Unset, str] = UNSET
+        if not isinstance(self.updated_at, Unset):
+            updated_at = self.updated_at.isoformat()
 
         disconnect_reason = self.disconnect_reason
 
@@ -84,19 +90,21 @@ class BaseConnectionsResponseDataV2:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "connectionUuid": connection_uuid,
-                "serviceName": service_name,
-                "status": status,
-                "createdAt": created_at,
-                "updatedAt": updated_at,
-            }
-        )
+        field_dict.update({})
+        if connection_uuid is not UNSET:
+            field_dict["connectionUuid"] = connection_uuid
         if first_record_date is not UNSET:
             field_dict["firstRecordDate"] = first_record_date
+        if service_name is not UNSET:
+            field_dict["serviceName"] = service_name
         if description is not UNSET:
             field_dict["description"] = description
+        if status is not UNSET:
+            field_dict["status"] = status
+        if created_at is not UNSET:
+            field_dict["createdAt"] = created_at
+        if updated_at is not UNSET:
+            field_dict["updatedAt"] = updated_at
         if disconnect_reason is not UNSET:
             field_dict["disconnectReason"] = disconnect_reason
         if sync_time is not UNSET:
@@ -116,15 +124,7 @@ class BaseConnectionsResponseDataV2:
         from ..models.service_account_ref_type import ServiceAccountRefType
 
         d = src_dict.copy()
-        connection_uuid = d.pop("connectionUuid")
-
-        service_name = check_base_connections_response_data_v2_service_name(d.pop("serviceName"))
-
-        status = d.pop("status")
-
-        created_at = isoparse(d.pop("createdAt"))
-
-        updated_at = isoparse(d.pop("updatedAt"))
+        connection_uuid = d.pop("connectionUuid", UNSET)
 
         _first_record_date = d.pop("firstRecordDate", UNSET)
         first_record_date: Union[Unset, datetime.datetime]
@@ -133,7 +133,30 @@ class BaseConnectionsResponseDataV2:
         else:
             first_record_date = isoparse(_first_record_date)
 
+        _service_name = d.pop("serviceName", UNSET)
+        service_name: Union[Unset, BaseConnectionsResponseDataV2ServiceName]
+        if isinstance(_service_name, Unset):
+            service_name = UNSET
+        else:
+            service_name = check_base_connections_response_data_v2_service_name(_service_name)
+
         description = d.pop("description", UNSET)
+
+        status = d.pop("status", UNSET)
+
+        _created_at = d.pop("createdAt", UNSET)
+        created_at: Union[Unset, datetime.datetime]
+        if isinstance(_created_at, Unset):
+            created_at = UNSET
+        else:
+            created_at = isoparse(_created_at)
+
+        _updated_at = d.pop("updatedAt", UNSET)
+        updated_at: Union[Unset, datetime.datetime]
+        if isinstance(_updated_at, Unset):
+            updated_at = UNSET
+        else:
+            updated_at = isoparse(_updated_at)
 
         disconnect_reason = d.pop("disconnectReason", UNSET)
 
@@ -157,12 +180,12 @@ class BaseConnectionsResponseDataV2:
 
         base_connections_response_data_v2 = cls(
             connection_uuid=connection_uuid,
+            first_record_date=first_record_date,
             service_name=service_name,
+            description=description,
             status=status,
             created_at=created_at,
             updated_at=updated_at,
-            first_record_date=first_record_date,
-            description=description,
             disconnect_reason=disconnect_reason,
             sync_time=sync_time,
             institution=institution,

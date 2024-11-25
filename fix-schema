@@ -13,3 +13,5 @@ yq -i 'del(.components.schemas.DataSyncResponseV2Dto.required)' schema.yaml
 yq -i '.components.schemas.PushBankTransactionV2.properties.postedDate.format = "date"' schema.yaml
 # BusinessInfoDataV2.businessType isn't always present and we don't care about the other required field.
 yq -i 'del(.components.schemas.BusinessInfoDataV2.required)' schema.yaml
+# get /businesses doesn't return all of the required fields
+yq -i 'del(.components.schemas.BaseConnectionsResponseDataV2.required)' schema.yaml
