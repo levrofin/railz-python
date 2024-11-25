@@ -23542,10 +23542,12 @@ components:
           type: string
           readOnly: true
           example: CON-e66400c1-4d2f-4683-9bea-275799943695
+          nullable: true
         firstRecordDate:
           type: string
           example: "2020-12-25T01:02:03Z"
           format: date-time
+          nullable: true
         serviceName:
           type: string
           readOnly: true
@@ -23561,38 +23563,47 @@ components:
             - dynamicsBusinessCentral
             - wave
             - zohoBooks
+          nullable: true
         description:
           type: string
           example: TD Bank
+          nullable: true
         status:
           type: string
           readOnly: true
           example: active
+          nullable: true
         createdAt:
           type: string
           readOnly: true
           example: "2020-12-25T01:02:03Z"
           format: date-time
+          nullable: true
         updatedAt:
           type: string
           readOnly: true
           example: "2020-12-25T01:02:03Z"
           format: date-time
+          nullable: true
         disconnectReason:
           type: string
           example: disconnectedByCustomer
+          nullable: true
         syncTime:
           type: number
           example: "1.3092"
+          nullable: true
         institution:
           example:
             name: Citizens bank
             logo: https://serverlogo.url
           allOf:
             - $ref: '#/components/schemas/ConnectionsInstitutionData'
+          nullable: true
         isMockData:
           type: boolean
           example: true
+          nullable: true
         serviceAccountRef:
           example:
             id: "12345"
@@ -23600,6 +23611,7 @@ components:
               id: "100"
           allOf:
             - $ref: '#/components/schemas/serviceAccountRefType'
+          nullable: true
     BusinessesResponseDataV2:
       type: object
       properties:
