@@ -15,6 +15,6 @@ yq -i '.components.schemas.PushBankTransactionV2.properties.postedDate.format = 
 yq -i 'del(.components.schemas.BusinessInfoDataV2.required)' schema.yaml
 # get /businesses doesn't return all of the required fields
 yq -i 'del(.components.schemas.BaseConnectionsResponseDataV2.required)' schema.yaml
-yq -i '.components.schemas.BaseConnectionsResponseDataV2.properties.firstRecordDate.nullable = true' schema.yaml
-yq -i '.components.schemas.BaseConnectionsResponseDataV2.properties.createdAt.nullable = true' schema.yaml
 yq -i '.components.schemas.BaseConnectionsResponseDataV2.properties.*.nullable = true' schema.yaml
+# GetExpenseResponseV2Dto doesn't always include meta
+yq -i '.components.schemas.GetExpenseResponseV2Dto.required |= filter(. != "meta")' schema.yaml

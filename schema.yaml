@@ -36661,7 +36661,6 @@ components:
             $ref: '#/components/schemas/GetExpenseData'
       required:
         - pagination
-        - meta
         - data
     ExpenseLineDto:
       type: object
